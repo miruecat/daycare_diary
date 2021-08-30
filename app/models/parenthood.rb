@@ -1,0 +1,2 @@
+class Parenthood < ApplicationRecord
+end
