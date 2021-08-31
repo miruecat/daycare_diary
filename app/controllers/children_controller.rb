@@ -1,35 +1,50 @@
 class ChildrenController < ApplicationController
-  def index
+  before_action :set_child, only: [ :show, :edit, :update, :destroy ]
 
+  def index
+    @children = Child.all
   end
 
   def show
-
   end
 
   def new
-
+    @child = Child.new
   end
 
   def create
-
+    @child = Child.new(child_params)
+    @child.daycare_id = current_user.daycare_id
+    if @child.save
+      redirect_to child_path(@child)
+    else
+      render new
+    end
   end
 
   def edit
-
   end
 
   def update
-
+    if @child.update(child_params)
+      redirect_to child_path(@child)
+    else
+      render new
+    end
   end
 
   def destroy
-
+    @child.destroy
+    redirect_to children_path
   end
 
   private
 
   def child_params
+    params.require(:child).permit(:first_name, :last_name, :birthdate, :personal_information, :daycare_id)
+  end
 
+  def set_child
+    @child = Child.find(params[:id])
   end
 end
