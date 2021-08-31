@@ -3,18 +3,22 @@ class ChildrenController < ApplicationController
 
   def index
     @children = Child.all
+    @children = policy_scope(Child)
   end
 
   def show
+    authorize @child
   end
 
   def new
     @child = Child.new
+    authorize @child
   end
 
   def create
     @child = Child.new(child_params)
     @child.daycare_id = current_user.daycare_id
+    authorize @child
     if @child.save
       redirect_to child_path(@child)
     else
@@ -23,9 +27,11 @@ class ChildrenController < ApplicationController
   end
 
   def edit
+    authorize @child
   end
 
   def update
+    authorize @child
     if @child.update(child_params)
       redirect_to child_path(@child)
     else

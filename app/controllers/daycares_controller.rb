@@ -6,6 +6,7 @@ class DaycaresController < ApplicationController
   end
 
   def show
+    authorize @daycare
   end
 
   def new
