@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DaycareDiary</title>
+    <title>Daycare Diary</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,9 +13,11 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-
-    <%= yield %>
+    <div class="body-container">
+      <%= render 'shared/navbar' %>
+      <%= yield %>
+      <%= render 'shared/flashes' %>
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>
