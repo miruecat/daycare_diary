@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :parenthoods
   belongs_to :daycare
   scope :employees, -> (daycare_id) { where(daycare_id: daycare_id, role: "employee") }
+
+  validates :email, :password, :role, :daycare_id, :phone_number, :first_name, :last_name, presence: true
 end
