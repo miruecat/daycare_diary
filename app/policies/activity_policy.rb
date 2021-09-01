@@ -4,7 +4,4 @@ class ActivityPolicy < ApplicationPolicy
       scope.all
     end
   end
-    def
-
-    end
 end
