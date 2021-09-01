@@ -5,19 +5,25 @@ class ChildPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    if record.daycare_id == user.daycare_id
+      return true
+    end
+  end
+
   def create?
     user.admin?
     return true
   end
 
   def update?
-    if @child.daycare_id == user.daycare_id && user.admin?
+    if record.daycare_id == user.daycare_id && user.admin?
       return true
     end
   end
 
   def destroy?
-    if @child.daycare_id == user.daycare_id && user.admin?
+    if record.daycare_id == user.daycare_id && user.admin?
       return true
     end
   end

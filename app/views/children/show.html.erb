@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <% current_user.children.each do |child| %>
+      <img class="avatar-large" alt="<%= child.first_name %>" src="<%= child.photo %>">
+    <% end %>
+  </div>
+
+  <h1><%= @child.first_name %> <%= @child.last_name %></h1>
+
+  <h2>Activity log of <%= @child.first_name %></h2>
+</div>
