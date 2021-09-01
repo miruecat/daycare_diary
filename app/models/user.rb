@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :activities
   has_many :parenthoods
+  has_many :children, through: :parenthoods
   belongs_to :daycare
   scope :employees, -> (daycare_id) { where(daycare_id: daycare_id, role: "employee") }
 

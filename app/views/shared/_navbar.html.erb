@@ -3,7 +3,7 @@
   <% if user_signed_in? %>
     <nav>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle" type="button">
         Daycare Diary
         </button>
         <% if current_user.role == "employee" %>
@@ -12,10 +12,7 @@
             Avatar
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">My profile</a>
-              <a class="dropdown-item" href="#">My messages</a>
-              <a class="dropdown-item" href="#">My profile</a>
-              <a class="dropdown-item" href="#">Messages</a>
+              <%= link_to "My Daycare", children_path, class:"dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
             </div>
           </div>
@@ -25,9 +22,7 @@
             Avatar
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">My profile</a>
-              <a class="dropdown-item" href="#">@child.name</a>
-              <a class="dropdown-item" href="#">Messages</a>
+              <%= link_to "View my Kid(s)", child_path(current_user.parenthoods.first.child), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
             </div>
           </div>
