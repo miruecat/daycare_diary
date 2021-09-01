@@ -2,8 +2,8 @@ class ChildrenController < ApplicationController
   before_action :set_child, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @children = Child.all
     @children = policy_scope(Child)
+    authorize Child, :index?
   end
 
   def show
