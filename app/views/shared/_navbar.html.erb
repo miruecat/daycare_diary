@@ -9,9 +9,8 @@
         <% if current_user.role == "employee" %>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Avatar
+            <%= "#{current_user.first_name} #{current_user.last_name}" %>
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <%= link_to "My Daycare", children_path, class:"dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
             </div>
@@ -19,10 +18,10 @@
         <% elsif current_user.role == "parent" %>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Avatar
+            <%= "Hello, #{current_user.first_name} #{current_user.last_name}" %>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <%= link_to "View my Kid(s)", child_path(current_user.parenthoods.first.child), class: "dropdown-item" %>
+              <%# <%= link_to "View my Kid(s)", child_path(current_user.parenthoods.first.child), class: "dropdown-item" %> %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
             </div>
           </div>
@@ -35,6 +34,10 @@
         <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Daycare Diary
         </button>
+
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+      Launch demo modal
+
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#">About this app</a>
           <a class="dropdown-item" href="#">Legal Information</a>
