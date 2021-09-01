@@ -9,7 +9,15 @@
       <% @children.each do |child| %>
         <% if child.profile_picture.attached? %>
           <div class="child-card">
-            <%= cl_image_tag child.profile_picture.key %>
+            <div class="child-card-left">
+              <%= link_to child_path(child) do %>
+                <%= cl_image_tag child.profile_picture.key, class:"avatar-large" %>
+                <p id="popup"><% child.first_name.capitalize %> <% child.last_name.capitalize %></p>
+              <% end %>
+            </div>
+            <div class="child-card-right">
+              <%= child.first_name.capitalize %>
+            </div>
           </div>
         <% else %>
           <div class="child-initial">

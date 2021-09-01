@@ -6,6 +6,33 @@
   width: 56px;
   border-radius: 50%;
 }
+
+.avatar-large:hover {
+  opacity: .5;
+}
+
+#popup {
+  height: 20px;
+  width: 80px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: $background-color;
+  color: black;
+  display: none;
+  padding-top: 10px;
+  position: absolute;
+}
+
+// p .text{
+//   visibility: hidden;
+// }
+// p .text:hover{
+//   visibility: visible;
+//   opacity: 1;
+// }
+
+
+
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;
