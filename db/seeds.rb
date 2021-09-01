@@ -35,7 +35,6 @@ p6 = User.create(email: "parent6@gmail.com", password: "123456", role: "parent",
 p7 = User.create(email: "parent7@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345697", first_name: "Lisa", last_name: "Wilson")
 p8 = User.create(email: "parent8@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345698", first_name: "Mia", last_name: "Anderson")
 p9 = User.create(email: "parent9@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345699", first_name: "Evelyn", last_name: "Lee")
-p10 = User.create(email: "parent10@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345690", first_name: "Patrick", last_name: "Jones")
 p11 = User.create(email: "parent11@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345600", first_name: "Carry", last_name: "Garcia")
 puts "Users added!"
 
@@ -49,6 +48,48 @@ file = URI.open('https://squarebaby.com/wp-content/themes/squarebaby/assets/img/
 c2 = Child.new(first_name: "Olivia", last_name: "Smith", birthdate: DateTime.new(2020,1,12), daycare_id: d1.id)
 c2.profile_picture.attach(io: file, filename: 'olivia.jpeg', content_type: 'image/png')
 c2.save
+
+file = URI.open('https://media.oudersvannu.nl/m/myfuopw26xy8_ovn_square_800.jpg')
+c3 = Child.new(first_name: "Noah", last_name: "Williams", birthdate: DateTime.new(2019,4,4), daycare_id: d1.id)
+c3.profile_picture.attach(io: file, filename: 'noah.jpg', content_type: 'image/jpg')
+c3.save
+
+file = URI.open('https://rainydaymum.co.uk/wp-content/uploads/2018/06/activities-to-do-with-your-4-month-old-baby-square.jpg')
+c4 = Child.new(first_name: "Emma", last_name: "Williams", birthdate: DateTime.new(2021,5,3), daycare_id: d1.id)
+c4.profile_picture.attach(io: file, filename: 'emma.jpg', content_type: 'image/jpg')
+c4.save
+
+file = URI.open('https://cdn.shopify.com/s/files/1/0031/6602/files/baby_square_1024x1024_crop_center.jpg')
+c5 = Child.new(first_name: "Sophia", last_name: "Miller", birthdate: DateTime.new(2019,12,10), daycare_id: d1.id)
+c5.profile_picture.attach(io: file, filename: 'sophia.jpg', content_type: 'image/jpg')
+c5.save
+
+file = URI.open('https://heartmindonline.org/sites/default/files/iStock_000016868447_Full.jpg')
+c6 = Child.new(first_name: "Lucas", last_name: "Wilson", birthdate: DateTime.new(2018,9,11), daycare_id: d1.id)
+c6.profile_picture.attach(io: file, filename: 'lucas.jpg', content_type: 'image/jpg')
+c6.save
+
+file = URI.open('https://5.imimg.com/data5/SELLER/Default/2020/10/CR/LF/MF/48866434/14-500x500.jpg')
+c7 = Child.new(first_name: "Henry", last_name: "Anderson", birthdate: DateTime.new(2018,3,18), daycare_id: d1.id)
+c7.profile_picture.attach(io: file, filename: 'henry.jpg', content_type: 'image/jpg')
+c7.save
+
+file = URI.open('https://www.babycenter.com/ims/2021/04/Snug-As-A-Bug-Personalized-Baby-Hat-buybuybaby_square.jpg.pagespeed.ce.XynDd_ArDH.jpg')
+c8 = Child.new(first_name: "Isabella", last_name: "Lee", birthdate: DateTime.new(2020,12,25), daycare_id: d1.id)
+c8.profile_picture.attach(io: file, filename: 'isabella.jpg', content_type: 'image/jpg')
+c8.save
+
+file = URI.open('https://images.squarespace-cdn.com/content/v1/5c912436e66669395b41af4c/1553193358988-FNFQLPADBREFWN9TLWXA/teething-baby-square-300x300.jpg')
+c9 = Child.new(first_name: "Mary", last_name: "Jones", birthdate: DateTime.new(2020,8,8), daycare_id: d2.id)
+c9.profile_picture.attach(io: file, filename: 'mary.jpg', content_type: 'image/jpg')
+c9.save
+
+file = URI.open('https://squarebaby.com/wp-content/themes/squarebaby/assets/img/sibylle.png')
+c10 = Child.new(first_name: "Grace", last_name: "Jones", birthdate: DateTime.new(2020,8,8), daycare_id: d2.id)
+c10.profile_picture.attach(io: file, filename: 'grace.png', content_type: 'image/png')
+c10.save
+
+c11 = Child.create(first_name: "Jonathan", last_name: "Lee", birthdate: DateTime.new(2018,9,22), daycare_id: d1.id)
 puts "Children added!"
 
 puts "Adding parenthoods..."
@@ -71,6 +112,7 @@ ph16 = Parenthood.create(user_id: p10.id, child_id: c9.id)
 ph17 = Parenthood.create(user_id: p11.id, child_id: c9.id)
 ph18 = Parenthood.create(user_id: p10.id, child_id: c10.id)
 ph19 = Parenthood.create(user_id: p11.id, child_id: c10.id)
+ph20 = Parenthood.create(user_id: p9.id, child_id: c11.id)
 puts "Parenthoods added!"
 
 puts "Adding activities..."
