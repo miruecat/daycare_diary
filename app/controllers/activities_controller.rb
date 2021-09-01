@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
       @activity.user = current_user
       @activity.save
     end
-    if children_ids.length >
+    if children_ids.length > 1
       redirect_to daycare_path(current_user.daycare)
     else
       redirect_to child_path(children_ids.first)
