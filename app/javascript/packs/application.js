@@ -28,3 +28,9 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+$('.avatar-large').hover(function () {
+  $('#popup').show();
+}, function () {
+  $('#popup').hide();
+});

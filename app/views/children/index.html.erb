@@ -7,11 +7,23 @@
     </div>
     <div class="daycare-children">
       <% @children.each do |child| %>
-        <div class="child-card">
-          <% if child.photo.attached? %>
-            <%= cl_image_tag child.photo.key %>
-          <% end %>
-        </div>
+        <% if child.profile_picture.attached? %>
+          <div class="child-card">
+            <div class="child-card-left">
+              <%= link_to child_path(child) do %>
+                <%= cl_image_tag child.profile_picture.key, class:"avatar-large" %>
+                <p id="popup"><% child.first_name.capitalize %> <% child.last_name.capitalize %></p>
+              <% end %>
+            </div>
+            <div class="child-card-right">
+              <%= child.first_name.capitalize %>
+            </div>
+          </div>
+        <% else %>
+          <div class="child-initial">
+            <%= child.first_name.first.capitalize %><%= child.last_name.first.capitalize %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
