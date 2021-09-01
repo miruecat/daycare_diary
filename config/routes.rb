@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  # get '/user' => "children#index", :as => :user_root
   resources :children do
     resources :activities, only: [:index]
   end
