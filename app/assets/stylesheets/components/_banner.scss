@@ -1,0 +1,15 @@
+.dd-banner{
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.4)), url("https://res.cloudinary.com/dvrahrooa/image/upload/v1630421545/corner-of-blue-notebook-on-orange-Color-Background_lfgt1o.jpg");
+  background-size: cover;
+  transform: rotateY(180deg);
+  padding: 0px 80px
+}
+
+.dd-banner h1{
+  transform: rotateY(180deg);
+  width: 40%;
+}
