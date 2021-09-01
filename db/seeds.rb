@@ -35,6 +35,7 @@ p6 = User.create(email: "parent6@gmail.com", password: "123456", role: "parent",
 p7 = User.create(email: "parent7@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345697", first_name: "Lisa", last_name: "Wilson")
 p8 = User.create(email: "parent8@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345698", first_name: "Mia", last_name: "Anderson")
 p9 = User.create(email: "parent9@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345699", first_name: "Evelyn", last_name: "Lee")
+p10 = User.create(email: "parent10@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345690", first_name: "Patrick", last_name: "Jones")
 p11 = User.create(email: "parent11@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345600", first_name: "Carry", last_name: "Garcia")
 puts "Users added!"
 
