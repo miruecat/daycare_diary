@@ -1,1 +1,18 @@
 <h1>welcome to the daycare 700</h1>
+
+<div class="container">
+  <div class="daycare-card">
+    <div class="daycare-title">
+      <h3>Daycare Team : <%= current_user.first_name %> <%= current_user.last_name %></h3>
+    </div>
+    <div class="daycare-children">
+      <% @children.each do |child| %>
+        <div class="child-card">
+          <% if child.photo.attached? %>
+            <%= cl_image_tag child.photo.key %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
