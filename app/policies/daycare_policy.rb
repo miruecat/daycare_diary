@@ -6,7 +6,7 @@ class DaycarePolicy < ApplicationPolicy
   end
 
   def show?
-    if user.daycare_id == record.id
+    if record.daycare_id == user.id
       return true
     end
   end

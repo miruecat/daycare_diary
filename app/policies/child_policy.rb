@@ -1,8 +1,16 @@
 class ChildPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      if user.role == "employee"
+        scope.where(daycare: user.daycare)
+      else
+        scope.where(daycare: nil)
+      end
     end
+  end
+
+  def index?
+    user.role == "employee"
   end
 
   def show?
