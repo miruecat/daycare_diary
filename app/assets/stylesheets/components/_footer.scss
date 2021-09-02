@@ -1,11 +1,11 @@
 .footer{
-  background-color: $brand-color;
-  height: 120px;
+  background-color: white;
+  height: 60px;
   padding: 15px;
   position:absolute;
   bottom:0;
   width: 100%;
-  color: white;
+  color: #fb8500;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,12 +19,12 @@
 
 .footer-top a{
   font: 15px $brand-font;
-  color: white;
+  color: #fb8500;
   margin: 7px;
 }
 
 .fab{
-  color: white;
+  color: #fb8500;
   font-size: 20px;
   margin: 5px
 }
@@ -32,7 +32,7 @@
 .footer-bottom {
   bottom: 0;
   font: 12px $brand-font;
-  margin-left: 5px;
+  text-align: center;
 }
 
 .footer-bottom p{
