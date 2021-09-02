@@ -38,3 +38,37 @@
     font-size: 28px;
   }
 }
+
+.dd-contactform{
+  margin-bottom: 50px;
+}
+
+.form-control{
+  background-color: $text-contrast-color;
+  opacity: 30%;
+
+}
+.row{
+  margin:0;
+}
+.form-inputs{
+  padding-left: 0;
+  padding-right: 0;
+
+  & input{
+    font-style: italic;
+    border-color: none;
+    border-radius: 0;
+  }
+}
+
+#comment-box{
+  height: 200px;
+}
+
+.number{
+  font-size: 200px;
+  font-weight: bold;
+  color: $brand-color;
+  opacity: 20%;
+}
