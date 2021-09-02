@@ -17,6 +17,6 @@ class Child < ApplicationRecord
   end
 
   def activity_pictures
-    activities.flat_map{|activity| activity.pictures}
+    activities.flat_map { |activity| activity.pictures }
   end
 end
