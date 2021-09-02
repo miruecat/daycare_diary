@@ -1,14 +1,15 @@
 .footer{
-  background-color: white;
-  height: 60px;
+  background-color: transparent;
+  height: 120px;
   padding: 15px;
   position:absolute;
-  bottom:0;
+  bottom: 0;
   width: 100%;
-  color: #fb8500;
+  color: $brand-color;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-top: 50px;
 }
 
 .footer-top{
@@ -19,12 +20,12 @@
 
 .footer-top a{
   font: 15px $brand-font;
-  color: #fb8500;
+  color: $brand-color;
   margin: 7px;
 }
 
 .fab{
-  color: #fb8500;
+  color: $brand-color;
   font-size: 20px;
   margin: 5px
 }
