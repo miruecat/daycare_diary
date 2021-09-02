@@ -1,39 +1,32 @@
-<!-- Image and text -->
-<div class="navbarcontainer">
-  <% if user_signed_in? %>
-    <nav>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button">
-          Daycare Diary
-        </button>
-        <% if current_user.role == "employee" %>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= "#{current_user.first_name} #{current_user.last_name}" %>
-            </button>
-              <%= link_to "My Daycare", children_path, class:"dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
-          </div>
-        <% elsif current_user.role == "parent" %>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= "Hello, #{current_user.first_name} #{current_user.last_name}" %>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <%# <%= link_to "View my Kid(s)", child_path(current_user.parenthoods.first.child), class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
-            </div>
-          </div>
-        <%end%>
-      </div>
-    </nav>
-  <%else%>
-    <nav>
-      <div class="dropdown">
-        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Daycare Diary
-        </button>
+<nav class="navbarcontainer">
+  <div>
+    <img src="https://res.cloudinary.com/dvrahrooa/image/upload/v1630571736/logo_draft1_zynscc.svg" alt="Daycare Diary logo" class="avatar">
+  </div>
 
+  <% if user_signed_in? %>
+    <% if current_user.role == "employee" %>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= "#{current_user.first_name} #{current_user.last_name}" %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%= link_to "My Daycare", children_path, class:"dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+        </div>
+      </div>
+    <% elsif current_user.role == "parent" %>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= "Hello, #{current_user.first_name} #{current_user.last_name}" %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%# <%= link_to "View my Kid(s)", child_path(current_user.parenthoods.first.child), class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+        </div>
+      </div>
+    <%end%>
+
+<<<<<<< HEAD
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#">About this app</a>
           <a class="dropdown-item" href="#">Legal Information</a>
@@ -44,5 +37,12 @@
         <a class="btn btn-warningy" href="/users/sign_in" role="button">Log In</a>
       </div>
     </nav>
+=======
+  <%else%>
+    <div>
+      <a class="btn btn-warningy" href="/users/sign_in" role="button">Log In</a>
+    </div>
+
+>>>>>>> master
   <%end%>
-</div>
+</nav>

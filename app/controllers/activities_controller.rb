@@ -15,15 +15,15 @@ class ActivitiesController < ApplicationController
       @activity.child_id = child_id
       @activity.user = current_user
       authorize @activity
-      @activity.save!
+      @activity.save
       redirect_to child_path(child_id)
-    else  
+    else
       children_ids = params.dig(:activity, :children_ids)
       children_ids.each do |child_id|
         @activity.new(activity_params)
         @activity.child_id = child_id
         @activity.user = current_user
-        @activity.save
+        @activity.save  
       end
       redirect_to daycare_path(current_user.daycare)
     end
@@ -49,7 +49,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:category, :date, :time, :comment, :sub_category)
+    params.require(:activity).permit(:category, :date, :time, :comment, :sub_category, :pictures)
   end
 
   def set_activity
