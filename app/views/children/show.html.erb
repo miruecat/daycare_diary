@@ -2,7 +2,11 @@
   <% if current_user.role == "parent" && current_user.children.count > 1 %>
     <div class="d-flex justify-content-center">
       <% current_user.children.each do |child| %>
-        <%= cl_image_tag child.profile_picture.key, class: 'avatar-large', crop: :fill %>
+        <%= link_to child_path(child) do %>
+          <div data-bs-toggle="tooltip" data-bs-placement="left" title="<%= child.first_name %>">
+            <%= cl_image_tag child.profile_picture.key, class: 'avatar-large', crop: :fill %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>
@@ -168,9 +172,16 @@
   </div>
 
   <div>
+    <label for="start">Selected date:</label>
+
+    <input type="date" id="date-activities" name="trip-start"
+      value="<%= Date.today %>" min="2020-01-01" max="<%= Date.today %>">
+  </div>
+
+  <div>
     <h2>Activity log of <%= @child.first_name %></h2>
-    <table class="table">
-      <thead>
+    <table class="table table-striped table-hover table-borderless align-middle">
+      <thead class="table-dark">
         <tr>
           <th scope="col">Time</th>
           <th scope="col">Category</th>
@@ -180,12 +191,14 @@
       </thead>
       <tbody>
         <% @child.activities.each do |activity| %>
+          <% if activity.date == Date.today %>
           <tr>
             <th scope="row"><%= activity.time.strftime("%Hh%M") %></th>
             <td><%= activity.category %></td>
             <td><%= activity.sub_category %></td>
             <td><%= activity.comment %></td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>

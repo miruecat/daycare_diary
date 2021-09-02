@@ -1,17 +1,25 @@
+.dd-background{
+  background-color: #fb8500;
+}
 .dd-banner{
+  width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.4)), url("https://res.cloudinary.com/dvrahrooa/image/upload/v1630421545/corner-of-blue-notebook-on-orange-Color-Background_lfgt1o.jpg");
+  background-image: url("https://res.cloudinary.com/dvrahrooa/image/upload/v1630536946/new-back_jbltwb.svg");
+  background-position: bottom center;
+  background-repeat: no-repeat;
   background-size: cover;
-  transform: rotateY(180deg);
-  padding: 0px 80px
+  padding: 0px 60px;
 }
 
 .dd-banner h1{
-  transform: rotateY(180deg);
   width: 40%;
   // color: white;
   font-weight: bold;
+}
+
+.dd-brief{
+
 }
