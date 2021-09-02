@@ -1,1 +1,16 @@
 // Specific CSS for your home-page
+.dd-feature-container{
+  font: $body-font;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.feature-top, .feature-bottom{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.desc-section{
+  padding: 10px, 15px;
+}
