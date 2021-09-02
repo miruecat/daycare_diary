@@ -15,4 +15,8 @@ class Child < ApplicationRecord
   def is_employee?(user)
     User.employees(daycare_id).include?(user)
   end
+
+  def activity_pictures
+    activities.flat_map{|activity| activity.pictures}
+  end
 end
