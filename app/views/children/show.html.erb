@@ -28,9 +28,9 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= simple_form_for [@child, @activity] do |f| %>
+            <%= simple_form_for @activity, do |f| %>
               <%= f.input :category, input_html: { hidden: true, value: "moment" } %>
-              <%= f.input :date, input_html: {value: Time.now.strftime("%m/%d/%Y")} %>
+              <%= f.input :date, input_html: {value: Time.now} %>
               <%= f.input :comment %>
               <%= f.button :submit %>
             <% end %>
@@ -59,9 +59,9 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= simple_form_for [@child, @activity] do |f| %>
+            <%= simple_form_for @activity do |f| %>
               <%= f.input :category, input_html: { hidden: true, value: "sleep" } %>
-              <%= f.input :time, input_html: { hidden: true, value: "" } %>
+              <%= f.input :sub_category %>
               <%= f.input :comment %>
               <%= f.button :submit %>
             <% end %>
@@ -90,8 +90,9 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= simple_form_for [@child, @activity] do |f| %>
-              <%= f.input :category, input_html: { hidden: true, value: "sleep" } %>
+            <%= simple_form_for @activity do |f| %>
+              
+              <%= f.input :category, input_html: { hidden: true, value: "food" } %>
               <%= f.input :date %>
               <%= f.input :comment %>
               <%= f.button :submit %>
@@ -121,7 +122,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= simple_form_for [@child, @activity] do |f| %>
+            <%= simple_form_for @activity do |f| %>
               <%= f.input :category, input_html: { hidden: true, value: "sleep" } %>
               <%= f.input :date %>
               <%= f.input :comment %>
@@ -151,7 +152,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= simple_form_for [@child, @activity] do |f| %>
+            <%= simple_form_for @activity do |f| %>
               <%= f.input :category, input_html: { hidden: true, value: "sleep" } %>
               <%= f.input :comment %>
               <%= f.button :submit %>
