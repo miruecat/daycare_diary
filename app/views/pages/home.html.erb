@@ -109,10 +109,29 @@
           blah blah blah, 3061 NZ, Amsterdam" %>
     </div>
     <div class="process-section col col-lg-4">
-      <%= bootstrap_form_tag url: '/subscribe' do |f| %>
-        <%= f.email_field :email, value: 'name@example.com' %>
-        <%= f.submit %>
-      <% end %>
+      <form>
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First name">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last name">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Email">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Phone number">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Leave your comments here">
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
