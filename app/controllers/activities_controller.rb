@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
       authorize @activity
       @activity.save!
       redirect_to child_path(child_id)
-    else  
+    else
       children_ids = params.dig(:activity, :children_ids)
       children_ids.each do |child_id|
         @activity.new(activity_params)
@@ -49,7 +49,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:category, :date, :time, :comment, :sub_category)
+    params.require(:activity).permit(:category, :date, :time, :comment, :sub_category, :pictures)
   end
 
   def set_activity
