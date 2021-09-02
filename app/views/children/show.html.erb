@@ -191,7 +191,7 @@
       <tbody>
         <% @child.activities.each do |activity| %>
           <% if activity.date == Date.today %>
-          <tr>
+          <tr data-date="<%= activity.date.strftime("%Y-%M-%D") %>">
             <th scope="row"><%= activity.time.strftime("%Hh%M") %></th>
             <td><%= activity.category %></td>
             <td><%= activity.sub_category %></td>
@@ -202,4 +202,5 @@
       </tbody>
     </table>
   </div>
+
 </div>
