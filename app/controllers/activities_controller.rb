@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [ :new, :create, :show, :edit, :update, :destroy ]
+  before_action :set_activity, only: [ :new, :show, :edit, :update, :destroy ]
 
   def index
     @activities = Activity.all
@@ -10,17 +10,22 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    children_ids = params.dig(:activity, :children_ids)
-    children_ids.each do |child_id|
-      @activity.new(activity_params)
+    if child_id = params.dig(:activity, :children_id)
+      @activity = Activity.new(activity_params)
       @activity.child_id = child_id
       @activity.user = current_user
-      @activity.save
-    end
-    if children_ids.length > 1
+      authorize @activity
+      @activity.save!
+      redirect_to child_path(child_id)
+    else  
+      children_ids = params.dig(:activity, :children_ids)
+      children_ids.each do |child_id|
+        @activity.new(activity_params)
+        @activity.child_id = child_id
+        @activity.user = current_user
+        @activity.save
+      end
       redirect_to daycare_path(current_user.daycare)
-    else
-      redirect_to child_path(children_ids.first)
     end
   end
 
