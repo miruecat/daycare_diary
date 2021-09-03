@@ -1,11 +1,15 @@
+.container{
+  width: 80%;
+}
+
 .dd-background{
   background-color: $brand-color;
 }
 .dd-banner{
   width: 100vw;
-  height: 100vh;
+  height: 600px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
   background-image: url("https://res.cloudinary.com/dvrahrooa/image/upload/v1630536946/new-back_jbltwb.svg");
   background-position: bottom center;
@@ -15,9 +19,9 @@
 }
 
 .dd-banner h1{
-  width: 40%;
+  width: 60%;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 .dd-brief{
