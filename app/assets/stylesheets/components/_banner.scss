@@ -1,5 +1,5 @@
 .dd-background{
-  background-color: #fb8500;
+  background-color: $brand-color;
 }
 .dd-banner{
   width: 100vw;
@@ -16,10 +16,10 @@
 
 .dd-banner h1{
   width: 40%;
-  // color: white;
   font-weight: bold;
+  color: white;
 }
 
 .dd-brief{
-
+  background-color: white;
 }

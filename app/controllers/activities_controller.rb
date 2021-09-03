@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [ :new, :show, :edit, :update, :destroy ]
+  before_action :set_activity, only: [ :new, :show, :edit, :update ]
 
   def index
     @activities = Activity.all
@@ -29,7 +29,7 @@ class ActivitiesController < ApplicationController
         end
         @activity.child_id = child_id
         @activity.user = current_user
-        @activity.save  
+        @activity.save
       end
       redirect_to daycare_path(current_user.daycare)
     end
@@ -48,6 +48,9 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
+    @activity = Activity.find(params[:id])
+    @child = @activity.child_id
+    authorize @activity
     @activity.destroy
     redirect_to child_path(@child)
   end
