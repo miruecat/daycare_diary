@@ -22,7 +22,7 @@ puts "Daycares added!"
 
 puts "Adding users..."
 admin = User.create(email: "admin@gmail.com", password: "123456", role: "employee", admin: true, daycare_id: d1.id, phone_number: "0612345678", first_name: "Ad", last_name: "Min")
-e1 = User.create(email: "employee1@gmail.com", password: "123456", role: "employee", daycare_id: d1.id, phone_number: "0612345681", first_name: "Peter", last_name: "Great")
+e1 = User.create(email: "employee1@gmail.com", password: "123456", role: "employee", admin: true, daycare_id: d1.id, phone_number: "0612345681", first_name: "Peter", last_name: "Great")
 e2 = User.create(email: "employee2@gmail.com", password: "123456", role: "employee", daycare_id: d1.id, phone_number: "0612345682", first_name: "Ellen", last_name: "McGee")
 e3 = User.create(email: "employee3@gmail.com", password: "123456", role: "employee", daycare_id: d2.id, phone_number: "0612345683", first_name: "Helen", last_name: "Banner")
 e4 = User.create(email: "employee4@gmail.com", password: "123456", role: "employee", daycare_id: d2.id, phone_number: "0612345684", first_name: "Greg", last_name: "Nagayama")
@@ -40,7 +40,7 @@ p11 = User.create(email: "parent11@gmail.com", password: "123456", role: "parent
 puts "Users added!"
 
 puts "Adding children..."
-file = URI.open("https://img.joomcdn.net/c391799400c0122977a22e970427edb62cedb226_original.jpeg")
+file = URI.open("https://imagizer.imageshack.com/v2/800x600q90/922/2KmJjz.jpg")
 c1 = Child.new(first_name: "Liam", last_name: "Smith", birthdate: DateTime.new(2021,2,3), daycare_id: d1.id)
 c1.profile_picture.attach(io: file, filename: 'liam.jpeg', content_type: 'image/jpeg')
 c1.save
@@ -117,23 +117,12 @@ ph20 = Parenthood.create(user_id: p9.id, child_id: c11.id)
 puts "Parenthoods added!"
 
 puts "Adding activities..."
-a1 = Activity.create(category: "Food", sub_category: "Apple", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,9,0), child_id: c1.id, user_id: e1.id)
+a1 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,11,30), child_id: c1.id, user_id: e1.id)
 a2 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,10,0), child_id: c1.id, user_id: e2.id)
-a3 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,11,30), child_id: c1.id, user_id: e1.id)
-
-file = URI.open('https://www.dropbox.com/s/a12u1eblg50zzte/gijs_food.jpg')
-a4 = Activity.new(category: "Food", sub_category: "Milk", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,9,0), child_id: c1.id, user_id: e1.id)
-a4.pictures.attach(io: file, filename: 'milk.jpg', content_type: 'image/jpg')
-a4.save
-
-file = URI.open('https://cdn.cdnparenting.com/articles/2018/11/22174237/264582764-H.jpg')
-a5 = Activity.new(category: "Food", sub_category: "Banana", date: DateTime.new(2021,9,3), time: Time.new(2021,9,1,11,0), child_id: c1.id, user_id: e1.id)
-a5.pictures.attach(io: file, filename: 'eat_banana', content_type: 'image/jpg')
-a5.save
-
-a6 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,12,00), child_id: c1.id, user_id: e1.id)
-a7 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,14,00), child_id: c1.id, user_id: e1.id)
-a8 = Activity.create(category: "Play", sub_category: "Play outside", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,15,00), child_id: c1.id, user_id: e1.id)
-a9 = Activity.create(category: "Food", sub_category: "Bread", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,17,00), child_id: c1.id, user_id: e1.id)
-
+a3 = Activity.create(category: "Food", sub_category: "Fruit", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,9,0), child_id: c1.id, user_id: e1.id)
+a4 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,1,15,0), child_id: c1.id, user_id: e1.id)
+a5 = Activity.create(category: "Food", sub_category: "Bread", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,14,0), child_id: c1.id, user_id: e1.id)
+a6 = Activity.create(category: "Play", sub_category: "Play outside", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,13,0), child_id: c1.id, user_id: e1.id)
+a7 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,12,0), child_id: c1.id, user_id: e1.id)
+a8 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,10,0), child_id: c1.id, user_id: e1.id)
 puts "Activities added!"
