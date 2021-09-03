@@ -4,6 +4,7 @@ class ChildrenController < ApplicationController
   def index
     @children = policy_scope(Child)
     authorize Child, :index?
+    @child = Child.new
   end
 
   def show

@@ -13,7 +13,7 @@
 
   <div class="container-normal">
     <div class= "container-button-position">
-      <h1><%= cl_image_tag @child.profile_picture.key, class: 'avatar-large', crop: :fill %> <%= @child.first_name %> <%= @child.last_name %></h1> 
+      <h1><%= cl_image_tag @child.profile_picture.key, class: 'avatar-large', crop: :fill %> <%= @child.first_name %> <%= @child.last_name %></h1>
       <% if current_user.role == "employee" %>
           <div class="employeeforms">
             <!-- Button trigger modal -->
@@ -23,7 +23,7 @@
           </div>
     </div>
             <!-- Modal -->
-        
+
           <div class="modal fade" id="moment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -173,7 +173,7 @@
           </div>
         </div>
       <%end%>
- 
+
   <div class="container-large-top">
     <h2>Activity log of <%= @child.first_name %></h2>
     <div class="container-normal">

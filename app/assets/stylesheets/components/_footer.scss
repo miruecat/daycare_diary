@@ -5,7 +5,7 @@
   position:absolute;
   bottom: 0;
   width: 100%;
-  color: $brand-color;
+  color: $element-color;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,12 +20,12 @@
 
 .footer-top a{
   font: 15px $brand-font;
-  color: $brand-color;
+  color: $element-color;
   margin: 7px;
 }
 
 .fab{
-  color: $brand-color;
+  color: $element-color;
   font-size: 20px;
   margin: 5px
 }
