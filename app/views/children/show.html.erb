@@ -12,169 +12,170 @@
   <% end %>
 
   <div class="container-normal">
-    <h1><%= cl_image_tag @child.profile_picture.key, class: 'avatar-large', crop: :fill %> <%= @child.first_name %> <%= @child.last_name %>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moment" id="momentbutton">
-      Add a special moment
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="moment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">The Moment</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for @activity do |f| %>
-                <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
-                <%= f.input :category, input_html: { hidden: true, value: "moment" } %>
-                <%= f.input :sub_category, value: "moment" %>
-                <%= f.input :date %>
-                <%= f.input :time %>
-                <%= f.input :comment%>
-                <%= f.button :submit %>
-              <% end %>
-              <%# <div class="modal-footer"> %>
-                <%# <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> %>
-                <%# <button type="button" class="btn btn-primary">Save</button> %>
-              <%# </div> %>
-            </div>
+    <div class= "container-button-position">
+      <h1><%= cl_image_tag @child.profile_picture.key, class: 'avatar-large', crop: :fill %> <%= @child.first_name %> <%= @child.last_name %></h1> 
+      <% if current_user.role == "employee" %>
+          <div class="employeeforms">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moment" id="momentbutton">
+            Add a special moment
+            </button>
           </div>
-        </div>
-      </div>
-
-    </h1>
-  </div>
-
-
-    <div class="container-normal">
-      <h4>Add an activity for <%= @child.first_name %></h4>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sleep" id="sleepbutton">
-        Sleep
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="sleep" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Sleep</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for @activity do |f| %>
-                <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
-                <%= f.input :category, input_html: { hidden: true, value: "sleep" } %>
-                <%= f.input :sub_category, as: :radio_buttons, collection: ["go to bed", "get out of bed"] %>
-                <%= f.input :date %>
-                <%= f.input :time %>
-                <%= f.input :comment %>
-                <%= f.button :submit %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#food" id="foodbutton">
-        Food
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="food" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Food</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for @activity do |f| %>
-                <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] } %>
-                <%= f.input :category, input_html: { hidden: true, value: "food" } %>
-                <%= f.input :sub_category, as: :check_boxes, collection: ["Bread", "Fruit", "Porridge", "Water", "Milk", "Lemonade"] %>
-                <%= f.input :date %>
-                <%= f.input :time %>
-                <%= f.input :comment %>
-                <%= f.button :submit %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#health" id="healthbutton">
-        Health
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="health" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Health</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for @activity do |f| %>
-                <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
-                <%= f.input :category, input_html: { hidden: true, value: "health" } %>
-                <%= f.input :sub_category, as: :radio_buttons, collection: ["Healthy", "So-so", "Sick"] %>
-                <%= f.input :date %>
-                <%= f.input :time %>
-                <%= f.input :comment %>
-                <%= f.button :submit %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#play" id="playbutton">
-        Play
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="play" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Play</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for @activity do |f| %>
-                  <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
-                <%= f.input :category, input_html: { hidden: true, value: "play" } %>
-                <%= f.input :sub_category, as: :radio_buttons, collection: ["Play Outside", "Play Inside"] %>
-                <%= f.input :date %>
-                <%= f.input :time %>
-                <%= f.input :comment %>
-                <%= f.button :submit %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
+            <!-- Modal -->
+        
+          <div class="modal fade" id="moment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">The Moment</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for @activity do |f| %>
+                    <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
+                    <%= f.hidden_field :category, value: "moment" %>
+                    <%= f.input :pictures, as: :file, input_html: { multiple: true }%>
+                    <%= f.input :sub_category, label: false, as: :hidden, input_html: { value: "moment" } %>
+                    <%= f.input :date %>
+                    <%= f.input :time %>
+                    <%= f.input :comment, label: "message" %>
+                    <%= f.button :submit %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
+
+        <div class="container-normal">
+          <h4>Add an activity for <%= @child.first_name %></h4>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sleep" id="sleepbutton">
+            Sleep
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="sleep" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Sleep</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for @activity do |f| %>
+                    <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
+                    <%= f.hidden_field :category, value: "sleep" %>
+                    <%= f.input :sub_category, as: :radio_buttons, label: false, collection: ["go to bed", "get out of bed"] %>
+                    <%= f.input :date %>
+                    <%= f.input :time %>
+                    <%= f.input :comment %>
+                    <%= f.button :submit %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#food" id="foodbutton">
+            Food
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="food" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Food</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for @activity do |f| %>
+                    <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] } %>
+                    <%= f.hidden_field :category, value: "food" %>
+                    <%= f.input :sub_category, as: :check_boxes, label: false, collection: ["Babyfood", "Bread", "Fruit", "Porridge", "Milk", "Did not eat"], input_html: { multiple: true } %>
+                    <%= f.input :date %>
+                    <%= f.input :time %>
+                    <%= f.input :comment %>
+                    <%= f.button :submit %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#health" id="healthbutton">
+            Health
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="health" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Health</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for @activity do |f| %>
+                    <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
+                    <%= f.hidden_field :category, value: "health" %>
+                    <%= f.input :sub_category, as: :radio_buttons, label: false, collection: ["Healthy", "So-so", "Sick"] %>
+                    <%= f.input :date %>
+                    <%= f.input :time %>
+                    <%= f.input :comment %>
+                    <%= f.button :submit %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#play" id="playbutton">
+            Play
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="play" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Play</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for @activity do |f| %>
+                      <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
+                    <%= f.hidden_field :category, value: "play" %>
+                    <%= f.input :sub_category, as: :radio_buttons, label: false, collection: ["Play Outside", "Play Inside"] %>
+                    <%= f.input :date %>
+                    <%= f.input :time %>
+                    <%= f.input :comment %>
+                    <%= f.button :submit %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+ 
   <div class="container-large-top">
     <h2>Activity log of <%= @child.first_name %></h2>
-
     <div class="container-normal">
       <label for="start">Selected date:</label>
       <input type="date" id="date-activities" name="trip-start"

@@ -12,6 +12,9 @@ class ActivitiesController < ApplicationController
   def create
     if child_id = params.dig(:activity, :children_id)
       @activity = Activity.new(activity_params)
+      if params.dig(:activity, :sub_category).kind_of?(Array)
+        @activity.sub_category = params.dig(:activity, :sub_category).join(" ")
+      end
       @activity.child_id = child_id
       @activity.user = current_user
       authorize @activity
@@ -21,6 +24,9 @@ class ActivitiesController < ApplicationController
       children_ids = params.dig(:activity, :children_ids)
       children_ids.each do |child_id|
         @activity.new(activity_params)
+        if params.dig(:activity, :sub_category).kind_of?(Array)
+          @activity.sub_category = params.dig(:activity, :sub_category).join(" ")
+        end
         @activity.child_id = child_id
         @activity.user = current_user
         @activity.save
@@ -52,7 +58,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:category, :date, :time, :comment, :sub_category, :pictures)
+    params.require(:activity).permit(:category, :date, :time, :comment, :sub_category, pictures:[] )
   end
 
   def set_activity
