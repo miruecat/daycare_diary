@@ -4,6 +4,7 @@
 
 .dd-background{
   background-color: $brand-color;
+  margin-top: -50px;
 }
 .dd-banner{
   width: 100vw;
@@ -21,7 +22,11 @@
 .dd-banner h1{
   width: 60%;
   font-weight: bold;
-  color: black;
+  color: $element-color;
+}
+
+.dd-banner h3{
+  color: $element-color;
 }
 
 .dd-brief{

@@ -157,7 +157,7 @@
             </div>
             <div class="modal-body">
               <%= simple_form_for @activity do |f| %>
-                  <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
+                <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
                 <%= f.input :category, input_html: { hidden: true, value: "play" } %>
                 <%= f.input :sub_category, as: :radio_buttons, collection: ["Play Outside", "Play Inside"] %>
                 <%= f.input :date %>
@@ -230,4 +230,3 @@
   </div>
 
 </div>
-

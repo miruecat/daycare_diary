@@ -27,4 +27,21 @@
       <% end %>
     </div>
   </div>
+
+  <% if current_user.admin == true %>
+    <%= "Add a new child" %>
+    <%= simple_form_for @child do |f|%>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :birthdate %>
+      <%= f.input :personal_information %>
+      <%= f.input :profile_picture, as: :file %>
+      <%= f.button :submit %>
+    <% end %>
+      <%= link_to children_path %>
+  <% end %>
+  <%# simple_form_for @parenthood do |f|
+  f.association, collection: User.all %>
+
+
 </div>

@@ -1,6 +1,7 @@
 <nav class="navbarcontainer">
-  <div>
-    <img src="https://res.cloudinary.com/dvrahrooa/image/upload/v1630571736/logo_draft1_zynscc.svg" alt="Daycare Diary logo" class="avatar">
+  <div class= "nav-left">
+    <img src="https://res.cloudinary.com/dvrahrooa/image/upload/v1630661584/logo_draft1_it4ypr.svg" alt="Daycare Diary logo" class="avatar">
+    <h6>DAYCARE DIARY</h6>
   </div>
 
   <% if user_signed_in? %>
@@ -28,7 +29,7 @@
 
   <%else%>
     <div>
-      <a class="btn btn-warningy" href="/users/sign_in" role="button">Log In</a>
+      <a id="main-btn" href="/users/sign_in" role="button">LOGIN</a>
     </div>
 
   <%end%>
