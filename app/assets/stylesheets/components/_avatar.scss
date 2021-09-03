@@ -3,12 +3,16 @@
   border-radius: 50%;
 }
 .avatar-large {
+  object-fit: cover;
   width: 56px;
+  height: 56px;
   border-radius: 50%;
 }
 
 .avatar-large-link {
+  object-fit: cover;
   width: 56px;
+  height: 56px;
   border-radius: 50%;
 }
 
