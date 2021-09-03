@@ -29,7 +29,7 @@
   flex-direction: column;
   align-items: center;
   font-family: $body-font;
-  padding: 100px 0px 50px 0px;
+  padding: 70px 0px 50px 0px;
   & h3{
     font-family: $body-font;
     padding: 30px 0px;
@@ -71,4 +71,9 @@
   font-weight: bold;
   color: $brand-color;
   opacity: 20%;
+}
+
+.desc-image{
+width:100%;
+opacity: 90%;
 }

@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>welcome to the daycare 700</h1>
+  <h1>Welcome to the daycare: <%= current_user.daycare.name %></h1>
 
   <div class="daycare-card">
     <div class="daycare-title">
@@ -8,23 +8,46 @@
     <div class="daycare-children">
       <% @children.each do |child| %>
         <% if child.profile_picture.attached? %>
-          <div class="child-card">
+          <div class="child-card d-flex my-3">
             <div class="child-card-left">
               <%= link_to child_path(child) do %>
-                <%= cl_image_tag child.profile_picture.key, class:"avatar-large" %>
-                <p id="popup"><% child.first_name.capitalize %> <% child.last_name.capitalize %></p>
+                <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
               <% end %>
             </div>
-            <div class="child-card-right">
-              <%= child.first_name.capitalize %>
+            <div class="child-card-right d-flex align-items-center ml-2">
+              <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
             </div>
           </div>
         <% else %>
-          <div class="child-initial">
-            <%= child.first_name.first.capitalize %><%= child.last_name.first.capitalize %>
+          <div class="child-card d-flex my-3">
+            <div class="child-card-left">
+              <%= link_to child_path(child) do %>
+                <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+              <% end %>
+            </div>
+            <div class="child-card-right d-flex align-items-center ml-2">
+              <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+            </div>
           </div>
         <% end %>
       <% end %>
     </div>
   </div>
+
+  <% if current_user.admin == true %>
+    <%= "Add a new child" %>
+    <%= simple_form_for @child do |f|%>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :birthdate %>
+      <%= f.input :personal_information %>
+      <%= f.input :profile_picture, as: :file %>
+      <%= f.button :submit %>
+    <% end %>
+      <%= link_to children_path %>
+  <% end %>
+  <%# simple_form_for @parenthood do |f|
+  f.association, collection: User.all %>
+
+
 </div>

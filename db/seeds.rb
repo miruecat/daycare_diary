@@ -127,8 +127,13 @@ a4.pictures.attach(io: file, filename: 'milk.jpg', content_type: 'image/jpg')
 a4.save
 
 file = URI.open('https://cdn.cdnparenting.com/articles/2018/11/22174237/264582764-H.jpg')
-a5 = Activity.new(category: "Food", sub_category: "Banana", date: DateTime.new(2021,9,1), time: Time.new(2021,9,1,11,0), child_id: c1.id, user_id: e1.id)
+a5 = Activity.new(category: "Food", sub_category: "Banana", date: DateTime.new(2021,9,3), time: Time.new(2021,9,1,11,0), child_id: c1.id, user_id: e1.id)
 a5.pictures.attach(io: file, filename: 'eat_banana', content_type: 'image/jpg')
 a5.save
+
+a6 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,12,00), child_id: c1.id, user_id: e1.id)
+a7 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,14,00), child_id: c1.id, user_id: e1.id)
+a8 = Activity.create(category: "Play", sub_category: "Play outside", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,15,00), child_id: c1.id, user_id: e1.id)
+a9 = Activity.create(category: "Food", sub_category: "Bread", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,17,00), child_id: c1.id, user_id: e1.id)
 
 puts "Activities added!"
