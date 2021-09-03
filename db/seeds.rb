@@ -121,9 +121,9 @@ a1 = Activity.create(category: "Food", sub_category: "Apple", date: DateTime.new
 a2 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,10,0), child_id: c1.id, user_id: e2.id)
 a3 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,11,30), child_id: c1.id, user_id: e1.id)
 
-file = URI.open('https://cdn.cdnparenting.com/articles/2018/01/61253515-H.jpg')
-a4 = Activity.new(category: "Food", sub_category: "Apple", date: DateTime.new(2021,9,1), time: Time.new(2021,9,1,9,0), child_id: c1.id, user_id: e1.id)
-a4.pictures.attach(io: file, filename: 'eat_apple.jpg', content_type: 'image/jpg')
+file = URI.open('https://www.dropbox.com/s/a12u1eblg50zzte/gijs_food.jpg')
+a4 = Activity.new(category: "Food", sub_category: "Milk", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,9,0), child_id: c1.id, user_id: e1.id)
+a4.pictures.attach(io: file, filename: 'milk.jpg', content_type: 'image/jpg')
 a4.save
 
 file = URI.open('https://cdn.cdnparenting.com/articles/2018/11/22174237/264582764-H.jpg')
