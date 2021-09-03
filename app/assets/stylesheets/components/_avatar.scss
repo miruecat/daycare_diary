@@ -7,7 +7,12 @@
   border-radius: 50%;
 }
 
-.avatar-large:hover {
+.avatar-large-link {
+  width: 56px;
+  border-radius: 50%;
+}
+
+.avatar-large-link:hover {
   opacity: .5;
 }
 
