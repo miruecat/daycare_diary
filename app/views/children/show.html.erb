@@ -15,8 +15,8 @@
     <h1><%= cl_image_tag @child.profile_picture.key, class: 'avatar-large', crop: :fill %> <%= @child.first_name %> <%= @child.last_name %></h1>
   </div>
 
-
-    <div>
+  <% if current_user.role == "employee" %> 
+    <div class="employeeforms">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moment" id="momentbutton">
       The Moment
@@ -35,17 +35,14 @@
             <div class="modal-body">
               <%= simple_form_for @activity do |f| %>
                 <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
-                <%= f.input :category, input_html: { hidden: true, value: "moment" } %>
-                <%= f.input :sub_category, value: "moment" %>
+                <%= f.hidden_field :category, value: "moment" %>
+                <%= f.input :pictures, as: :file, input_html: { multiple: true }%>
+                <%= f.input :sub_category, label: false, as: :hidden, input_html: { value: "moment" } %>
                 <%= f.input :date %>
                 <%= f.input :time %>
-                <%= f.input :comment%>
+                <%= f.input :comment, label: "message" %>
                 <%= f.button :submit %>
               <% end %>
-              <%# <div class="modal-footer"> %>
-                <%# <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> %>
-                <%# <button type="button" class="btn btn-primary">Save</button> %>
-              <%# </div> %>
             </div>
           </div>
         </div>
@@ -69,8 +66,8 @@
             <div class="modal-body">
               <%= simple_form_for @activity do |f| %>
                 <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
-                <%= f.input :category, input_html: { hidden: true, value: "sleep" } %>
-                <%= f.input :sub_category, as: :radio_buttons, collection: ["go to bed", "get out of bed"] %>
+                <%= f.hidden_field :category, value: "sleep" %>
+                <%= f.input :sub_category, as: :radio_buttons, label: false, collection: ["go to bed", "get out of bed"] %>
                 <%= f.input :date %>
                 <%= f.input :time %>
                 <%= f.input :comment %>
@@ -99,8 +96,8 @@
             <div class="modal-body">
               <%= simple_form_for @activity do |f| %>
                 <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] } %>
-                <%= f.input :category, input_html: { hidden: true, value: "food" } %>
-                <%= f.input :sub_category, as: :check_boxes, collection: ["Bread", "Fruit", "Porridge", "Water", "Milk", "Lemonade"] %>
+                <%= f.hidden_field :category, value: "food" %>
+                <%= f.input :sub_category, as: :check_boxes, label: false, collection: ["Babyfood", "Bread", "Fruit", "Porridge", "Milk", "Did not eat"], input_html: { multiple: true } %>
                 <%= f.input :date %>
                 <%= f.input :time %>
                 <%= f.input :comment %>
@@ -129,8 +126,8 @@
             <div class="modal-body">
               <%= simple_form_for @activity do |f| %>
                 <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
-                <%= f.input :category, input_html: { hidden: true, value: "health" } %>
-                <%= f.input :sub_category, as: :radio_buttons, collection: ["Healthy", "So-so", "Sick"] %>
+                <%= f.hidden_field :category, value: "health" %>
+                <%= f.input :sub_category, as: :radio_buttons, label: false, collection: ["Healthy", "So-so", "Sick"] %>
                 <%= f.input :date %>
                 <%= f.input :time %>
                 <%= f.input :comment %>
@@ -158,8 +155,8 @@
             <div class="modal-body">
               <%= simple_form_for @activity do |f| %>
                   <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
-                <%= f.input :category, input_html: { hidden: true, value: "play" } %>
-                <%= f.input :sub_category, as: :radio_buttons, collection: ["Play Outside", "Play Inside"] %>
+                <%= f.hidden_field :category, value: "play" %>
+                <%= f.input :sub_category, as: :radio_buttons, label: false, collection: ["Play Outside", "Play Inside"] %>
                 <%= f.input :date %>
                 <%= f.input :time %>
                 <%= f.input :comment %>
@@ -170,6 +167,8 @@
         </div>
       </div>
     </div>
+  <%end%>
+
   <div>
     <label for="start">Selected date:</label>
 
