@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :parenthoods
   devise_for :users
   root to: 'pages#home'
   # get '/user' => "children#index", :as => :user_root
