@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :parenthoods
   devise_for :users
   root to: 'pages#home'
   # get '/user' => "children#index", :as => :user_root
@@ -7,5 +8,6 @@ Rails.application.routes.draw do
   end
   resources :activities, only: [:new, :create, :edit, :update, :destroy]
   resources :daycares
+  resources :parenthoods, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
