@@ -138,7 +138,7 @@
                     <%= f.input :date %>
                     <%= f.input :time %>
                     <%= f.input :comment %>
-                    <%= f.button :submit %> 
+                    <%= f.button :submit %>
                   <% end %>
                 </div>
               </div>
@@ -213,32 +213,29 @@
       <input type="date" id="date-activities" name="trip-start"
         value="<%= Date.today %>" min="2020-01-01" max="<%= Date.today %>">
     </div>
-    <table class="table table-striped table-hover table-borderless align-middle">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">Time</th>
-          <th scope="col">Category</th>
-          <th scope="col">Sub-category</th>
-          <th scope="col">Comment</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @child.activities.each do |activity| %>
-          <tr class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
-            <th scope="row"><%= activity.time.strftime("%Hh%M") %></th>
-            <td><%= activity.category %></td>
-            <td><%= activity.sub_category %></td>
-            <td><%= activity.comment %></td>
-            <% if current_user.role == "employee" %>
-              <td><%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %></td>
-            <% else %>
-              <td></td>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div id="content">
+          <ul class="timeline">
+            <% @child.activities.each do |activity| %>
+              <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
+                <li class="event" scope="row" data-date="<%= activity.sub_category %>">
+                  <h3><%= activity.category %> - <%= activity.sub_category %>
+                    <% if current_user.role == "employee" %>
+                      <em>(<%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %>)</em>
+                    <% end %>
+                    </h3>
+                  <p><em><%= activity.time.strftime("%H:%M") %>h</em></p>
+                  <p><em><%= activity.comment %></em></p>
+                  <br>
+                </li>
+              </div>
             <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="carousel-top-container container-normal">
@@ -270,3 +267,4 @@
       </div>
     </div>
   </div>
+</div>
