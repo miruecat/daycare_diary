@@ -21,17 +21,18 @@ class ActivitiesController < ApplicationController
       @activity.save
       redirect_to child_path(child_id)
     else
-      children_ids = params.dig(:activity, :children_ids)
+      children_ids =  params.dig(:children_ids)
       children_ids.each do |child_id|
-        @activity.new(activity_params)
+        @activity = Activity.new(activity_params)
         if params.dig(:activity, :sub_category).kind_of?(Array)
           @activity.sub_category = params.dig(:activity, :sub_category).join(" ")
         end
         @activity.child_id = child_id
         @activity.user = current_user
+        authorize @activity
         @activity.save
       end
-      redirect_to daycare_path(current_user.daycare)
+      redirect_to children_path(current_user.daycare)
     end
   end
 
