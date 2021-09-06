@@ -8,6 +8,11 @@ class User < ApplicationRecord
   has_many :children, through: :parenthoods
   belongs_to :daycare
   scope :employees, -> (daycare_id) { where(daycare_id: daycare_id, role: "employee") }
+  scope :parents, -> { where.not(role: "employee") }
 
   validates :email, :password, :role, :daycare_id, :phone_number, :first_name, :last_name, presence: true
+
+  def fullname
+    "#{first_name} #{last_name}"
+  end
 end
