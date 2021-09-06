@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   # get '/user' => "children#index", :as => :user_root
   resources :children do
     resources :activities, only: [:index]
+    resources :parenthoods, only: [:create]
   end
   resources :activities, only: [:new, :create, :edit, :update, :destroy]
   resources :daycares
-  resources :parenthoods, only: [:create]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

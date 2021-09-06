@@ -1,11 +1,13 @@
 class ParenthoodsController < ApplicationController
   def create
-    authorize @parenthood
     @parenthood = Parenthood.new(parenthood_params)
+    authorize @parenthood
+    @child = Child.find(params[:child_id])
+    @parenthood.child = @child
     if @parenthood.save
       redirect_to child_path(@child)
     else
-      render children/index
+      redirect_to children_path
     end
   end
 
