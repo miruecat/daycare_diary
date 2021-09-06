@@ -70,9 +70,9 @@
                 </div>
                 <div class="modal-body">
                   <%= simple_form_for @activity do |f| %>
-                    <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
+                    <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] } %>
                     <%= f.hidden_field :category, value: "sleep" %>
-                    <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SleepSubCategory::INBED, SleepSubCategory::OUTBED] %>
+                    <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
                     <%= f.input :date %>
                     <%= f.input :time %>
                     <%= f.input :comment %>
@@ -102,11 +102,11 @@
                   <%= simple_form_for @activity do |f| %>
                     <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] } %>
                     <%= f.hidden_field :category, value: "food" %>
-                    <%= f.input :sub_category, as: :check_boxes, label: false, collection: ["Babyfood", "Bread", "Fruit", "Porridge", "Milk", "Did not eat"], input_html: { multiple: true } %>
+                    <%= f.input :sub_category, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::PORR, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
                     <%= f.input :date %>
                     <%= f.input :time %>
                     <%= f.input :comment %>
-                    <%= f.button :submit %>
+                    <%= f.button :submit %> 
                   <% end %>
                 </div>
               </div>
@@ -132,7 +132,7 @@
                   <%= simple_form_for @activity do |f| %>
                     <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
                     <%= f.hidden_field :category, value: "health" %>
-                    <%= f.input :sub_category, as: :radio_buttons, label: false, collection: ["Healthy", "So-so", "Sick"] %>
+                    <%= f.input :sub_category, as: :radio_buttons, label: false, collection: [SubCategoryHealth::GOOD, SubCategoryHealth::SOSO, SubCategoryHealth::SICK] %>
                     <%= f.input :date %>
                     <%= f.input :time %>
                     <%= f.input :comment %>
@@ -161,7 +161,7 @@
                   <%= simple_form_for @activity do |f| %>
                       <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
                     <%= f.hidden_field :category, value: "play" %>
-                    <%= f.input :sub_category, as: :radio_buttons, label: false, collection: ["Play Outside", "Play Inside"] %>
+                    <%= f.input :sub_category, as: :radio_buttons, label: false, collection: [SubCategoryPlay::INSIDE, SubCategoryPlay::OUTSIDE] %>
                     <%= f.input :date %>
                     <%= f.input :time %>
                     <%= f.input :comment %>
