@@ -1,6 +1,9 @@
 .container-normal {
   margin: 15px 0;
-  background-color: green;
+  // background-color: green;
+  display: flex;
+  justify-content: flex-start;
+  // padding: 5px 10px;
 }
 
 .container-large-top {
@@ -8,5 +11,20 @@
 }
 
 .container{
-  background-color: orange;
+  // background-color: orange;
+}
+
+.activity-btn{
+  width: 100px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+  & i{
+    font-size: 30px;
+  }
+  & .fas-text{
+    margin: 0;
+  }
 }
