@@ -125,4 +125,21 @@ a5 = Activity.create(category: "Food", sub_category: "Bread", date: DateTime.new
 a6 = Activity.create(category: "Play", sub_category: "Play outside", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,13,0), child_id: c1.id, user_id: e1.id)
 a7 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,12,0), child_id: c1.id, user_id: e1.id)
 a8 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,10,0), child_id: c1.id, user_id: e1.id)
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/i713TX.jpg')
+a9 = Activity.new(category: "Food", sub_category: "Bread", comment: "He ate some pieces of bread", date: DateTime.now.in_time_zone, time: Time.new(2021,9,3,14,0), child_id: c1.id, user_id: e1.id)
+a9.pictures.attach(io: file, filename: 'gijs_food', content_type: 'image/jpg')
+a9.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/3vwnvx.jpg')
+a10 = Activity.new(category: "Play", sub_category: "Play inside", comment: "He played inside, trying to grab the animals on the baby gym", date: DateTime.now.in_time_zone, time: Time.new(2021,9,3,13,0), child_id: c1.id, user_id: e1.id)
+a10.pictures.attach(io: file, filename: 'gijs_play', content_type: 'image/jpg')
+a10.save
+
+a11 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.now.in_time_zone, time: Time.new(2021,9,3,12,0), child_id: c1.id, user_id: e1.id)
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/9r8Oqd.jpg')
+a12 = Activity.new(category: "Sleep", sub_category: "Go to bed", date: DateTime.now.in_time_zone, time: Time.new(2021,9,3,10,0), child_id: c1.id, user_id: e1.id)
+a12.pictures.attach(io: file, filename: 'gijs_sleep', content_type: 'image/jpg')
+a12.save
 puts "Activities added!"

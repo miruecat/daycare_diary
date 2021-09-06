@@ -1,7 +1,7 @@
 class Child < ApplicationRecord
   belongs_to :daycare
   has_many :parenthoods
-  has_many :parents, through: :parenthoods, class_name: "User"
+  has_many :parents, through: :parenthoods, class_name: "User", source: :user
   has_many :activities
   has_one_attached :profile_picture
 

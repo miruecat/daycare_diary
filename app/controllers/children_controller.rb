@@ -10,6 +10,7 @@ class ChildrenController < ApplicationController
   def show
     authorize @child
     @activity = Activity.new
+    @parenthood = Parenthood.new
   end
 
   def new

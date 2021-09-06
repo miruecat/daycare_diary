@@ -232,48 +232,44 @@
         </div>
       <%end%>
 
-      <div class="daycare-children">
-        <% @children.each do |child| %>
-          <%#= check_box_tag "children_ids[]",  child.id %>
-          <% if child.profile_picture.attached? %>
-            <div class="child-card d-flex my-3">
-              <div class="child-card-left">
-                <%= link_to child_path(child) do %>
-                  <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
-                <% end %>
-              </div>
-              <div class="child-card-right d-flex align-items-center ml-2">
-                <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-              </div>
+    <div class="daycare-children">
+      <% @children.each do |child| %>
+        <% if child.profile_picture.attached? %>
+          <div class="child-card d-flex my-3">
+            <div class="child-card-left">
+              <%= link_to child_path(child) do %>
+                <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+              <% end %>
             </div>
-          <% else %>
-            <div class="child-card d-flex my-3">
-              <div class="child-card-left">
-                <%= link_to child_path(child) do %>
-                  <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
-                <% end %>
-              </div>
-              <div class="child-card-right d-flex align-items-center ml-2">
-                <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-              </div>
+            <div class="child-card-right d-flex align-items-center ml-2">
+              <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
             </div>
-          <% end %>
+          </div>
+        <% else %>
+          <div class="child-card d-flex my-3">
+            <div class="child-card-left">
+              <%= link_to child_path(child) do %>
+                <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+              <% end %>
+            </div>
+            <div class="child-card-right d-flex align-items-center ml-2">
+              <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+            </div>
+          </div>
         <% end %>
-      </div>
-    </div>
-
-    
-
-    <% if current_user.admin == true %>
-      <%= "ADD A NEW CHILD" %>
-      <%= simple_form_for @child do |f|%>
-        <%= f.input :first_name %>
-        <%= f.input :last_name %>
-        <%= f.input :birthdate %>
-        <%= f.input :personal_information %>
-        <%= f.input :profile_picture, as: :file %>
-        <%= f.button :submit, 'ADD', id: "main-btn" %>
       <% end %>
-    <% end %>
+    </div>
   </div>
+
+  <% if current_user.admin == true %>
+    <%= "ADD A NEW CHILD" %>
+    <%= simple_form_for @child do |f|%>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :birthdate %>
+      <%= f.input :personal_information %>
+      <%= f.input :profile_picture, as: :file %>
+      <%= f.button :submit, 'ADD', id: "main-btn" %>
+    <% end %>
+  <%end%>
 </div>
