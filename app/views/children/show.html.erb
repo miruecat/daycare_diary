@@ -9,6 +9,12 @@
         <% end %>
       <% end %>
     </div>
+  <% elsif current_user.role == "employee" %>
+    <div class="d-flex justify-content-center container-normal">
+      <div>
+        <%= cl_image_tag @child.profile_picture.key, class: 'avatar-large', crop: :fill %>
+      </div>
+    </div>
   <% end %>
 
   <div class="container-normal">
