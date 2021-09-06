@@ -5,7 +5,7 @@ class ParenthoodsController < ApplicationController
     if @parenthood.save
       redirect_to child_path(@child)
     else
-      redirect_to children_path
+      render children/index
     end
   end
 
