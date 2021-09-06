@@ -3,7 +3,7 @@
 
   <div class="daycare-card">
     <div class="daycare-title">
-      <h3>Daycare Team : <%= current_user.first_name %> <%= current_user.last_name %></h3>
+      <h3>Team : <%= current_user.first_name %> <%= current_user.last_name %></h3>
     </div>
             <div class="container-normal">
           <h4>Add an activity for <%= @child.first_name %></h4>
@@ -70,18 +70,14 @@
   </div>
  <% end %>
   <% if current_user.admin == true %>
-    <%= "Add a new child" %>
+    <%= "ADD A NEW CHILD" %>
     <%= simple_form_for @child do |f|%>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
       <%= f.input :birthdate %>
       <%= f.input :personal_information %>
       <%= f.input :profile_picture, as: :file %>
-      <%= f.button :submit %>
+      <%= f.button :submit, 'ADD', id: "main-btn" %>
     <% end %>
   <% end %>
-  <%# simple_form_for @parenthood do |f|
-  f.association, collection: User.all %>
-
-
 </div>
