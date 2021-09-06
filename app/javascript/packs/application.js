@@ -36,3 +36,5 @@ $('.avatar-large').hover(function () {
 }, function () {
   $('#popup').hide();
 });
+
+import "controllers"
