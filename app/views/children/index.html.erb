@@ -1,15 +1,14 @@
 <div class="container">
-  <h1>Welcome to the daycare: <%= current_user.daycare.name %></h1>
-
   <div class="daycare-card">
     <div class="daycare-title">
-      <h3>Team : <%= current_user.first_name %> <%= current_user.last_name %></h3>
+      <h3>Team <%= current_user.daycare.name %> : <%= current_user.first_name %> <%= current_user.last_name %></h3>
     </div>
     <div class="container-normal">
       <h4>Add an activity for <%= @child.first_name %></h4>
           <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sleep" id="sleepbutton">
-        Sleep
+        <i class="fas fa-bed"></i>
+        <p class="fas-text"> sleep </p>
       </button>
       <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'), :method => 'post' do |f| %>
            <!-- Modal -->
@@ -55,8 +54,7 @@
                 <%= link_to child_path(child) do %>
                   <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
                 <% end %>
-              </div>
-              <div class="child-card-right d-flex align-items-center ml-2">
+              </div> <div class="child-card-right d-flex align-items-center ml-2">
                 <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
               </div>
             </div>
