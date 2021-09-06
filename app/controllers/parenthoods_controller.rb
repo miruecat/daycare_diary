@@ -3,6 +3,7 @@ class ParenthoodsController < ApplicationController
     @parenthood = Parenthood.new(parenthood_params)
     if @parenthood.save
       redirect_to child_path(@child)
+    end
   end
 
   private

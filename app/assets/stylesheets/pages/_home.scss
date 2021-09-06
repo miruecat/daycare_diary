@@ -43,8 +43,10 @@
   margin-bottom: 50px;
 }
 
-.form-control{
-  background-color: $brand-color;
+.form-control:hover{
+  background-color: $form-color;
+  border: solid 1px black;
+  border-radius: 0;
 }
 
 .row{
