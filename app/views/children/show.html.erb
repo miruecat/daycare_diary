@@ -10,19 +10,52 @@
         <% end %>
       <% end %>
     </div>
+  <% elsif current_user.role == "employee" %>
+    <div class="d-flex justify-content-center container-normal">
+      <div>
+        <%= cl_image_tag @child.profile_picture.key, class: 'avatar-large', crop: :fill %>
+      </div>
+    </div>
   <% end %>
 
-  <div class="container-normal">
+  <div class="container-normal d-flex justify-content-center">
     <div class= "container-button-position">
-      <h1><%= cl_image_tag @child.profile_picture.key, class: 'avatar-large', crop: :fill %> <%= @child.first_name %> <%= @child.last_name %></h1>
+      <div class="child_name_show d-flex justify-content-center">
+        <h1><%= @child.first_name %> <%= @child.last_name %></h1>
+        <% if current_user.role == "employee" %>
+          <i class="fas fa-info-circle" data-toggle="modal" data-target="#personalInformation"></i>
+
+          <div class="modal fade" id="personalInformation" tabindex="-1" role="dialog" aria-labelledby="personalInformationLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="personalInformationLabel">Personal information of <%= @child.first_name %></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Birthday: <%= @child.birthdate.strftime("%d-%m-%Y") %></p>
+                  <p>Parent 1: <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></p>
+                  <% if @child.parenthoods.count > 1 %>
+                    <p>Parent 2: <%= @child.parenthoods[1].user.first_name %> <%= @child.parenthoods[1].user.last_name %> <em>(<%= @child.parenthoods[1].user.phone_number %>)</em></p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
       <% if current_user.role == "employee" %>
-        <div class="employeeforms">
+        <div class="employeeforms d-flex justify-content-center">
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moment" id="momentbutton">
           Add a special moment
           </button>
         </div>
     </div>
+
               <!-- Modal -->
 
     <div class="modal fade" id="moment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -148,8 +181,6 @@
     </div>
   </div>
 
-
-
   <div class="container-normal">
             <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#play" id="playbutton">
@@ -186,6 +217,7 @@
 
 
 
+
     <div class="container-large-top">
       <h2>Activity log of <%= @child.first_name %></h2>
       <div class="container-normal">
@@ -193,32 +225,28 @@
         <input type="date" id="date-activities" name="trip-start"
           value="<%= Date.today %>" min="2020-01-01" max="<%= Date.today %>">
       </div>
-      <table class="table table-striped table-hover table-borderless align-middle">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Time</th>
-            <th scope="col">Category</th>
-            <th scope="col">Sub-category</th>
-            <th scope="col">Comment</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @child.activities.each do |activity| %>
-            <tr class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
-              <th scope="row"><%= activity.time.strftime("%Hh%M") %></th>
-              <td><%= activity.category %></td>
-              <td><%= activity.sub_category %></td>
-              <td><%= activity.comment %></td>
-              <% if current_user.role == "employee" %>
-                <td><%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %></td>
-              <% else %>
-                <td></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="row">
+      <div class="col-md-12">
+        <div id="content">
+          <ul class="timeline">
+            <% @child.activities.each do |activity| %>
+              <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
+                <li class="event" scope="row" data-date="<%= activity.sub_category %>">
+                  <h3><%= activity.category %> - <%= activity.sub_category %>
+                    <% if current_user.role == "employee" %>
+                      <em>(<%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %>)</em>
+                    <% end %>
+                    </h3>
+                  <p><em><%= activity.time.strftime("%H:%M") %>h</em></p>
+                  <p><em><%= activity.comment %></em></p>
+                  <br>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
     </div>
 
     <div class="carousel-top-container container-normal">
