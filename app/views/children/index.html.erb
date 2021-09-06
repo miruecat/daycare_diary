@@ -3,15 +3,18 @@
     <div class="daycare-title">
       <h3>Team <%= current_user.daycare.name %> : <%= current_user.first_name %> <%= current_user.last_name %></h3>
     </div>
+
     <div class="container-normal">
       <h4>Add an activity for <%= @child.first_name %></h4>
       <!-- Button trigger modal -->
+
+
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sleep" id="sleepbutton">
         <i class="fas fa-bed"></i>
         <p class="fas-text"> sleep </p>
       </button>
-      <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'),
-        :method => 'post' do |f| %>
+
+      <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'), :method => 'post' do |f| %>
         <!-- Modal -->
         <div class="modal fade" id="sleep" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterSleep" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -37,7 +40,7 @@
                           <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
                         </div>
                       </div>
-                    <% else %>
+                      <% else %>
                       <div class="child-card d-flex my-3">
                         <div class="child-card-left">
                           <%= link_to child_path(child) do %>
@@ -51,23 +54,25 @@
                     <% end %>
                   <% end %>
                 </div>
-                  <%= f.hidden_field :category, value: "sleep" %>
-                  <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
-                  <%= f.input :date %>
-                  <%= f.input :time %>
-                  <%= f.input :comment %>
-                  <%= f.button :submit %>
+                <%= f.hidden_field :category, value: "sleep" %>
+                <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
+                <%= f.input :date %>
+                <%= f.input :time %>
+                <%= f.input :comment %>
+                <%= f.button :submit %>
               </div>
             </div>
           </div>
         </div>
       <%end%>
 
+
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#food" id="foodbutton">
-        Food
+        <i class="fas fa-utensils"></i>
+        <p class="fas-text"> food </p>
       </button>
-      <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'),
-      :method => 'post' do |f| %>
+
+      <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'), :method => 'post' do |f| %>
         <!-- Modal -->
         <div class="modal fade" id="food" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterFood" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -93,7 +98,7 @@
                           <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
                         </div>
                       </div>
-                    <% else %>
+                      <% else %>
                       <div class="child-card d-flex my-3">
                         <div class="child-card-left">
                           <%= link_to child_path(child) do %>
@@ -107,21 +112,24 @@
                     <% end %>
                   <% end %>
                 </div>
-                  <%= f.hidden_field :category, value: "food" %>
-                  <%= f.input :sub_categories, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::PORR, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
-                  <%= f.input :date %>
-                  <%= f.input :time %>
-                  <%= f.input :comment %>
-                  <%= f.button :submit %>
+                <%= f.hidden_field :category, value: "food" %>
+                <%= f.input :sub_categories, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::PORR, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
+                <%= f.input :date %>
+                <%= f.input :time %>
+                <%= f.input :comment %>
+                <%= f.button :submit %>
               </div>
             </div>
           </div>
         </div>
       <%end%>
 
+
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#health" id="healthbutton">
-        Health
+        <i class="fas fa-first-aid"></i>
+        <p class="fas-text"> health </p>
       </button>
+
       <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'),
         :method => 'post' do |f| %>
         <!-- Modal -->
