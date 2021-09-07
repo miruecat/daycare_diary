@@ -1,3 +1,10 @@
+.container{
+  width: 70vw
+}
+.body-container{
+  margin-top: -20px;
+}
+
 .container-normal {
   margin: 15px 0;
   display: flex;
@@ -7,35 +14,4 @@
 
 .container-large-top {
   margin: 35px 0 15px;
-}
-
-.container{
-  // background-color: orange;
-}
-
-.activity-btn{
-  display: flex;
-  align-items: center;
-  // justify-content: space-around;
-  border-radius: 10px;
-  & i{
-    font-size: 30px;
-  }
-  & .fas-text{
-    margin: 0;
-  }
-}
-
-#sleepbutton, #foodbutton, #healthbutton, #playbutton{
-  width: 70px;
-  height: 70px;
-  padding: 0px;
-}
-
-.normal-left{
-  display: flex;
-  margin: 0;
-  padding: 0;
-  width: 40%;
-  justify-content: space-between;
 }
