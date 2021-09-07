@@ -7,24 +7,25 @@
   align-items: center;
   // justify-content: space-around;
   border-radius: 10px;
-  & .fas-text{
-    font-size: 10px;
-    margin: 0;
   }
-}
 
-#sleepbutton, #foodbutton, #healthbutton, #playbutton {
-  width: 70px;
-  height: 70px;
-  padding: 0;
+
+#sleepbutton, #foodbutton, #healthbutton, #playbutton{
+  width: 60px;
+  height: 60px;
+  padding: 5px;
   border-radius: 6px;
-  border-color: white;
-  background-color: white;
-  color: black;
-  box-shadow: 1px 4px 2px rgba(0, 0, 0, .06);
+  border: none;
+  background-color: $form-color;
+  color: $button-color;
+  box-shadow: 1px 4px 2px rgba(0, 0, 0, .05);
     & i {
       font-size: 25px;
     }
+    & .fas-text{
+    font-size: 12px;
+    margin: 0;
+  }
 }
 
 #momentbutton {
@@ -50,8 +51,13 @@
   color: white;
 }
 
-
 .normal-left{
+  // padding: 12px;
+  font-weight: 600;
+  margin: 12px;
+}
+
+.normal-right{
   display: flex;
   margin: 0;
   padding: 0;
@@ -59,18 +65,30 @@
   justify-content: space-between;
 }
 
+.daycare-children{
+  width: 100%;
+  padding:5px 20px;
+  background-color: white;
+  box-shadow: 1px 4px 2px rgba(0, 0, 0, .06);
+  display: flex;
+  justify-content: space-between;
+  color:$element-color;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
 .daycare-title{
   width: 100%;
-  height: 40px;
   padding:5px 20px;
+  background-color: white;
   // border: solid 1px $element-color;
   box-shadow: 1px 4px 2px rgba(0, 0, 0, .06);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   color:$element-color;
   border-radius: 8px;
 }
+
 
 h5{
   font-family: $body-font;
@@ -85,4 +103,24 @@ h5{
 
 .child-card{
   padding: 10px 20px;
+}
+
+.profile-square{
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.daycare-header{
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.child-card{
+  background-color: transparent;
+  border: solid 1px $button-color;
+  border-radius: 50px;
 }

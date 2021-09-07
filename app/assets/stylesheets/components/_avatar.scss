@@ -25,10 +25,18 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
+  border: solid 1px $form-color;
   display:flex;
   align-items: center;
   justify-content: space-around;
   font-weight: 700;
+  text-decoration: none!important;
+}
+
+.avatar-empty:hover{
+  color: $element-color;
+  background-color:$brand-color;
+  text-decoration: none!important;
 }
 
 .avatar-large-link {
