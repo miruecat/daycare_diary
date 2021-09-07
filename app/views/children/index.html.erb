@@ -1,307 +1,313 @@
-<div class="container">
-  <div class="daycare-card">
-    <div class="daycare-title">
-      <h5>Daycare <%= current_user.daycare.name %> : <%= current_user.first_name %> <%= current_user.last_name %></h5>
-    </div>
-    <div class="container-normal">
-      <!-- Button trigger modal -->
-      <div class="normal-left">
-        <button type="button" data-toggle="modal" data-target="#sleep" id="sleepbutton">
-          <i class="fas fa-bed"></i>
-          <div class="fas-text">SLEEP</div>
-        </button>
-        <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'),
-          :method => 'post' do |f| %>
-          <!-- Modal -->
-          <div class="modal fade" id="sleep" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterSleep" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalCenterSleep">Sleep</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="daycare-children">
-                    <% @children.each do |child| %>
-                      <%= check_box_tag "children_ids[]",  child.id %>
-                      <% if child.profile_picture.attached? %>
-                        <div class="child-card d-flex my-3">
-                          <div class="child-card-left">
-                            <%= link_to child_path(child) do %>
-                              <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+<div class="container-grey">
+  <div class="container">
+    <div class="daycare-card">
+      <div class="daycare-title">
+        <div class="daycare-header">
+          <div>
+            <%= cl_image_tag current_user.user_picture.key, class: 'profile-square', crop: :fill %>
+          </div>
+          <h5>Daycare <%= current_user.daycare.name %> : <%= current_user.first_name %> <%= current_user.last_name %></h5>
+        </div>
+          <div class="container-header">
+            <!-- Button trigger modal -->
+            <div class="normal-left">ACTIVITIES</div>
+            <div class="normal-right">
+              <button type="button" data-toggle="modal" data-target="#sleep" id="sleepbutton">
+                <i class="fas fa-bed"></i>
+                <div class="fas-text">SLEEP</div>
+              </button>
+              <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'),
+                :method => 'post' do |f| %>
+                <!-- Modal -->
+                <div class="modal fade" id="sleep" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterSleep" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterSleep">Sleep</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="daycare-children">
+                          <% @children.each do |child| %>
+                            <%= check_box_tag "children_ids[]",  child.id %>
+                            <% if child.profile_picture.attached? %>
+                              <div class="child-card d-flex my-3">
+                                <div class="child-card-left">
+                                  <%= link_to child_path(child) do %>
+                                    <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+                                  <% end %>
+                                </div>
+                                <div class="child-card-right d-flex align-items-center ml-2">
+                                  <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                                </div>
+                              </div>
+                            <% else %>
+                              <div class="child-card d-flex my-3">
+                                <div class="child-card-left">
+                                  <%= link_to child_path(child) do %>
+                                    <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                                  <% end %>
+                                </div>
+                                <div class="child-card-right d-flex align-items-center ml-2">
+                                  <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                                </div>
+                              </div>
                             <% end %>
-                          </div>
-                          <div class="child-card-right d-flex align-items-center ml-2">
-                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                          </div>
+                          <% end %>
                         </div>
-                      <% else %>
-                        <div class="child-card d-flex my-3">
-                          <div class="child-card-left">
-                            <%= link_to child_path(child) do %>
-                              <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
-                            <% end %>
-                          </div>
-                          <div class="child-card-right d-flex align-items-center ml-2">
-                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                          </div>
-                        </div>
-                      <% end %>
-                    <% end %>
+                        <%= f.hidden_field :category, value: "sleep" %>
+                        <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
+                        <%= f.input :date %>
+                        <%= f.input :time %>
+                        <%= f.input :comment %>
+                        <%= f.button :submit %>
+                      </div>
+                    </div>
                   </div>
-                  <%= f.hidden_field :category, value: "sleep" %>
-                  <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
-                  <%= f.input :date %>
-                  <%= f.input :time %>
-                  <%= f.input :comment %>
-                  <%= f.button :submit %>
                 </div>
-              </div>
+              <%end%>
+
+
+
+              <button type="button" data-toggle="modal" data-target="#food" id="foodbutton">
+                <i class="fas fa-utensils"></i>
+                <div class="fas-text">FOOD</div>
+              </button>
+              <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'),
+              :method => 'post' do |f| %>
+                <!-- Modal -->
+                <div class="modal fade" id="food" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterFood" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterFood">Food</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="daycare-children">
+                          <% @children.each do |child| %>
+                            <%= check_box_tag "children_ids[]",  child.id %>
+                            <% if child.profile_picture.attached? %>
+                              <div class="child-card d-flex my-3">
+                                <div class="child-card-left">
+                                  <%= link_to child_path(child) do %>
+                                    <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+                                  <% end %>
+                                </div>
+                                <div class="child-card-right d-flex align-items-center ml-2">
+                                  <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                                </div>
+                              </div>
+                              <% else %>
+                              <div class="child-card d-flex my-3">
+                                <div class="child-card-left">
+                                  <%= link_to child_path(child) do %>
+                                    <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                                  <% end %>
+                                </div>
+                                <div class="child-card-right d-flex align-items-center ml-2">
+                                  <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                                </div>
+                              </div>
+                            <% end %>
+                          <% end %>
+                        </div>
+                        <%= f.hidden_field :category, value: "food" %>
+                        <%= f.input :sub_categories, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::PORR, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
+                        <%= f.input :date %>
+                        <%= f.input :time %>
+                        <%= f.input :comment %>
+                        <%= f.button :submit %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <%end%>
+
+
+
+
+              <button type="button" data-toggle="modal" data-target="#health" id="healthbutton">
+                <i class="fas fa-heartbeat"></i>
+                <div class="fas-text">HEALTH</div>
+              </button>
+
+              <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'), :method => 'post' do |f| %>
+                <!-- Modal -->
+                <div class="modal fade" id="health" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterHealth" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterHealth">Health</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="daycare-children">
+                          <% @children.each do |child| %>
+                            <%= check_box_tag "children_ids[]",  child.id %>
+                            <% if child.profile_picture.attached? %>
+                              <div class="child-card d-flex my-3">
+                                <div class="child-card-left">
+                                  <%= link_to child_path(child) do %>
+                                    <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+                                  <% end %>
+                                </div>
+                                <div class="child-card-right d-flex align-items-center ml-2">
+                                  <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                                </div>
+                              </div>
+                              <% else %>
+                              <div class="child-card d-flex my-3">
+                                <div class="child-card-left">
+                                  <%= link_to child_path(child) do %>
+                                    <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                                  <% end %>
+                                </div>
+                                <div class="child-card-right d-flex align-items-center ml-2">
+                                  <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                                </div>
+                              </div>
+                            <% end %>
+                          <% end %>
+                        </div>
+                        <%= f.hidden_field :category, value: "health" %>
+                        <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategoryHealth::GOOD, SubCategoryHealth::SOSO, SubCategoryHealth::SICK] %>
+                        <%= f.input :date %>
+                        <%= f.input :time %>
+                        <%= f.input :comment %>
+                        <%= f.button :submit %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <%end%>
+
+
+              <button type="button" data-toggle="modal" data-target="#play" id="playbutton">
+                <i class="fas fa-shapes"></i>
+                <div class="fas-text">PLAY</div>
+              </button>
+              <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'),
+                :method => 'post' do |f| %>
+                <!-- Modal -->
+                <div class="modal fade" id="play" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterPlay" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterPlay">Play</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="daycare-children">
+                          <% @children.each do |child| %>
+                            <%= check_box_tag "children_ids[]",  child.id %>
+                            <% if child.profile_picture.attached? %>
+                              <div class="child-card d-flex my-3">
+                                <div class="child-card-left">
+                                  <%= link_to child_path(child) do %>
+                                    <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+                                  <% end %>
+                                </div>
+                                <div class="child-card-right d-flex align-items-center ml-2">
+                                  <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                                </div>
+                              </div>
+                              <% else %>
+                              <div class="child-card d-flex my-3">
+                                <div class="child-card-left">
+                                  <%= link_to child_path(child) do %>
+                                    <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                                  <% end %>
+                                </div>
+                                <div class="child-card-right d-flex align-items-center ml-2">
+                                  <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                                </div>
+                              </div>
+                            <% end %>
+                          <% end %>
+                        </div>
+                        <%= f.hidden_field :category, value: "play" %>
+                        <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategoryPlay::INSIDE, SubCategoryPlay::OUTSIDE] %>
+                        <%= f.input :date %>
+                        <%= f.input :time %>
+                        <%= f.input :comment %>
+                        <%= f.button :submit %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <%end%>
             </div>
           </div>
-        <%end%>
 
-
-
-        <button type="button" data-toggle="modal" data-target="#food" id="foodbutton">
-          <i class="fas fa-utensils"></i>
-          <div class="fas-text">FOOD</div>
-        </button>
-        <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'),
-        :method => 'post' do |f| %>
-          <!-- Modal -->
-          <div class="modal fade" id="food" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterFood" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalCenterFood">Food</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="daycare-children">
-                    <% @children.each do |child| %>
-                      <%= check_box_tag "children_ids[]",  child.id %>
-                      <% if child.profile_picture.attached? %>
-                        <div class="child-card d-flex my-3">
-                          <div class="child-card-left">
-                            <%= link_to child_path(child) do %>
-                              <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
-                            <% end %>
-                          </div>
-                          <div class="child-card-right d-flex align-items-center ml-2">
-                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                          </div>
-                        </div>
-                        <% else %>
-                        <div class="child-card d-flex my-3">
-                          <div class="child-card-left">
-                            <%= link_to child_path(child) do %>
-                              <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
-                            <% end %>
-                          </div>
-                          <div class="child-card-right d-flex align-items-center ml-2">
-                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                          </div>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  </div>
-                  <%= f.hidden_field :category, value: "food" %>
-                  <%= f.input :sub_categories, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::PORR, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
-                  <%= f.input :date %>
-                  <%= f.input :time %>
-                  <%= f.input :comment %>
-                  <%= f.button :submit %>
-                </div>
-              </div>
-            </div>
-          </div>
-        <%end%>
-
-
-
-
-        <button type="button" data-toggle="modal" data-target="#health" id="healthbutton">
-          <i class="fas fa-heartbeat"></i>
-          <div class="fas-text">HEALTH</div>
-        </button>
-
-        <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'), :method => 'post' do |f| %>
-          <!-- Modal -->
-          <div class="modal fade" id="health" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterHealth" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalCenterHealth">Health</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="daycare-children">
-                    <% @children.each do |child| %>
-                      <%= check_box_tag "children_ids[]",  child.id %>
-                      <% if child.profile_picture.attached? %>
-                        <div class="child-card d-flex my-3">
-                          <div class="child-card-left">
-                            <%= link_to child_path(child) do %>
-                              <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
-                            <% end %>
-                          </div>
-                          <div class="child-card-right d-flex align-items-center ml-2">
-                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                          </div>
-                        </div>
-                        <% else %>
-                        <div class="child-card d-flex my-3">
-                          <div class="child-card-left">
-                            <%= link_to child_path(child) do %>
-                              <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
-                            <% end %>
-                          </div>
-                          <div class="child-card-right d-flex align-items-center ml-2">
-                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                          </div>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  </div>
-                  <%= f.hidden_field :category, value: "health" %>
-                  <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategoryHealth::GOOD, SubCategoryHealth::SOSO, SubCategoryHealth::SICK] %>
-                  <%= f.input :date %>
-                  <%= f.input :time %>
-                  <%= f.input :comment %>
-                  <%= f.button :submit %>
-                </div>
-              </div>
-            </div>
-          </div>
-        <%end%>
-
-
-
-
-        <button type="button" data-toggle="modal" data-target="#play" id="playbutton">
-          <i class="fas fa-shapes"></i>
-          <div class="fas-text">PLAY</div>
-        </button>
-        <%= simple_form_for Activity.new, :url => url_for(:action => 'create', :controller => 'activities'),
-          :method => 'post' do |f| %>
-          <!-- Modal -->
-          <div class="modal fade" id="play" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterPlay" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalCenterPlay">Play</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="daycare-children">
-                    <% @children.each do |child| %>
-                      <%= check_box_tag "children_ids[]",  child.id %>
-                      <% if child.profile_picture.attached? %>
-                        <div class="child-card d-flex my-3">
-                          <div class="child-card-left">
-                            <%= link_to child_path(child) do %>
-                              <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
-                            <% end %>
-                          </div>
-                          <div class="child-card-right d-flex align-items-center ml-2">
-                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                          </div>
-                        </div>
-                        <% else %>
-                        <div class="child-card d-flex my-3">
-                          <div class="child-card-left">
-                            <%= link_to child_path(child) do %>
-                              <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
-                            <% end %>
-                          </div>
-                          <div class="child-card-right d-flex align-items-center ml-2">
-                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                          </div>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  </div>
-                  <%= f.hidden_field :category, value: "play" %>
-                  <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategoryPlay::INSIDE, SubCategoryPlay::OUTSIDE] %>
-                  <%= f.input :date %>
-                  <%= f.input :time %>
-                  <%= f.input :comment %>
-                  <%= f.button :submit %>
-                </div>
-              </div>
-            </div>
-          </div>
-        <%end%>
       </div>
-    </div>
 
-    <div class="normal-right"></div>
 
-    <div class="daycare-children">
-      <% @children.each do |child| %>
-        <% if child.profile_picture.attached? %>
-          <div class="child-card d-flex my-3">
-            <div class="child-card-left">
-              <%= link_to child_path(child) do %>
-                <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
-              <% end %>
+      <div class="daycare-children">
+        <% @children.each do |child| %>
+          <% if child.profile_picture.attached? %>
+            <div class="child-card d-flex my-3">
+              <div class="child-card-left">
+                <%= link_to child_path(child) do %>
+                  <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+                <% end %>
+              </div>
+              <div class="child-card-right d-flex align-items-center ml-2">
+                <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+              </div>
             </div>
-            <div class="child-card-right d-flex align-items-center ml-2">
-              <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-            </div>
-          </div>
-          <% else %>
-          <div class="child-card d-flex my-3">
-            <div class="child-card-left">
-              <%= link_to child_path(child) do %>
-                <div class="avatar-empty">
-                <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
-                </div>
-              <% end %>
-            </div>
-            <div class="child-card-right d-flex align-items-center ml-2">
-              <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-      <div class="child-card d-flex my-3">
-        <button type="button" data-toggle="modal" data-target="#addnew" id="addbutton">
-          <i class="fas fa-plus"></i>
-        </button>
-        <% if current_user.admin == true %>
-            <%= simple_form_for Child.new, :url => url_for(:action => 'create', :controller => 'children'), :method => 'post' do |f| %>
-            <div class="modal fade" id="addnew" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterPlay" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterPlay">Add a new child</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+            <% else %>
+            <div class="child-card d-flex my-3">
+              <div class="child-card-left">
+                <%= link_to child_path(child) do %>
+                  <div class="avatar-empty">
+                  <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
                   </div>
-                  <div class="modal-body">
-                      <%= f.input :first_name %>
-                      <%= f.input :last_name %>
-                      <%= f.input :birthdate %>
-                      <%= f.input :personal_information %>
-                      <%= f.input :profile_picture, as: :file %>
-                      <%= f.button :submit, 'ADD', id: "main-btn" %>
-                  </div>
-                </div>
+                <% end %>
+              </div>
+              <div class="child-card-right d-flex align-items-center ml-2">
+                <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
               </div>
             </div>
           <% end %>
         <% end %>
+        <div class="child-card-add d-flex my-3">
+          <button type="button" data-toggle="modal" data-target="#addnew" id="addbutton">
+            <i class="fas fa-plus"></i>
+          </button>
+          <% if current_user.admin == true %>
+              <%= simple_form_for Child.new, :url => url_for(:action => 'create', :controller => 'children'), :method => 'post' do |f| %>
+              <div class="modal fade" id="addnew" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterPlay" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalCenterPlay">Add a new child</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <%= f.input :first_name %>
+                        <%= f.input :last_name %>
+                        <%= f.input :birthdate %>
+                        <%= f.input :personal_information %>
+                        <%= f.input :profile_picture, as: :file %>
+                        <%= f.button :submit, 'ADD', id: "main-btn" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
