@@ -23,28 +23,83 @@ puts "Daycares added!"
 puts "Adding users..."
 file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/lImRJb.jpg')
 admin = User.new(email: "admin@gmail.com", password: "123456", role: "employee", admin: true, daycare_id: d1.id, phone_number: "0612345678", first_name: "Ad", last_name: "Min")
-admin.user_picture.attach(io: file, filename: 'admin.jpg', content_type: 'image/jpeg')
+admin.user_picture.attach(io: file, filename: 'admin.jpg', content_type: 'image/jpg')
 admin.save
 
 file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/924/AZRVJi.jpg')
 e1 = User.new(email: "employee1@gmail.com", password: "123456", role: "employee", admin: true, daycare_id: d1.id, phone_number: "0612345681", first_name: "Peter", last_name: "Great")
-e1.user_picture.attach(io: file, filename: 'e1.jpg', content_type: 'image/jpeg')
+e1.user_picture.attach(io: file, filename: 'e1.jpg', content_type: 'image/jpg')
 e1.save
 
-e2 = User.create(email: "employee2@gmail.com", password: "123456", role: "employee", daycare_id: d1.id, phone_number: "0612345682", first_name: "Ellen", last_name: "McGee")
-e3 = User.create(email: "employee3@gmail.com", password: "123456", role: "employee", daycare_id: d2.id, phone_number: "0612345683", first_name: "Helen", last_name: "Banner")
-e4 = User.create(email: "employee4@gmail.com", password: "123456", role: "employee", daycare_id: d2.id, phone_number: "0612345684", first_name: "Greg", last_name: "Nagayama")
-p1 = User.create(email: "parent1@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345691", first_name: "Thomas", last_name: "Smith")
-p2 = User.create(email: "parent2@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345692", first_name: "Claire", last_name: "Johnson")
-p3 = User.create(email: "parent3@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345693", first_name: "Niko", last_name: "Williams")
-p4 = User.create(email: "parent4@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345694", first_name: "Samantha", last_name: "Brown")
-p5 = User.create(email: "parent5@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345695", first_name: "Graham", last_name: "Miller")
-p6 = User.create(email: "parent6@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345696", first_name: "John", last_name: "Davis")
-p7 = User.create(email: "parent7@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345697", first_name: "Lisa", last_name: "Wilson")
-p8 = User.create(email: "parent8@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345698", first_name: "Mia", last_name: "Anderson")
-p9 = User.create(email: "parent9@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345699", first_name: "Evelyn", last_name: "Lee")
-p10 = User.create(email: "parent10@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345690", first_name: "Patrick", last_name: "Jones")
-p11 = User.create(email: "parent11@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345600", first_name: "Carry", last_name: "Garcia")
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/MOHlGt.jpg')
+e2 = User.new(email: "employee2@gmail.com", password: "123456", role: "employee", daycare_id: d1.id, phone_number: "0612345682", first_name: "Ellen", last_name: "McGee")
+e2.user_picture.attach(io: file, filename: 'e2.jpg', content_type: 'image/jpg')
+e2.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/Mrv79Z.jpg')
+e3 = User.new(email: "employee3@gmail.com", password: "123456", role: "employee", daycare_id: d2.id, phone_number: "0612345683", first_name: "Helen", last_name: "Banner")
+e3.user_picture.attach(io: file, filename: 'e3.jpg', content_type: 'image/jpg')
+e3.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/D5nQk3.jpg')
+e4 = User.new(email: "employee4@gmail.com", password: "123456", role: "employee", daycare_id: d2.id, phone_number: "0612345684", first_name: "Greg", last_name: "Nagayama")
+e4.user_picture.attach(io: file, filename: 'e4.jpg', content_type: 'image/jpg')
+e4.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/OeOfAL.jpg')
+p1 = User.new(email: "parent1@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345691", first_name: "Thomas", last_name: "Smith")
+p1.user_picture.attach(io: file, filename: 'p1.jpg', content_type: 'image/jpg')
+p1.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/HpvM8q.jpg')
+p2 = User.new(email: "parent2@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345692", first_name: "Claire", last_name: "Johnson")
+p2.user_picture.attach(io: file, filename: 'p2.jpg', content_type: 'image/jpg')
+p2.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/PNOOKR.jpg')
+p3 = User.new(email: "parent3@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345693", first_name: "Niko", last_name: "Williams")
+p3.user_picture.attach(io: file, filename: 'p3.jpg', content_type: 'image/jpg')
+p3.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/HyVyo6.jpg')
+p4 = User.new(email: "parent4@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345694", first_name: "Samantha", last_name: "Brown")
+p4.user_picture.attach(io: file, filename: 'p4.jpg', content_type: 'image/jpg')
+p4.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/924/gm3dzm.jpg')
+p5 = User.new(email: "parent5@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345695", first_name: "Graham", last_name: "Miller")
+p5.user_picture.attach(io: file, filename: 'p5.jpg', content_type: 'image/jpg')
+p5.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/zBEtMp.jpg')
+p6 = User.new(email: "parent6@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345696", first_name: "John", last_name: "Davis")
+p6.user_picture.attach(io: file, filename: 'p6.jpg', content_type: 'image/jpg')
+p6.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/AJvbes.jpg')
+p7 = User.new(email: "parent7@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345697", first_name: "Lisa", last_name: "Wilson")
+p7.user_picture.attach(io: file, filename: 'p7.jpg', content_type: 'image/jpg')
+p7.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/XYgwaM.jpg')
+p8 = User.new(email: "parent8@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345698", first_name: "Mia", last_name: "Anderson")
+p8.user_picture.attach(io: file, filename: 'p8.jpg', content_type: 'image/jpg')
+p8.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/QZHc0V.jpg')
+p9 = User.new(email: "parent9@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345699", first_name: "Evelyn", last_name: "Lee")
+p9.user_picture.attach(io: file, filename: 'p9.jpg', content_type: 'image/jpg')
+p9.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/LuUEyZ.jpg')
+p10 = User.new(email: "parent10@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345690", first_name: "Patrick", last_name: "Jones")
+p10.user_picture.attach(io: file, filename: 'p10.jpg', content_type: 'image/jpg')
+p10.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/jktiFO.jpg')
+p11 = User.new(email: "parent11@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345600", first_name: "Carry", last_name: "Garcia")
+p11.user_picture.attach(io: file, filename: 'p11.jpg', content_type: 'image/jpg')
+p11.save
 puts "Users added!"
 
 puts "Adding children..."

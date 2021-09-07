@@ -36,9 +36,13 @@
                 </div>
                 <div class="modal-body">
                   <p>Birthday: <%= @child.birthdate.strftime("%d-%m-%Y") %></p>
-                  <p>Parent 1: <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></p>
-                  <% if @child.parenthoods.count > 1 %>
-                    <p>Parent 2: <%= @child.parenthoods[1].user.first_name %> <%= @child.parenthoods[1].user.last_name %> <em>(<%= @child.parenthoods[1].user.phone_number %>)</em></p>
+                  <% if @child.parenthoods.count == 0 %>
+                    <p>No parents assigned to this child</p>
+                  <% elsif @child.parenthoods.count == 1 %>
+                    <p><%= cl_image_tag @child.parenthoods[0].user.user_picture.key, class: 'avatar', crop: :fill %> Parent: <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></p>
+                  <% elsif @child.parenthoods.count > 1 %>
+                    <p><%= cl_image_tag @child.parenthoods[0].user.user_picture.key, class: 'avatar', crop: :fill %> Parent 1: <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></p>
+                    <p><%= cl_image_tag @child.parenthoods[1].user.user_picture.key, class: 'avatar', crop: :fill %> Parent 2: <%= @child.parenthoods[1].user.first_name %> <%= @child.parenthoods[1].user.last_name %> <em>(<%= @child.parenthoods[1].user.phone_number %>)</em></p>
                   <% end %>
                 </div>
               </div>
