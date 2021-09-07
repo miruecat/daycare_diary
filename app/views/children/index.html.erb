@@ -27,34 +27,34 @@
               <div class="modal-body">
                 <div class="daycare-children">
                   <% @children.each do |child| %>
-                <%# !!!!!!     %>
-                    <% if child.profile_picture.attached? %>
-                      <div class="child-card d-flex my-3" id=<%=child.id%>>
-                        <div class="child-card-left">  
-                            <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+                    <%= check_box_tag "children_ids[]", child.id, false, id: "child_id_#{child.id}", class: "child-checkbox" %>
+                    <label for="child_id_<%=child.id%>">      
+                      <% if child.profile_picture.attached? %>
+                        <div class="child-card d-flex my-3" id=<%=child.id%>>
+                          <div class="child-card-left">  
+                              <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+                          </div>
+                          <div class="child-card-right d-flex align-items-center ml-2"> 
+                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                          </div>
                         </div>
-                        <div class="child-card-right d-flex align-items-center ml-2">
-                          <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                      <% else %>
+                        <div class="child-card d-flex my-3">
+                          <div class="child-card-left">
+                              <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                          </div>
+                          <div class="child-card-right d-flex align-items-center ml-2">
+                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                          </div>
                         </div>
-                      </div>
-                    <% else %>
-                      <div class="child-card d-flex my-3">
-                        <div class="child-card-left">
-                          <%= link_to child_path(child) do %>
-                            <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
-                          <% end %>
-                        </div>
-                        <div class="child-card-right d-flex align-items-center ml-2">
-                          <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                        </div>
-                      </div>
-                    <% end %>
+                      <% end %>
+                    </label>
                   <% end %>
                 </div>
                   <%= f.hidden_field :category, value: "sleep" %>
                   <%= f.input :date %>
                   <%= f.input :time %>
-                  <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
+                  <%= f.input :sub_category, label: false, as: :radio_buttons, collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
                   <%= f.input :comment %>
                   <%= f.button :submit %>
               </div>
@@ -81,38 +81,36 @@
               <div class="modal-body">
                 <div class="daycare-children">
                   <% @children.each do |child| %>
-                    <%= check_box_tag "children_ids[]",  child.id %>
-                    <% if child.profile_picture.attached? %>
-                      <div class="child-card d-flex my-3">
-                        <div class="child-card-left">
-                          <%= link_to child_path(child) do %>
-                            <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
-                          <% end %>
+                    <%= check_box_tag "children_ids[]", child.id, false, id: "child_id_food_#{child.id}", class: "child-checkbox" %>
+                    <label for="child_id_food_<%=child.id%>">     
+                      <% if child.profile_picture.attached? %>
+                        <div class="child-card d-flex my-3" id=<%=child.id%>>
+                          <div class="child-card-left">
+                              <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+                          </div>
+                          <div class="child-card-right d-flex align-items-center ml-2">
+                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                          </div>
                         </div>
-                        <div class="child-card-right d-flex align-items-center ml-2">
-                          <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                      <% else %>
+                        <div class="child-card d-flex my-3">
+                          <div class="child-card-left">
+                              <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                          </div>
+                          <div class="child-card-right d-flex align-items-center ml-2">
+                            <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                          </div>
                         </div>
-                      </div>
-                    <% else %>
-                      <div class="child-card d-flex my-3">
-                        <div class="child-card-left">
-                          <%= link_to child_path(child) do %>
-                            <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
-                          <% end %>
-                        </div>
-                        <div class="child-card-right d-flex align-items-center ml-2">
-                          <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                        </div>
-                      </div>
-                    <% end %>
+                      <% end %>
+                    </label>
                   <% end %>
                 </div>
-                  <%= f.hidden_field :category, value: "food" %>
-                  <%= f.input :sub_categories, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::PORR, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
-                  <%= f.input :date %>
-                  <%= f.input :time %>
-                  <%= f.input :comment %>
-                  <%= f.button :submit %>
+                <%= f.hidden_field :category, value: "food" %>
+                <%= f.input :sub_categories, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::PORR, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
+                <%= f.input :date %>
+                <%= f.input :time %>
+                <%= f.input :comment %>
+                <%= f.button :submit %>
               </div>
             </div>
           </div>
@@ -137,31 +135,29 @@
               <div class="modal-body">
                 <div class="daycare-children">
                   <% @children.each do |child| %>
-                    <%= check_box_tag "children_ids[]",  child.id %>
-                    <% if child.profile_picture.attached? %>
-                      <div class="child-card d-flex my-3">
-                        <div class="child-card-left">
-                          <%= link_to child_path(child) do %>
-                            <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
-                          <% end %>
-                        </div>
-                        <div class="child-card-right d-flex align-items-center ml-2">
-                          <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                        </div>
-                      </div>
-                    <% else %>
-                      <div class="child-card d-flex my-3">
-                        <div class="child-card-left">
-                          <%= link_to child_path(child) do %>
-                            <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
-                          <% end %>
-                        </div>
-                        <div class="child-card-right d-flex align-items-center ml-2">
-                          <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                        </div>
-                      </div>
+                    <%= check_box_tag "children_ids[]", child.id, false, id: "child_id_health_#{child.id}", class: "child-checkbox" %>
+                      <label for="child_id_health_<%=child.id%>">   
+                        <% if child.profile_picture.attached? %>
+                          <div class="child-card d-flex my-3" id=<%=child.id%>>
+                            <div class="child-card-left">
+                                <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+                            </div>
+                            <div class="child-card-right d-flex align-items-center ml-2">
+                              <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                            </div>
+                          </div>
+                        <% else %>
+                          <div class="child-card d-flex my-3">
+                            <div class="child-card-left">
+                                <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                            </div>
+                            <div class="child-card-right d-flex align-items-center ml-2">
+                              <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                            </div>
+                          </div>
+                        <% end %>
+                      </label>
                     <% end %>
-                  <% end %>
                 </div>
                   <%= f.hidden_field :category, value: "health" %>
                   <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategoryHealth::GOOD, SubCategoryHealth::SOSO, SubCategoryHealth::SICK] %>
@@ -193,31 +189,33 @@
               <div class="modal-body">
                 <div class="daycare-children">
                   <% @children.each do |child| %>
-                    <%= check_box_tag "children_ids[]",  child.id %>
-                    <% if child.profile_picture.attached? %>
-                      <div class="child-card d-flex my-3">
-                        <div class="child-card-left">
-                          <%= link_to child_path(child) do %>
-                            <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
-                          <% end %>
-                        </div>
-                        <div class="child-card-right d-flex align-items-center ml-2">
-                          <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                        </div>
-                      </div>
-                    <% else %>
-                      <div class="child-card d-flex my-3">
-                        <div class="child-card-left">
-                          <%= link_to child_path(child) do %>
-                            <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
-                          <% end %>
-                        </div>
-                        <div class="child-card-right d-flex align-items-center ml-2">
-                          <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                        </div>
-                      </div>
+                    <%= check_box_tag "children_ids[]", child.id, false, id: "child_id_#{child.id}", class: "child-checkbox" %>
+                      <label for="child_id_<%=child.id%>"> 
+                        <% if child.profile_picture.attached? %>
+                          <div class="child-card d-flex my-3" id=<%=child.id%>>
+                            <div class="child-card-left">
+                              <%#= link_to child_path(child) do %>
+                                <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
+                              <%# end %>
+                            </div>
+                            <div class="child-card-right d-flex align-items-center ml-2">
+                              <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                            </div>
+                          </div>
+                        <% else %>
+                          <div class="child-card d-flex my-3">
+                            <div class="child-card-left">
+                              <%#= link_to child_path(child) do %>
+                                <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                              <%# end %>
+                            </div>
+                            <div class="child-card-right d-flex align-items-center ml-2">
+                              <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
+                            </div>
+                          </div>
+                        <% end %>
+                      </label>
                     <% end %>
-                  <% end %>
                 </div>
                   <%= f.hidden_field :category, value: "play" %>
                   <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategoryPlay::INSIDE, SubCategoryPlay::OUTSIDE] %>
