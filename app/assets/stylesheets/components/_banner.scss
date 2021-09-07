@@ -8,15 +8,21 @@
 }
 .dd-banner{
   width: 100vw;
-  height: 800px;
+  height: 750px;
   display: flex;
-  justify-content: space-around;
   align-items: center;
   background-image: url("https://res.cloudinary.com/dvrahrooa/image/upload/v1630536946/new-back_jbltwb.svg");
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 0px 60px;
+}
+
+.dd-banner > img{
+  width: 600px;
+  display: flex;
+  margin:0;
+  justify-content: space-around;
 }
 
 .dd-banner h1{

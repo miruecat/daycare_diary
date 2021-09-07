@@ -13,14 +13,6 @@
 //   justify-content: center;
 // }
 
-.desc-section{
-  padding: 10px, 15px;
-}
-
-.desc-top{
-  display:flex;
-  justify-content: space-between;
-}
 
 .dd-brief-container{
   background-color: $background-color;
@@ -32,12 +24,11 @@
   padding: 70px 0px 50px 0px;
   & h3{
     font-family: $body-font;
-    padding: 30px 0px;
-  }
-  & p{
-    font-size: 28px;
+    padding: 24px 0px;
   }
 }
+
+
 
 .dd-contactform{
   margin-bottom: 50px;
@@ -79,7 +70,35 @@
   opacity: 20%;
 }
 
+.desc-section{
+  text-align: justify;
+}
+
+.desc-top{
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.desc-icon{
+  margin-right: 20px;
+}
+
 .desc-image{
 width:100%;
 opacity: 90%;
+text-align: center;
+}
+
+.desc-text{
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-around;
+}
+
+.process-right {
+  text-align:center;
+  margin-top: 15px;
 }
