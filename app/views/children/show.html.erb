@@ -18,8 +18,13 @@
     </div>
   <% end %>
 
-  <div class="container-normal d-flex justify-content-center">
-    <div class= "container-button-position">
+  <div class="container-normal align-items-center">
+  <% if current_user.role == "employee" %>
+    <div>
+      <a id="main-btn" href="/children" role="button">Back to children overview</a>
+    </div>
+  <% end %>
+    <div class= "container-normal">
       <div class="child_name_show d-flex justify-content-center">
         <h1><%= @child.first_name %> <%= @child.last_name %></h1>
         <% if current_user.role == "employee" %>
@@ -74,6 +79,35 @@
         <% end %>
       </div>
     </div>
+  <% if policy(Parenthood).create? && current_user.admin == true %>
+    <div>
+      <!-- Button trigger modal -->
+      <button type="button" data-toggle="modal" data-target="#addparent" id="momentbutton">
+        <i class="fas fa-plus-circle"></i>
+        <div class="fas-text">LINK A PARENT</div>
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="addparent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Link a parent</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for [@child, @parenthood] do |f| %>
+              <%= f.association :user, :label => "Choose the parent", collection: User.parents, label_method: :fullname, value_method: :id %>
+              <%= f.button :submit, "Link the parent", id: "main-btn" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
   </div>
 
 <% if current_user.role == "employee" %>
@@ -81,17 +115,16 @@
     <div>
       <h4>Add an activity for <%= @child.first_name %></h4>
     </div>
-    <div>
-      <a id="main-btn" href="/children" role="button">Back to children overview</a>
-    </div>
+
   </div>
 
   <div class="container-normal d-flex justify-content-between">
-    <div class="d-flex justify-content-start">
+    <div class="d-flex justify-content-between normal-left">
       <div>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sleep" id="sleepbutton">
-          Sleep
+       <button type="button" data-toggle="modal" data-target="#sleep" id="sleepbutton">
+          <i class="fas fa-bed"></i>
+          <div class="fas-text">SLEEP</div>
         </button>
 
         <!-- Modal -->
@@ -122,8 +155,9 @@
 
       <div>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#food" id="foodbutton">
-          Food
+        <button type="button" data-toggle="modal" data-target="#food" id="foodbutton">
+          <i class="fas fa-utensils"></i>
+          <div class="fas-text">FOOD</div>
         </button>
 
         <!-- Modal -->
@@ -154,8 +188,9 @@
 
       <div>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#health" id="healthbutton">
-          Health
+        <button type="button" data-toggle="modal" data-target="#health" id="healthbutton">
+          <i class="fas fa-heartbeat"></i>
+          <div class="fas-text">HEALTH</div>
         </button>
         <!-- Modal -->
         <div class="modal fade" id="health" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -185,8 +220,9 @@
 
       <div>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#play" id="playbutton">
-          Play
+        <button type="button" data-toggle="modal" data-target="#play" id="playbutton">
+          <i class="fas fa-shapes"></i>
+          <div class="fas-text">PLAY</div>
         </button>
 
         <!-- Modal -->
@@ -217,8 +253,9 @@
     </div>
     <div>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moment" id="momentbutton">
-        Add a special moment
+      <button type="button" data-toggle="modal" data-target="#moment" id="momentbutton">
+        <i class="fas fa-camera"></i>
+        <div class="fas-text">SPECIAL MOMENT</div>
       </button>
 
     <!-- Modal -->
@@ -226,7 +263,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">The Moment</h5>
+            <h5 class="modal-title" id="exampleModalCenterTitle">Special moment</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -246,7 +283,7 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
   </div>
     <% end %>
 
@@ -266,11 +303,11 @@
             <% @child.activities.each do |activity| %>
               <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
                 <li class="event" scope="row" data-date="<%= activity.sub_category %>">
-                  <h3><%= activity.category %> - <%= activity.sub_category %>
-                    <% if current_user.role == "employee" %>
-                      <em>(<%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %>)</em>
-                    <% end %>
-                    </h3>
+                  <div class="d-flex justify-content-between">
+                    <h3><%= activity.category %> - <%= activity.sub_category %></h3>
+                  <% if current_user.role == "employee" %>
+                    <em><%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %></em></div>
+                  <% end %>
                   <p><em><%= activity.time.strftime("%H:%M") %>h</em></p>
                   <p><em><%= activity.comment %></em></p>
                   <br>
@@ -283,7 +320,7 @@
     </div>
     </div>
 
-    <div class="carousel-top-container container-show">
+    <div class="carousel-top-container container-show mb-5">
       <div class="carouselContainer">
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
@@ -312,14 +349,4 @@
         </div>
       </div>
     </div>
-
-    <div class="container-large-top">
-      <% if policy(Parenthood).create? && current_user.admin == true %>
-        <%= simple_form_for [@child, @parenthood] do |f| %>
-        <%= f.association :user, collection: User.parents, label_method: :fullname, value_method: :id %>
-        <%= f.button :submit, "Assign a Parent", id: "main-btn" %>
-        <% end %>
-      <% end %>
-    </div>
-
 </div>

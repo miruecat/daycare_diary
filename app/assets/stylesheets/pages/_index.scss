@@ -13,8 +13,22 @@
   }
 }
 
-#sleepbutton, #foodbutton, #healthbutton, #playbutton{
+#sleepbutton, #foodbutton, #healthbutton, #playbutton {
   width: 70px;
+  height: 70px;
+  padding: 0;
+  border-radius: 6px;
+  border-color: white;
+  background-color: white;
+  color: black;
+  box-shadow: 1px 4px 2px rgba(0, 0, 0, .06);
+    & i {
+      font-size: 25px;
+    }
+}
+
+#momentbutton {
+  width: 200px;
   height: 70px;
   padding: 0;
   border-radius: 6px;
