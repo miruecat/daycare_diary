@@ -16,7 +16,10 @@
   color: $element-color;
 }
 
-
+.navbarcontainer a {
+  text-decoration: none;
+  color: $text-contrast-color;
+}
 
 .nav-left{
   display: flex;

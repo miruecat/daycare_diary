@@ -10,6 +10,8 @@ class User < ApplicationRecord
   scope :employees, -> (daycare_id) { where(daycare_id: daycare_id, role: "employee") }
   scope :parents, -> { where.not(role: "employee") }
 
+  has_one_attached :user_picture
+
   validates :email, :password, :role, :daycare_id, :phone_number, :first_name, :last_name, presence: true
 
   def fullname
