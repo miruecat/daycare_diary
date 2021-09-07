@@ -104,7 +104,7 @@ puts "Users added!"
 
 puts "Adding children..."
 file = URI.open("https://imagizer.imageshack.com/v2/800x600q90/922/2KmJjz.jpg")
-c1 = Child.new(first_name: "Liam", last_name: "Smith", birthdate: DateTime.new(2021,2,3), daycare_id: d1.id)
+c1 = Child.new(first_name: "Liam", last_name: "Smith", birthdate: DateTime.new(2021,2,3), personal_information: "Liam is a vegetarian", daycare_id: d1.id)
 c1.profile_picture.attach(io: file, filename: 'liam.jpeg', content_type: 'image/jpeg')
 c1.save
 

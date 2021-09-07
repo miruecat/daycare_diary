@@ -9,7 +9,7 @@
       <div class="dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if current_user.user_picture.attached? %>
-            <%= cl_image_tag current_user.user_picture.key, class: 'avatar-large', crop: :fill %>
+            <%= cl_image_tag current_user.user_picture.key, class: 'avatar', crop: :fill %>
           <% else %>
             <%= current_user.first_name %> <%= current_user.last_name %>
           <% end %>
@@ -23,7 +23,7 @@
       <div class="dropdown">
        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if current_user.user_picture.attached? %>
-            <%= cl_image_tag current_user.user_picture.key, class: 'avatar-large', crop: :fill %>
+            <%= cl_image_tag current_user.user_picture.key, class: 'avatar', crop: :fill %>
           <% else %>
             <%= current_user.first_name %> <%= current_user.last_name %>
           <% end %>

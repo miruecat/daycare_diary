@@ -35,15 +35,38 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <p>Birthday: <%= @child.birthdate.strftime("%d-%m-%Y") %></p>
-                  <% if @child.parenthoods.count == 0 %>
-                    <p>No parents assigned to this child</p>
-                  <% elsif @child.parenthoods.count == 1 %>
-                    <p><%= cl_image_tag @child.parenthoods[0].user.user_picture.key, class: 'avatar', crop: :fill %> Parent: <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></p>
-                  <% elsif @child.parenthoods.count > 1 %>
-                    <p><%= cl_image_tag @child.parenthoods[0].user.user_picture.key, class: 'avatar', crop: :fill %> Parent 1: <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></p>
-                    <p><%= cl_image_tag @child.parenthoods[1].user.user_picture.key, class: 'avatar', crop: :fill %> Parent 2: <%= @child.parenthoods[1].user.first_name %> <%= @child.parenthoods[1].user.last_name %> <em>(<%= @child.parenthoods[1].user.phone_number %>)</em></p>
-                  <% end %>
+                  <table class="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <th>Birthday</th>
+                        <td><%= @child.birthdate.strftime("%d-%m-%Y") %></td>
+                      </tr>
+                      <% if @child.parenthoods.count == 0 %>
+                        <tr>
+                          <th>Parent</th>
+                          <td>No parents assigned to this child</td>
+                        </tr>
+                      <% elsif @child.parenthoods.count == 1 %>
+                        <tr>
+                          <th>Parent</th>
+                          <td><%= cl_image_tag @child.parenthoods[0].user.user_picture.key, class: 'avatar-small', crop: :fill %> <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></td>
+                        </tr>
+                      <% elsif @child.parenthoods.count > 1 %>
+                        <tr>
+                          <th>Parent 1</th>
+                          <td><%= cl_image_tag @child.parenthoods[0].user.user_picture.key, class: 'avatar-small', crop: :fill %> <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></td>
+                        </tr>
+                        <tr>
+                          <th>Parent 2</th>
+                          <td><%= cl_image_tag @child.parenthoods[1].user.user_picture.key, class: 'avatar-small', crop: :fill %> <%= @child.parenthoods[1].user.first_name %> <%= @child.parenthoods[1].user.last_name %> <em>(<%= @child.parenthoods[1].user.phone_number %>)</em></td>
+                        </tr>
+                      <% end %>
+                      <tr>
+                        <th>Personal information</th>
+                        <td><em><%= @child.personal_information %></em></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -231,7 +254,7 @@
 
     <div class="container-large-top">
       <h2>Activity log of <%= @child.first_name %></h2>
-      <div class="container-normal">
+      <div class="container-show">
         <label for="start">Selected date:</label>
         <input type="date" id="date-activities" name="trip-start"
           value="<%= Date.today %>" min="2020-01-01" max="<%= Date.today %>">
@@ -260,7 +283,7 @@
     </div>
     </div>
 
-    <div class="carousel-top-container container-normal">
+    <div class="carousel-top-container container-show">
       <div class="carouselContainer">
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
