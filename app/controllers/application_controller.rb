@@ -16,5 +16,5 @@ class ApplicationController < ActionController::Base
     elsif current_user.role == "parent"
       stored_location_for(resource) || child_path(current_user.parenthoods.first.child)
     end
-  end                        
+  end
 end
