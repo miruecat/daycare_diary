@@ -12,6 +12,7 @@ class ActivitiesController < ApplicationController
   def create
     if child_id = params.dig(:activity, :children_id)
       @activity = Activity.new(activity_params)
+      authorize @activity
       if params.dig(:activity, :sub_category).kind_of?(Array)
         @activity.sub_category = params.dig(:activity, :sub_category).join(" ")
       else
@@ -24,19 +25,23 @@ class ActivitiesController < ApplicationController
       redirect_to child_path(child_id)
     else
       children_ids =  params.dig(:children_ids)
-      children_ids.each do |child_id|
-        @activity = Activity.new(activity_params)
-        if params.dig(:activity, :sub_categories).kind_of?(Array)
-          @activity.sub_category = params.dig(:activity, :sub_categories).join(" ")
-        else
-          @activity.sub_category = params.dig(:activity, :sub_category)
+      if children_ids == nil
+        render "children/index"
+      else
+        children_ids.each do |child_id|
+          @activity = Activity.new(activity_params)
+          if params.dig(:activity, :sub_categories).kind_of?(Array)
+            @activity.sub_category = params.dig(:activity, :sub_categories).join(" ")
+          else
+            @activity.sub_category = params.dig(:activity, :sub_category)
+          end
+          @activity.child_id = child_id
+          @activity.user = current_user
+          authorize @activity
+          @activity.save
         end
-        @activity.child_id = child_id
-        @activity.user = current_user
-        authorize @activity
-        @activity.save
+        redirect_to children_path(current_user.daycare)
       end
-      redirect_to children_path(current_user.daycare)
     end
   end
 
