@@ -1,12 +1,42 @@
-.avatar {
-  width: 40px;
+.avatar-small {
+  object-fit: cover;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
+
+.avatar {
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 .avatar-large {
   object-fit: cover;
   width: 56px;
   height: 56px;
   border-radius: 50%;
+}
+
+.avatar-empty {
+  background-color: $form-color;
+  color: white;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: solid 1px $form-color;
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 700;
+  text-decoration: none!important;
+}
+
+.avatar-empty:hover{
+  color: $element-color;
+  background-color:$brand-color;
+  text-decoration: none!important;
 }
 
 .avatar-large-link {
