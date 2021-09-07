@@ -5,7 +5,7 @@
   // flex-direction: column;
   // justify-content: center;
   width: 100%;
-  padding: 60px 0px;
+  padding: 60px 0px 0px 0px;
 }
 
 // .feature-top, .feature-bottom{
@@ -21,7 +21,7 @@
   flex-direction: column;
   align-items: center;
   font-family: $body-font;
-  padding: 70px 0px 50px 0px;
+  padding: 80px 0px 30px 0px;
   & h3{
     font-family: $body-font;
     padding: 24px 0px;
@@ -36,7 +36,7 @@
 
 .form-control:hover{
   background-color: $form-color;
-  border: solid 1px black;
+  border: solid 1px white;
   border-radius: 0;
 }
 
@@ -44,23 +44,34 @@
   margin:0;
 }
 .form-inputs{
-  padding-left: 0;
-  padding-right: 0;
+  padding: 2px;
 
   & input{
     // font-style: italic;
-    border-color: none;
-    border-radius: 0;
+    border: solid 1px $button-color;
   }
 }
 
 .form-inputs > button{
-  background-color: white;
-  border: solid 1px black
+  background-color: $button-color;
+  border: solid 2px $button-color;
+  padding: 6px 18px;
+  margin: 12px 0;
+  border-radius: 4px;
+  color: white;
+}
+
+.form-inputs > button:hover{
+  background-color: transparent;
+  border: solid 2px $button-color;
+  padding: 6px 18px;
+  margin: 12px 0;
+  border-radius: 4px;
+  color: $button-color;
 }
 
 #comment-box{
-  height: 200px;
+  height: 150px;
 }
 
 .number{
