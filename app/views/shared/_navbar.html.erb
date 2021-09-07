@@ -1,15 +1,15 @@
 <nav class="navbarcontainer">
-  <div class= "nav-left">
+  <a href="/"><div class= "nav-left">
     <img src="https://res.cloudinary.com/dvrahrooa/image/upload/v1630661584/logo_draft1_it4ypr.svg" alt="Daycare Diary logo" class="avatar">
     <h6>DAYCARE DIARY</h6>
-  </div>
+  </div></a>
 
   <% if user_signed_in? %>
     <% if current_user.role == "employee" %>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= "#{current_user.first_name} #{current_user.last_name}" %>
-        </button>
+        <img class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= cl_image_tag current_user.user_picture.key, class: 'avatar-large', crop: :fill %>
+        </img>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <%= link_to "My Daycare", children_path, class:"dropdown-item" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>

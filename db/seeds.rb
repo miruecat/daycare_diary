@@ -21,8 +21,16 @@ d2 = Daycare.create(name: "Lion")
 puts "Daycares added!"
 
 puts "Adding users..."
-admin = User.create(email: "admin@gmail.com", password: "123456", role: "employee", admin: true, daycare_id: d1.id, phone_number: "0612345678", first_name: "Ad", last_name: "Min")
-e1 = User.create(email: "employee1@gmail.com", password: "123456", role: "employee", admin: true, daycare_id: d1.id, phone_number: "0612345681", first_name: "Peter", last_name: "Great")
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/lImRJb.jpg')
+admin = User.new(email: "admin@gmail.com", password: "123456", role: "employee", admin: true, daycare_id: d1.id, phone_number: "0612345678", first_name: "Ad", last_name: "Min")
+admin.user_picture.attach(io: file, filename: 'admin.jpg', content_type: 'image/jpeg')
+admin.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/924/AZRVJi.jpg')
+e1 = User.new(email: "employee1@gmail.com", password: "123456", role: "employee", admin: true, daycare_id: d1.id, phone_number: "0612345681", first_name: "Peter", last_name: "Great")
+e1.user_picture.attach(io: file, filename: 'e1.jpg', content_type: 'image/jpeg')
+e1.save
+
 e2 = User.create(email: "employee2@gmail.com", password: "123456", role: "employee", daycare_id: d1.id, phone_number: "0612345682", first_name: "Ellen", last_name: "McGee")
 e3 = User.create(email: "employee3@gmail.com", password: "123456", role: "employee", daycare_id: d2.id, phone_number: "0612345683", first_name: "Helen", last_name: "Banner")
 e4 = User.create(email: "employee4@gmail.com", password: "123456", role: "employee", daycare_id: d2.id, phone_number: "0612345684", first_name: "Greg", last_name: "Nagayama")
