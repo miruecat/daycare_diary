@@ -20,18 +20,17 @@
 
 .dd-banner > img{
   width: 600px;
-  display: flex;
   margin:0;
-  justify-content: space-around;
+  display:inline-block;
 }
 
 .dd-banner h1{
-  width: 60%;
   font-weight: bold;
   color: $element-color;
 }
 
 .dd-banner h3{
+  width: 60%;
   color: $element-color;
 }
 
