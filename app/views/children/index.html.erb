@@ -58,7 +58,7 @@
                           <%= f.input :time %>
                           <%= f.input :sub_category, label: false, as: :radio_buttons, collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
                           <%= f.input :comment %>
-                          <%= f.button :submit %>
+                          <%= f.button :submit, value:"Report", class: "actbtn" %>
                       </div>
                     </div>
                   </div>
@@ -115,7 +115,7 @@
                         <%= f.input :date %>
                         <%= f.input :time %>
                         <%= f.input :comment %>
-                        <%= f.button :submit %>
+                        <%= f.button :submit, value:"Report", class: "actbtn"%>
                       </div>
                     </div>
                   </div>
@@ -175,7 +175,7 @@
                         <%= f.input :date %>
                         <%= f.input :time %>
                         <%= f.input :comment %>
-                        <%= f.button :submit %>
+                        <%= f.button :submit, value:"Report", class: "actbtn" %>
                       </div>
                     </div>
                   </div>
@@ -237,7 +237,7 @@
                           <%= f.input :date %>
                           <%= f.input :time %>
                           <%= f.input :comment %>
-                          <%= f.button :submit %>
+                          <%= f.button :submit, value:"Report", class: "actbtn" %>
                         </div>
                       </div>
                     </div>
