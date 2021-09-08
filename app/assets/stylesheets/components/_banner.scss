@@ -8,9 +8,8 @@
 }
 .dd-banner{
   width: 100vw;
-  height: 800px;
+  height: 750px;
   display: flex;
-  justify-content: space-around;
   align-items: center;
   background-image: url("https://res.cloudinary.com/dvrahrooa/image/upload/v1630536946/new-back_jbltwb.svg");
   background-position: bottom center;
@@ -19,13 +18,19 @@
   padding: 0px 60px;
 }
 
+.dd-banner > img{
+  width: 600px;
+  margin:0;
+  display:inline-block;
+}
+
 .dd-banner h1{
-  width: 60%;
   font-weight: bold;
   color: $element-color;
 }
 
 .dd-banner h3{
+  width: 60%;
   color: $element-color;
 }
 

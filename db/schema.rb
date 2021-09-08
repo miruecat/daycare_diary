@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_080344) do
+ActiveRecord::Schema.define(version: 2021_09_08_073423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(version: 2021_09_06_080344) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "child_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["child_id"], name: "index_messages_on_child_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "parenthoods", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "child_id", null: false
@@ -97,6 +107,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_080344) do
     t.string "phone_number"
     t.string "first_name"
     t.string "last_name"
+    t.string "chatname"
     t.index ["daycare_id"], name: "index_users_on_daycare_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -107,6 +118,8 @@ ActiveRecord::Schema.define(version: 2021_09_06_080344) do
   add_foreign_key "activities", "children"
   add_foreign_key "activities", "users"
   add_foreign_key "children", "daycares"
+  add_foreign_key "messages", "children"
+  add_foreign_key "messages", "users"
   add_foreign_key "parenthoods", "children"
   add_foreign_key "parenthoods", "users"
   add_foreign_key "users", "daycares"
