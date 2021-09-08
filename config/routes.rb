@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :children do
     resources :activities, only: [:index]
     resources :parenthoods, only: [:create]
+    resources :messages, only: [:create]
   end
   resources :activities, only: [:new, :create, :edit, :update, :destroy]
   resources :daycares
