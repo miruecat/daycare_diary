@@ -1,4 +1,4 @@
-<div class="container-grey">
+<div class="container-gray">
   <div class="container child-header-container">
     <%# <%= @child.parents.map(&:fullname) %>
     <% if current_user.role == "parent" && current_user.children.count > 1 %>
@@ -120,6 +120,7 @@
               </div>
             </div>
 
+
         <div class="normal-left-show">
           <!-- Button trigger modal -->
           <button type="button" data-toggle="modal" data-target="#food" id="foodbutton">
@@ -216,6 +217,7 @@
           </div>
         </div>
       </div>
+
     <div class="d-flex justify-content-center align-items-between">
 
       <% if policy(Parenthood).create? && current_user.admin == true %>
@@ -281,7 +283,7 @@
           </div>
         </div>
       </div>
-
+<% end %>
 
   <% if current_user.role == "employee" %>
     <div class="container child-activity-container">
