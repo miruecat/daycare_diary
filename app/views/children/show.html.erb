@@ -129,28 +129,26 @@
                 <div class="fas-text">FOOD</div>
               </button>
 
-                <!-- Modal -->
-              <div class="modal fade" id="food" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalCenterTitle">Food</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <%= simple_form_for @activity do |f| %>
-                        <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] } %>
-                        <%= f.hidden_field :category, value: "food" %>
-                        <%= f.input :sub_category, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::PORR, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
-                        <%= f.input :date %>
-                        <%= f.input :time %>
-                        <%= f.input :comment %>
-                        <%= f.button :submit %>
-                      <% end %>
-                    </div>
-                  </div>
+          <!-- Modal -->
+          <div class="modal fade" id="food" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Food</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for @activity do |f| %>
+                    <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] } %>
+                    <%= f.hidden_field :category, value: "food" %>
+                    <%= f.input :sub_category, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::VEG, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
+                    <%= f.input :date %>
+                    <%= f.input :time %>
+                    <%= f.input :comment %>
+                    <%= f.button :submit %>
+                  <% end %>
                 </div>
               </div>
             </div>
