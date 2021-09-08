@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  skip_after_action :verify_authorized
+
   def create
     @child = Child.find(params[:child_id])
     @message = Message.new(params_message)
@@ -15,6 +17,6 @@ class MessagesController < ApplicationController
   private
 
   def params_message
-    params.requires(:message).permit(:content, :child_id, :user_id)
+    params.require(:message).permit(:content, :child_id, :user_id)
   end
 end
