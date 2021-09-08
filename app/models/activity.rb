@@ -5,4 +5,5 @@ class Activity < ApplicationRecord
   attr_accessor :sub_categories
 
   validates :category, :sub_category, :date, :time, :child_id, :user_id, presence: true
+
 end

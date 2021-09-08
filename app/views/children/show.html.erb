@@ -1,5 +1,5 @@
 <div class="container-grey">
-  <div class="child-header-container">
+  <div class="container child-header-container">
     <%# <%= @child.parents.map(&:fullname) %>
     <% if current_user.role == "parent" && current_user.children.count > 1 %>
       <div class="d-flex justify-content-center container-normal">
@@ -311,7 +311,20 @@
                 <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
                   <li class="event" scope="row" data-date="<%= activity.sub_category %>">
                     <div class="d-flex justify-content-between">
-                      <h3><%= activity.category %> - <%= activity.sub_category %></h3>
+                      <p>
+                        <% case activity.category %>
+                        <% when "Play" %>
+                          <i class="fas fa-shapes"></i>
+                        <% when "Health" %>
+                          <i class="fas fa-heartbeat"></i>
+                        <% when "Food" %>
+                          <i class="fas fa-utensils"></i>
+                        <% when "Sleep" %>
+                          <i class="fas fa-bed"></i>
+                        <% when "Moment" %>
+                          <i class="fas fa-camera"></i>
+                        <% end %>
+                      </p>
                       <em><%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %></em>
                     </div>
                     <p><em><%= activity.time.strftime("%H:%M") %>h</em></p>
@@ -340,11 +353,24 @@
         <div class="col-md-12">
           <div id="content">
             <ul class="timeline">
-              <% @child.activities.each do |activity| %>
+              <% @child.activities.order(time: :desc).each do |activity| %>
                 <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
                   <li class="event" scope="row" data-date="<%= activity.sub_category %>">
-                    <h3><%= activity.category %> - <%= activity.sub_category %></h3>
-                    <p><em><%= activity.time.strftime("%H:%M") %>h</em></p>
+                    <p>
+                      <% case activity.category %>
+                      <% when "Play" %>
+                        <i class="fas fa-shapes"></i>
+                      <% when "Health" %>
+                        <i class="fas fa-heartbeat"></i>
+                      <% when "Food" %>
+                        <i class="fas fa-utensils"></i>
+                      <% when "Sleep" %>
+                        <i class="fas fa-bed"></i>
+                      <% when "Moment" %>
+                        <i class="fas fa-camera"></i>
+                      <% end %>
+                    </p>
+                    <p><%= activity.time.strftime("%H:%M") %>h</p>
                     <p><em><%= activity.comment %></em></p>
                     <br>
                   </li>
