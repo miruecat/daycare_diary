@@ -12,110 +12,77 @@
         <% end %>
       </div>
     <% elsif current_user.role == "employee" %>
-      <div class="d-flex justify-content-center container-normal">
-        <div>
+      <div class="align-items-center">
+        <div class="d-flex justify-content-start back-button">
+          <a href="/children" role="button"><i class="fas fa-angle-double-left"></i> Back to children overview</a>
+        </div>
+
+        <div class="d-flex justify-content-center">
           <%= cl_image_tag @child.profile_picture.key, class: 'avatar-large', crop: :fill %>
         </div>
       </div>
     <% end %>
 
-    <div class="container-normal align-items-center">
-
-      <div>
+    <div class="d-flex justify-content-center">
+      <div class="child_name_show d-flex justify-content-center mt-3">
+        <h1><%= @child.first_name %> <%= @child.last_name %></h1>
         <% if current_user.role == "employee" %>
-          <a id="main-btn" href="/children" role="button">Back to children overview</a>
-        <% end %>
-      </div>
+          <i class="fas fa-info-circle" data-toggle="modal" data-target="#personalInformation"></i>
 
-      <div class= "container-normal align-items-center">
-        <div class="child_name_show d-flex justify-content-center">
-          <h1><%= @child.first_name %> <%= @child.last_name %></h1>
-          <% if current_user.role == "employee" %>
-            <i class="fas fa-info-circle" data-toggle="modal" data-target="#personalInformation"></i>
-
-            <div class="modal fade" id="personalInformation" tabindex="-1" role="dialog" aria-labelledby="personalInformationLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="personalInformationLabel">Personal information of <%= @child.first_name %></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <table class="table table-borderless">
-                      <tbody>
+          <div class="modal fade" id="personalInformation" tabindex="-1" role="dialog" aria-labelledby="personalInformationLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="personalInformationLabel">Personal information of <%= @child.first_name %></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <table class="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <th>Birthday</th>
+                        <td><%= @child.birthdate.strftime("%d-%m-%Y") %></td>
+                      </tr>
+                      <% if @child.parenthoods.count == 0 %>
                         <tr>
-                          <th>Birthday</th>
-                          <td><%= @child.birthdate.strftime("%d-%m-%Y") %></td>
+                          <th>Parent</th>
+                          <td>No parents assigned to this child</td>
                         </tr>
-                        <% if @child.parenthoods.count == 0 %>
-                          <tr>
-                            <th>Parent</th>
-                            <td>No parents assigned to this child</td>
-                          </tr>
-                        <% elsif @child.parenthoods.count == 1 %>
-                          <tr>
-                            <th>Parent</th>
-                            <td><%= cl_image_tag @child.parenthoods[0].user.user_picture.key, class: 'avatar-small', crop: :fill %> <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></td>
-                          </tr>
-                        <% elsif @child.parenthoods.count > 1 %>
-                          <tr>
-                            <th>Parent 1</th>
-                            <td><%= cl_image_tag @child.parenthoods[0].user.user_picture.key, class: 'avatar-small', crop: :fill %> <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></td>
-                          </tr>
-                          <tr>
-                            <th>Parent 2</th>
-                            <td><%= cl_image_tag @child.parenthoods[1].user.user_picture.key, class: 'avatar-small', crop: :fill %> <%= @child.parenthoods[1].user.first_name %> <%= @child.parenthoods[1].user.last_name %> <em>(<%= @child.parenthoods[1].user.phone_number %>)</em></td>
-                          </tr>
-                        <% end %>
+                      <% elsif @child.parenthoods.count == 1 %>
                         <tr>
-                          <th>Personal information</th>
-                          <td><em><%= @child.personal_information %></em></td>
+                          <th>Parent</th>
+                          <td><%= cl_image_tag @child.parenthoods[0].user.user_picture.key, class: 'avatar-small', crop: :fill %> <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></td>
                         </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                      <% elsif @child.parenthoods.count > 1 %>
+                        <tr>
+                          <th>Parent 1</th>
+                          <td><%= cl_image_tag @child.parenthoods[0].user.user_picture.key, class: 'avatar-small', crop: :fill %> <%= @child.parenthoods[0].user.first_name %> <%= @child.parenthoods[0].user.last_name %> <em>(<%= @child.parenthoods[0].user.phone_number %>)</em></td>
+                        </tr>
+                        <tr>
+                          <th>Parent 2</th>
+                          <td><%= cl_image_tag @child.parenthoods[1].user.user_picture.key, class: 'avatar-small', crop: :fill %> <%= @child.parenthoods[1].user.first_name %> <%= @child.parenthoods[1].user.last_name %> <em>(<%= @child.parenthoods[1].user.phone_number %>)</em></td>
+                        </tr>
+                      <% end %>
+                      <tr>
+                        <th>Personal information</th>
+                        <td><em><%= @child.personal_information %></em></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
-          <% end %>
-        </div>
-      </div>
-
-      <div>
-      <% if policy(Parenthood).create? && current_user.admin == true %>
-        <!-- Button trigger modal -->
-        <button type="button" data-toggle="modal" data-target="#addparent" id="momentbutton">
-          <i class="fas fa-plus-circle"></i>
-          <div class="fas-text">LINK A PARENT</div>
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="addparent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Link a parent</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= simple_form_for [@child, @parenthood] do |f| %>
-                <%= f.association :user, :label => "Choose the parent", collection: User.parents, label_method: :fullname, value_method: :id %>
-                <%= f.button :submit, "Link the parent", id: "main-btn" %>
-                <% end %>
-              </div>
-            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
       </div>
-
     </div>
+  </div>
 
+  <div>
   <% if current_user.role == "employee" %>
+  <div class="container child-activity-container">
     <div class="container-normal d-flex justify-content-between">
       <div>
         <h4>Add an activity for <%= @child.first_name %></h4>
@@ -123,11 +90,11 @@
 
     </div>
 
-    <div class="container-normal d-flex justify-content-between">
+    <div class="container-activity-buttons d-flex justify-content-between">
       <div class="d-flex justify-content-between">
         <div class="normal-left">
           <!-- Button trigger modal -->
-        <button type="button" data-toggle="modal" data-target="#sleep" id="sleepbutton">
+          <button type="button" data-toggle="modal" data-target="#sleep" id="sleepbutton">
             <i class="fas fa-bed"></i>
             <div class="fas-text">SLEEP</div>
           </button>
@@ -256,75 +223,141 @@
           </div>
         </div>
       </div>
-      <div>
+    <div class="d-flex justify-content-center align-items-between">
+
+      <% if policy(Parenthood).create? && current_user.admin == true %>
+        <div class="normal-left">
+          <!-- Button trigger modal -->
+          <button type="button" data-toggle="modal" data-target="#addparent" id="linkparentbutton">
+            <i class="fas fa-plus-circle"></i>
+            <div class="fas-text">LINK A PARENT</div>
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="addparent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Link a parent</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for [@child, @parenthood] do |f| %>
+                  <%= f.association :user, :label => "Choose the parent", collection: User.parents, label_method: :fullname, value_method: :id %>
+                  <%= f.button :submit, "Link the parent", id: "main-btn" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="normal-left">
         <!-- Button trigger modal -->
         <button type="button" data-toggle="modal" data-target="#moment" id="momentbutton">
           <i class="fas fa-camera"></i>
           <div class="fas-text">SPECIAL MOMENT</div>
         </button>
 
-      <!-- Modal -->
-      <div class="modal fade" id="moment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Special moment</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for @activity do |f| %>
-                <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
-                <%= f.hidden_field :category, value: "moment" %>
-                <%= f.input :pictures, as: :file, input_html: { multiple: true }%>
-                <%= f.input :sub_category, label: false, as: :hidden, input_html: { value: "moment" } %>
-                <%= f.input :date %>
-                <%= f.input :time %>
-                <%= f.input :comment, label: "message" %>
-                <%= f.button :submit %>
-              <% end %>
+        <!-- Modal -->
+        <div class="modal fade" id="moment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Special moment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for @activity do |f| %>
+                  <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
+                  <%= f.hidden_field :category, value: "moment" %>
+                  <%= f.input :pictures, as: :file, input_html: { multiple: true }%>
+                  <%= f.input :sub_category, label: false, as: :hidden, input_html: { value: "moment" } %>
+                  <%= f.input :date %>
+                  <%= f.input :time %>
+                  <%= f.input :comment, label: "message" %>
+                  <%= f.button :submit %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
       </div>
     </div>
-      <% end %>
+  <% end %>
   </div>
 
-  <div class="container child-activity-container">
-    <div class="container-large-top">
-      <h2>Activity log of <%= @child.first_name %></h2>
-      <div class="container-show">
-        <label for="start">Selected date:</label>
-        <input type="date" id="date-activities" name="trip-start"
-          value="<%= Date.today %>" min="2020-01-01" max="<%= Date.today %>">
-      </div>
-      <div class="row">
-      <div class="col-md-12">
-        <div id="content">
-          <ul class="timeline">
-            <% @child.activities.each do |activity| %>
-              <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
-                <li class="event" scope="row" data-date="<%= activity.sub_category %>">
-                  <div class="d-flex justify-content-between">
-                    <h3><%= activity.category %> - <%= activity.sub_category %></h3>
-                  <% if current_user.role == "employee" %>
-                    <em><%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %></em></div>
-                  <% end %>
-                  <p><em><%= activity.time.strftime("%H:%M") %>h</em></p>
-                  <p><em><%= activity.comment %></em></p>
-                  <br>
-                </li>
-              </div>
-            <% end %>
-          </ul>
+
+  <% if current_user.role == "employee" %>
+    <div class="container child-activity-container">
+      <div class="container-large-top">
+        <h4>Activity log of <%= @child.first_name %></h4>
+        <div class="container-show">
+          <label for="start">Selected date:</label>
+          <input type="date" id="date-activities" name="trip-start"
+            value="<%= Date.today %>" min="2020-01-01" max="<%= Date.today %>">
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+          <div id="content">
+            <ul class="timeline">
+              <% @child.activities.each do |activity| %>
+                <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
+                  <li class="event" scope="row" data-date="<%= activity.sub_category %>">
+                    <div class="d-flex justify-content-between">
+                      <h3><%= activity.category %> - <%= activity.sub_category %></h3>
+                      <em><%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %></em>
+                    </div>
+                    <p><em><%= activity.time.strftime("%H:%M") %>h</em></p>
+                    <p><em><%= activity.comment %></em></p>
+                    <br>
+                  </li>
+                </div>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
+      </div>
     </div>
+
+  <% elsif current_user.role == "parent" %>
+    <div class="container child-activity-container">
+      <div class="container-large-top">
+        <h4>Activity log of <%= @child.first_name %></h4>
+        <div class="container-show">
+          <label for="start">Selected date:</label>
+          <input type="date" id="date-activities" name="trip-start"
+            value="<%= Date.today %>" min="2020-01-01" max="<%= Date.today %>">
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+          <div id="content">
+            <ul class="timeline">
+              <% @child.activities.each do |activity| %>
+                <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
+                  <li class="event" scope="row" data-date="<%= activity.sub_category %>">
+                    <h3><%= activity.category %> - <%= activity.sub_category %></h3>
+                    <p><em><%= activity.time.strftime("%H:%M") %>h</em></p>
+                    <p><em><%= activity.comment %></em></p>
+                    <br>
+                  </li>
+                </div>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </div>
     </div>
-  </div>
+
+  <% end %>
 
   <div class="container child-activity-container">
     <div class="carousel-top-container container-show mb-5">
