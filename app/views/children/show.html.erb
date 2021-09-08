@@ -342,8 +342,8 @@
             <ul class="timeline">
               <% @child.activities.each do |activity| %>
                 <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
-                  <li class="event" scope="row" data-date="<%= activity.sub_category %>">
-                    <h3><%= activity.category %> - <%= activity.sub_category %></h3>
+                  <li class="event" scope="row" data-date="<%= activity.category %>">
+                    <h3><%= activity.sub_category %></h3>
                     <p><em><%= activity.time.strftime("%H:%M") %>h</em></p>
                     <p><em><%= activity.comment %></em></p>
                     <br>
