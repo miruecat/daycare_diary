@@ -24,7 +24,7 @@
     <% end %>
 
     <div class="d-flex justify-content-center">
-      <div class="child_name_show d-flex justify-content-center">
+      <div class="child_name_show d-flex justify-content-center mt-3">
         <h1><%= @child.first_name %> <%= @child.last_name %></h1>
         <% if current_user.role == "employee" %>
           <i class="fas fa-info-circle" data-toggle="modal" data-target="#personalInformation"></i>
@@ -223,11 +223,12 @@
           </div>
         </div>
       </div>
-    <div>
+    <div class="d-flex justify-content-center align-items-between">
 
       <% if policy(Parenthood).create? && current_user.admin == true %>
+        <div class="normal-left">
           <!-- Button trigger modal -->
-          <button type="button" data-toggle="modal" data-target="#addparent" id="momentbutton">
+          <button type="button" data-toggle="modal" data-target="#addparent" id="linkparentbutton">
             <i class="fas fa-plus-circle"></i>
             <div class="fas-text">LINK A PARENT</div>
           </button>
@@ -251,35 +252,38 @@
               </div>
             </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
 
-      <!-- Button trigger modal -->
-      <button type="button" data-toggle="modal" data-target="#moment" id="momentbutton">
-        <i class="fas fa-camera"></i>
-        <div class="fas-text">SPECIAL MOMENT</div>
-      </button>
+      <div class="normal-left">
+        <!-- Button trigger modal -->
+        <button type="button" data-toggle="modal" data-target="#moment" id="momentbutton">
+          <i class="fas fa-camera"></i>
+          <div class="fas-text">SPECIAL MOMENT</div>
+        </button>
 
-      <!-- Modal -->
-      <div class="modal fade" id="moment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Special moment</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for @activity do |f| %>
-                <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
-                <%= f.hidden_field :category, value: "moment" %>
-                <%= f.input :pictures, as: :file, input_html: { multiple: true }%>
-                <%= f.input :sub_category, label: false, as: :hidden, input_html: { value: "moment" } %>
-                <%= f.input :date %>
-                <%= f.input :time %>
-                <%= f.input :comment, label: "message" %>
-                <%= f.button :submit %>
-              <% end %>
+        <!-- Modal -->
+        <div class="modal fade" id="moment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Special moment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for @activity do |f| %>
+                  <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
+                  <%= f.hidden_field :category, value: "moment" %>
+                  <%= f.input :pictures, as: :file, input_html: { multiple: true }%>
+                  <%= f.input :sub_category, label: false, as: :hidden, input_html: { value: "moment" } %>
+                  <%= f.input :date %>
+                  <%= f.input :time %>
+                  <%= f.input :comment, label: "message" %>
+                  <%= f.button :submit %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -293,7 +297,7 @@
   <% if current_user.role == "employee" %>
     <div class="container child-activity-container">
       <div class="container-large-top">
-        <h2>Activity log of <%= @child.first_name %></h2>
+        <h4>Activity log of <%= @child.first_name %></h4>
         <div class="container-show">
           <label for="start">Selected date:</label>
           <input type="date" id="date-activities" name="trip-start"
@@ -326,7 +330,7 @@
   <% elsif current_user.role == "parent" %>
     <div class="container child-activity-container">
       <div class="container-large-top">
-        <h2>Activity log of <%= @child.first_name %></h2>
+        <h4>Activity log of <%= @child.first_name %></h4>
         <div class="container-show">
           <label for="start">Selected date:</label>
           <input type="date" id="date-activities" name="trip-start"
