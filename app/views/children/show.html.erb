@@ -92,7 +92,7 @@
 
     <div class="container-activity-buttons d-flex justify-content-between">
       <div class="d-flex justify-content-between">
-        <div class="normal-left">
+        <div class="normal-left-show">
           <!-- Button trigger modal -->
           <button type="button" data-toggle="modal" data-target="#sleep" id="sleepbutton">
             <i class="fas fa-bed"></i>
@@ -117,7 +117,7 @@
                     <%= f.input :date %>
                     <%= f.input :time %>
                     <%= f.input :comment %>
-                    <%= f.button :submit %>
+                    <%= f.button :submit, "SUBMIT", class: "blue-btn" %>
                   <% end %>
                 </div>
               </div>
@@ -125,7 +125,7 @@
           </div>
         </div>
 
-        <div class="normal-left">
+        <div class="normal-left-show">
           <!-- Button trigger modal -->
           <button type="button" data-toggle="modal" data-target="#food" id="foodbutton">
             <i class="fas fa-utensils"></i>
@@ -150,7 +150,7 @@
                     <%= f.input :date %>
                     <%= f.input :time %>
                     <%= f.input :comment %>
-                    <%= f.button :submit %>
+                    <%= f.button :submit, "SUBMIT", class: "blue-btn" %>
                   <% end %>
                 </div>
               </div>
@@ -158,7 +158,7 @@
           </div>
         </div>
 
-        <div class="normal-left">
+        <div class="normal-left-show">
           <!-- Button trigger modal -->
           <button type="button" data-toggle="modal" data-target="#health" id="healthbutton">
             <i class="fas fa-heartbeat"></i>
@@ -182,7 +182,7 @@
                     <%= f.input :date %>
                     <%= f.input :time %>
                     <%= f.input :comment %>
-                    <%= f.button :submit %>
+                    <%= f.button :submit, "SUBMIT", class: "blue-btn" %>
                   <% end %>
                 </div>
               </div>
@@ -190,7 +190,7 @@
           </div>
         </div>
 
-        <div class="normal-left">
+        <div class="normal-left-show">
           <!-- Button trigger modal -->
           <button type="button" data-toggle="modal" data-target="#play" id="playbutton">
             <i class="fas fa-shapes"></i>
@@ -215,7 +215,7 @@
                     <%= f.input :date %>
                     <%= f.input :time %>
                     <%= f.input :comment %>
-                    <%= f.button :submit %>
+                    <%= f.button :submit, "SUBMIT", class: "blue-btn" %>
                   <% end %>
                 </div>
               </div>
@@ -226,27 +226,27 @@
     <div class="d-flex justify-content-center align-items-between">
 
       <% if policy(Parenthood).create? && current_user.admin == true %>
-        <div class="normal-left">
+        <div class="normal-left-show">
           <!-- Button trigger modal -->
           <button type="button" data-toggle="modal" data-target="#addparent" id="linkparentbutton">
             <i class="fas fa-plus-circle"></i>
-            <div class="fas-text">LINK A PARENT</div>
+            <div class="fas-text">CONNECT A PARENT</div>
           </button>
 
           <!-- Modal -->
-          <div class="modal fade" id="addparent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal fade" id="addparent" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalCenterTitle">Link a parent</h5>
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Connect a parent</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
                   <%= simple_form_for [@child, @parenthood] do |f| %>
-                  <%= f.association :user, :label => "Choose the parent", collection: User.parents, label_method: :fullname, value_method: :id %>
-                  <%= f.button :submit, "Link the parent", id: "main-btn" %>
+                    <%= f.association :user, :label => "Choose a parent", collection: User.parents, label_method: :fullname, value_method: :id, input_html: {class: "select2"} %>
+                    <%= f.button :submit, "SUBMIT", class: "blue-btn" %>
                   <% end %>
                 </div>
               </div>
@@ -255,7 +255,7 @@
         </div>
       <% end %>
 
-      <div class="normal-left">
+      <div class="normal-left-show">
         <!-- Button trigger modal -->
         <button type="button" data-toggle="modal" data-target="#moment" id="momentbutton">
           <i class="fas fa-camera"></i>
@@ -281,7 +281,7 @@
                   <%= f.input :date %>
                   <%= f.input :time %>
                   <%= f.input :comment, label: "message" %>
-                  <%= f.button :submit %>
+                  <%= f.button :submit, "SUBMIT", class: "blue-btn" %>
                 <% end %>
               </div>
             </div>
@@ -309,7 +309,7 @@
             <ul class="timeline">
               <% @child.activities.each do |activity| %>
                 <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
-                  <li class="event" scope="row" data-date="<%= activity.sub_category %>">
+                  <li class="event" scope="row" data-date="<%= activity.category %>">
                     <div class="d-flex justify-content-between">
                       <p>
                         <% case activity.category %>
@@ -323,12 +323,14 @@
                           <i class="fas fa-bed"></i>
                         <% when "Moment" %>
                           <i class="fas fa-camera"></i>
-                        <% end %>
+                        <% end %> <%= activity.sub_category %>
                       </p>
                       <em><%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %></em>
                     </div>
-                    <p><em><%= activity.time.strftime("%H:%M") %>h</em></p>
-                    <p><em><%= activity.comment %></em></p>
+                    <p><i class="fas fa-clock"></i> <%= activity.time.strftime("%H:%M") %>h</p>
+                    <% if activity.comment != nil %>
+                      <p><i class="fas fa-comment"></i> <em><%= activity.comment %></em></p>
+                    <% end %>
                     <br>
                   </li>
                 </div>
@@ -356,7 +358,7 @@
             <ul class="timeline">
               <% @child.activities.order(time: :desc).each do |activity| %>
                 <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
-                  <li class="event" scope="row" data-date="<%= activity.sub_category %>">
+                  <li class="event" scope="row" data-date="<%= activity.category %>">
                     <p>
                       <% case activity.category %>
                       <% when "Play" %>
@@ -369,10 +371,10 @@
                         <i class="fas fa-bed"></i>
                       <% when "Moment" %>
                         <i class="fas fa-camera"></i>
-                      <% end %>
+                      <% end %> <%= activity.sub_category %>
                     </p>
-                    <p><%= activity.time.strftime("%H:%M") %>h</p>
-                    <p><em><%= activity.comment %></em></p>
+                    <p><i class="far fa-clock"></i> <%= activity.time.strftime("%H:%M") %>h</p>
+                    <p><i class="fas fa-comment"></i> <em><%= activity.comment %></em></p>
                     <br>
                   </li>
                 </div>
