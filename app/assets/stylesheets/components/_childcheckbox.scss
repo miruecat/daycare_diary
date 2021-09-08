@@ -3,7 +3,6 @@
     transform: scale(0);
     font-family: $body-font;
     margin: 5px;
-    font-size: 12px;
   }
   
   .child-checkbox + label {
@@ -24,4 +23,8 @@
     background-color: $button-color;
     border: solid 1px $button-color;
     border-radius: 50px;
+  }
+
+  .child-card-left {
+    font-size: 12px;
   }
