@@ -207,9 +207,9 @@
                           <div class="daycare-children">
                             <% @children.each do |child| %>
                               <%= check_box_tag "children_ids[]", child.id, false, id: "child_id_play_#{child.id}", class: "child-checkbox" %>
-                                <label for="child_id_play_<%=child.id%>"> 
+                                <label class="child-card d-flex my-3" id=<%=child.id%> for="child_id_play_<%=child.id%>"> 
                                   <% if child.profile_picture.attached? %>
-                                    <div class="child-card d-flex my-3" id=<%=child.id%>>
+  
                                       <div class="child-card-left">
                                       <%#= link_to child_path(child) do %>
                                         <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
@@ -217,7 +217,7 @@
                                       </div>
                                       <div class="child-card-right d-flex align-items-center ml-2">
                                        <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
-                                      </div>
+                               
                                     </div>
                                   <% else %>
                                     <div class="child-card d-flex my-3">

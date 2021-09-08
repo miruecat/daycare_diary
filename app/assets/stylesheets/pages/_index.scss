@@ -101,10 +101,6 @@ h5{
   flex-wrap: wrap;
 }
 
-.child-card{
-  padding: 10px 20px;
-}
-
 .profile-square{
   width: 60px;
   height: 60px;
@@ -123,4 +119,5 @@ h5{
   background-color: transparent;
   border: solid 1px $button-color;
   border-radius: 50px;
+  padding: 10px 20px;
 }
