@@ -58,7 +58,7 @@
                           <%= f.input :time %>
                           <%= f.input :sub_category, label: false, as: :radio_buttons, collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
                           <%= f.input :comment %>
-                          <%= f.button :submit, value:"Report", class: "actbtn" %>
+                          <%= f.submit "SUBMIT", class: "blue-btn" %>
                       </div>
                     </div>
                   </div>
@@ -109,13 +109,11 @@
                           </div>
                         </div>
                         <%= f.hidden_field :category, value: "food" %>
-                        <div id=checkbox-food>
-                          <%= f.input :sub_categories, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::PORR, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
-                        </div>
+                        <%= f.input :sub_categories, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::VEG , SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true, class: "tag-selector" }, item_wrapper_class: 'tag-item' %>
                         <%= f.input :date %>
                         <%= f.input :time %>
                         <%= f.input :comment %>
-                        <%= f.button :submit, value:"Report", class: "actbtn"%>
+                        <%= f.submit "SUBMIT", class: "blue-btn" %>
                       </div>
                     </div>
                   </div>
@@ -175,7 +173,7 @@
                         <%= f.input :date %>
                         <%= f.input :time %>
                         <%= f.input :comment %>
-                        <%= f.button :submit, value:"Report", class: "actbtn" %>
+                        <%= f.submit "SUBMIT", class: "blue-btn" %>
                       </div>
                     </div>
                   </div>
@@ -237,7 +235,7 @@
                           <%= f.input :date %>
                           <%= f.input :time %>
                           <%= f.input :comment %>
-                          <%= f.button :submit, value:"Report", class: "actbtn" %>
+                          <%= f.submit "SUBMIT", class: "blue-btn" %>
                         </div>
                       </div>
                     </div>
