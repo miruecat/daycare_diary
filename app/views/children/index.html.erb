@@ -33,21 +33,21 @@
                           <div class="modal-children">
                             <% @children.each do |child| %>
                               <%= check_box_tag "children_ids[]", child.id, false, id: "child_id_#{child.id}", class: "child-checkbox" %>
-                              <label class="child-card d-flex my-3" id=<%=child.id%> for="child_id_<%=child.id%>">      
-                                <% if child.profile_picture.attached? %>                                
-                                    <div class="child-card-left">  
+                              <label class="child-card d-flex my-3" id=<%=child.id%> for="child_id_<%=child.id%>">
+                                <% if child.profile_picture.attached? %>
+                                    <div class="child-card-left">
                                         <%= cl_image_tag child.profile_picture.key, class:"avatar-small" %>
                                     </div>
                                     <div class="child-card-right d-flex align-items-center ml-2">
                                       <%= child.first_name.capitalize %>
-                                    </div>                                
-                                <% else %>                                
+                                    </div>
+                                <% else %>
                                     <div class="child-card-left">
                                         <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
                                     </div>
                                     <div class="child-card-right d-flex align-items-center ml-2">
-                                      <%= child.first_name.capitalize %> 
-                                    </div>                               
+                                      <%= child.first_name.capitalize %>
+                                    </div>
                                 <% end %>
                               </label>
                             <% end %>
@@ -88,7 +88,7 @@
                           <div class="modal-children">
                             <% @children.each do |child| %>
                               <%= check_box_tag "children_ids[]", child.id, false, id: "child_id_food_#{child.id}", class: "child-checkbox" %>
-                              <label class="child-card d-flex my-3" id=<%=child.id%> for="child_id_food_<%=child.id%>">     
+                              <label class="child-card d-flex my-3" id=<%=child.id%> for="child_id_food_<%=child.id%>">
                                 <% if child.profile_picture.attached? %>
                                     <div class="child-card-left">
                                         <%= cl_image_tag child.profile_picture.key, class:"avatar-small" %>
@@ -144,25 +144,25 @@
                           <div class="modal-children">
                             <% @children.each do |child| %>
                               <%= check_box_tag "children_ids[]", child.id, false, id: "child_id_health_#{child.id}", class: "child-checkbox" %>
-                                <label class="child-card d-flex my-3" id=<%=child.id%> for="child_id_health_<%=child.id%>">   
+                                <label class="child-card d-flex my-3" id=<%=child.id%> for="child_id_health_<%=child.id%>">
                                   <% if child.profile_picture.attached? %>
-                                    
+
                                       <div class="child-card-left">
                                           <%= cl_image_tag child.profile_picture.key, class:"avatar-small" %>
                                       </div>
                                       <div class="child-card-right d-flex align-items-center ml-2">
                                         <%= child.first_name.capitalize %>
                                       </div>
-                                    
+
                                   <% else %>
-                                    
+
                                       <div class="child-card-left">
                                           <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
                                       </div>
                                       <div class="child-card-right d-flex align-items-center ml-2">
-                                        <%= child.first_name.capitalize %> 
+                                        <%= child.first_name.capitalize %>
                                       </div>
-                                  
+
                                   <% end %>
                                 </label>
                             <% end %>
@@ -214,7 +214,7 @@
                                         <%# end %>
                                         </div>
                                         <div class="child-card-right d-flex align-items-center ml-2">
-                                        <%= child.first_name.capitalize %> 
+                                        <%= child.first_name.capitalize %>
                                         </div>
                                         <% else %>
                                         <div class="child-card-left">
@@ -223,8 +223,8 @@
                                         <%# end %>
                                         </div>
                                         <div class="child-card-right d-flex align-items-center ml-2">
-                                          <%= child.first_name.capitalize %> 
-                                        </div>  
+                                          <%= child.first_name.capitalize %>
+                                        </div>
                                     <% end %>
                                   </label>
                               <% end %>
@@ -249,30 +249,30 @@
       <div class="daycare-children">
         <% @children.each do |child| %>
           <% if child.profile_picture.attached? %>
-            <div class="child-card d-flex my-3">
-              <div class="child-card-left">
-                <%= link_to child_path(child) do %>
+            <%= link_to child_path(child), class: "link-deco" do %>
+              <div class="child-card d-flex my-3">
+                <div class="child-card-left">
                   <%= cl_image_tag child.profile_picture.key, class:"avatar-large-link" %>
-                <% end %>
-              </div>
+                </div>
               <div class="child-card-right d-flex align-items-center ml-2">
                 <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
               </div>
             </div>
+            <% end %>
             <% else %>
+            <%= link_to child_path(child), class: "link-deco" do %>
             <div class="child-card d-flex my-3">
               <div class="child-card-left">
-                <%= link_to child_path(child) do %>
                   <div class="avatar-empty">
                   <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
                   </div>
-                <% end %>
               </div>
               <div class="child-card-right d-flex align-items-center ml-2">
                 <%= child.first_name.capitalize %> <%= child.last_name.capitalize %>
               </div>
             </div>
           <% end %>
+        <% end %>
         <% end %>
         <div class="child-card-add d-flex my-3">
           <button type="button" data-toggle="modal" data-target="#addnew" id="addbutton">
