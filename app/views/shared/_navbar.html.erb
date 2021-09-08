@@ -29,7 +29,7 @@
           <% end %>
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <%# <%= link_to "View my Kid(s)", child_path(current_user.parenthoods.first.child), class: "dropdown-item" %>
+          <%= link_to "My kid(s)", child_path(current_user.parenthoods.first.child), class: "dropdown-item" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
         </div>
       </div>
