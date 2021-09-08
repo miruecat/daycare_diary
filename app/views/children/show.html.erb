@@ -146,7 +146,7 @@
                   <%= simple_form_for @activity do |f| %>
                     <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] } %>
                     <%= f.hidden_field :category, value: "food" %>
-                    <%= f.input :sub_category, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::PORR, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
+                    <%= f.input :sub_category, as: :check_boxes, label: false, collection: [SubCategoryFood::BABY, SubCategoryFood::BREAD, SubCategoryFood::FRUIT, SubCategoryFood::VEG, SubCategoryFood::MILK, SubCategoryFood::NOEAT], input_html: { multiple: true } %>
                     <%= f.input :date %>
                     <%= f.input :time %>
                     <%= f.input :comment %>
