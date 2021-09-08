@@ -19,6 +19,7 @@ class ChildrenController < ApplicationController
   end
 
   def create
+    @message = Message.new
     @parenthood = Parenthood.new
     @child = Child.new(child_params)
     @child.daycare_id = current_user.daycare_id
