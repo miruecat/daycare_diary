@@ -5,7 +5,7 @@
   // flex-direction: column;
   // justify-content: center;
   width: 100%;
-  padding: 100px 0px;
+  padding: 60px 0px 0px 0px;
 }
 
 // .feature-top, .feature-bottom{
@@ -13,14 +13,6 @@
 //   justify-content: center;
 // }
 
-.desc-section{
-  padding: 10px, 15px;
-}
-
-.desc-top{
-  display:flex;
-  justify-content: space-between;
-}
 
 .dd-brief-container{
   background-color: $background-color;
@@ -29,47 +21,73 @@
   flex-direction: column;
   align-items: center;
   font-family: $body-font;
-  padding: 70px 0px 50px 0px;
+  padding: 80px 0px 30px 0px;
   & h3{
     font-family: $body-font;
-    padding: 30px 0px;
-  }
-  & p{
-    font-size: 28px;
+    padding: 24px 0px;
   }
 }
+
+.dd-contact-container{
+  background-color: transparent;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  font-family: $body-font;
+  padding: 10px 0px 10px 0px;
+  margin-bottom: 30px;
+  & h3{
+    font-family: $body-font;
+    padding: 24px 0px;
+  }
+}
+
+
 
 .dd-contactform{
   margin-bottom: 50px;
 }
 
+.form-control{
+  border: solid 1px $button-color;
+}
 .form-control:hover{
   background-color: $form-color;
-  border: solid 1px black;
-  border-radius: 0;
 }
 
 .row{
   margin:0;
 }
 .form-inputs{
-  padding-left: 0;
-  padding-right: 0;
+  padding: 2px;
 
   & input{
     // font-style: italic;
-    border-color: none;
-    border-radius: 0;
+    border: solid 1px $button-color;
   }
 }
 
 .form-inputs > button{
-  background-color: white;
-  border: solid 1px black
+  background-color: $button-color;
+  border: solid 2px $button-color;
+  padding: 6px 18px;
+  margin: 12px 0;
+  border-radius: 4px;
+  color: white;
+}
+
+.form-inputs > button:hover{
+  background-color: transparent;
+  border: solid 2px $button-color;
+  padding: 6px 18px;
+  margin: 12px 0;
+  border-radius: 4px;
+  color: $button-color;
 }
 
 #comment-box{
-  height: 200px;
+  height: 150px;
 }
 
 .number{
@@ -79,7 +97,35 @@
   opacity: 20%;
 }
 
+.desc-section{
+  text-align: justify;
+}
+
+.desc-top{
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.desc-icon{
+  margin-right: 20px;
+}
+
 .desc-image{
 width:100%;
 opacity: 90%;
+text-align: center;
+}
+
+.desc-text{
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-around;
+}
+
+.process-right {
+  text-align:center;
+  margin-top: 15px;
 }
