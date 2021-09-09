@@ -6,4 +6,6 @@ class Activity < ApplicationRecord
 
   validates :category, :sub_category, :date, :time, :child_id, :user_id, presence: true
 
+  HEALTHCATEGORIES = ["Healthy", "Soso", "Sick"]
+
 end

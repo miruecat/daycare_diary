@@ -58,7 +58,8 @@
                           <%= f.hidden_field :category, value: "sleep" %>
                           <%= f.input :date %>
                           <%= f.input :time %>
-                          <%= f.input :sub_category, label: false, as: :radio_buttons, collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>                          
+                          <%# <%= f.input :sub_category_sleep as: :boolean, input_html: { class: "toggle" } %> 
+                          <%= f.input :sub_category, label: false, as: :radio_buttons, collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
                           <%= f.input :comment %>
                           <%= f.submit "SUBMIT", class: "blue-btn" %>
                       </div>
@@ -157,9 +158,7 @@
                                       <div class="child-card-right d-flex align-items-center ml-2">
                                         <%= child.first_name.capitalize %>
                                       </div>
-
                                   <% else %>
-
                                       <div class="child-card-left">
                                         <div class="avatar-empty-activity">
                                           <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
@@ -168,14 +167,14 @@
                                       <div class="child-card-right d-flex align-items-center ml-2">
                                         <%= child.first_name.capitalize %>
                                       </div>
-
                                   <% end %>
                                 </label>
                             <% end %>
                           </div>
                         </div>
                         <%= f.hidden_field :category, value: "health" %>
-                        <%= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategoryHealth::GOOD, SubCategoryHealth::SOSO, SubCategoryHealth::SICK] %>
+                        <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: Activity::HEALTHCATEGORIES %>
+                          <%#= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategoryHealth::GOOD, SubCategoryHealth::SOSO, SubCategoryHealth::SICK] %>
                         <%= f.input :date %>
                         <%= f.input :time %>
                         <%= f.input :comment %>

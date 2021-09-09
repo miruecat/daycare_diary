@@ -1,5 +1,5 @@
 class SubCategoryFood < ActiveRecord::Base
-    BABY = " bread" #url(https://res.cloudinary.com/dvrahrooa/image/upload/v1631111141/jar-jam-svgrepo-com_zw7tho.svg)
+    BABY = "Babyfood"
     BREAD = "Bread"
     FRUIT = "Fruit"
     VEG = "Vegetable"
