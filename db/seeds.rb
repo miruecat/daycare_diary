@@ -1,4 +1,6 @@
 require "open-uri"
+puts "Removing all messages..."
+Message.destroy_all
 
 puts "Removing all activities..."
 Activity.destroy_all
