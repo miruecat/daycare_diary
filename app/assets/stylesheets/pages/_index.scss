@@ -131,6 +131,17 @@ h5{
   // font-weight: bold;
 }
 
+.child-card-small{
+  font-family: $body-font;
+  color: $button-color;
+  &p{
+    color: $button-color;
+  }
+  // font-weight: bold;
+}
+
+
+
 .normal-left-show{
   // padding: 12px;
   margin: 12px;

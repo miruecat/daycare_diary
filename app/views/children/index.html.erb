@@ -38,7 +38,7 @@
                                     <div class="child-card-left">
                                         <%= cl_image_tag child.profile_picture.key, class:"avatar-small" %>
                                     </div>
-                                    <div class="child-card-right d-flex align-items-center ml-2", id="child-avatar-hover">
+                                    <div class="child-card-small d-flex align-items-center ml-2", id="child-avatar-hover">
                                       <%= child.first_name.capitalize %>
                                     </div>
                                 <% else %>
@@ -47,7 +47,7 @@
                                         <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
                                       </div>
                                     </div>
-                                    <div class="child-card-right d-flex align-items-center ml-2">
+                                    <div class="child-card-small d-flex align-items-center ml-2">
                                       <%= child.first_name.capitalize %>
                                     </div>
                                 <% end %>
@@ -95,7 +95,7 @@
                                     <div class="child-card-left">
                                         <%= cl_image_tag child.profile_picture.key, class:"avatar-small" %>
                                     </div>
-                                    <div class="child-card-right d-flex align-items-center ml-2">
+                                    <div class="child-card-small d-flex align-items-center ml-2">
                                       <%= child.first_name.capitalize %>
                                     </div>
                                 <% else %>
@@ -104,7 +104,7 @@
                                         <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
                                       </div>
                                     </div>
-                                    <div class="child-card-right d-flex align-items-center ml-2">
+                                    <div class="child-card-small d-flex align-items-center ml-2">
                                       <%= child.first_name.capitalize %>
                                     </div>
                                 <% end %>
@@ -154,7 +154,7 @@
                                       <div class="child-card-left">
                                           <%= cl_image_tag child.profile_picture.key, class:"avatar-small" %>
                                       </div>
-                                      <div class="child-card-right d-flex align-items-center ml-2">
+                                      <div class="child-card-small d-flex align-items-center ml-2">
                                         <%= child.first_name.capitalize %>
                                       </div>
                                   <% else %>
@@ -163,7 +163,7 @@
                                           <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
                                         </div>
                                       </div>
-                                      <div class="child-card-right d-flex align-items-center ml-2">
+                                      <div class="child-card-small d-flex align-items-center ml-2">
                                         <%= child.first_name.capitalize %>
                                       </div>
                                   <% end %>
@@ -211,7 +211,7 @@
                                           <%= cl_image_tag child.profile_picture.key, class:"avatar-small" %>
                                         <%# end %>
                                         </div>
-                                        <div class="child-card-right d-flex align-items-center ml-2">
+                                        <div class="child-card-small d-flex align-items-center ml-2">
                                         <%= child.first_name.capitalize %>
                                         </div>
                                         <% else %>
@@ -222,7 +222,7 @@
                                           </div>
                                         <%# end %>
                                         </div>
-                                        <div class="child-card-right d-flex align-items-center ml-2">
+                                        <div class="child-card-small d-flex align-items-center ml-2">
                                           <%= child.first_name.capitalize %>
                                         </div>
                                     <% end %>
@@ -274,6 +274,7 @@
           <% end %>
         <% end %>
         <% end %>
+
         <div class="child-card-add d-flex my-3">
           <button type="button" data-toggle="modal" data-target="#addnew" id="addbutton">
             <i class="fas fa-plus"></i>
@@ -294,7 +295,7 @@
                         <%= f.input :last_name %>
                         <%= f.input :birthdate %>
                         <%= f.input :personal_information %>
-                        <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'blue-btn' }, label: 'Upload a photo' %>
+                        <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'blue-btn' }, label: 'Upload a Photo' %>
                         <%= f.button :submit, 'ADD', class: "blue-btn" %>
                     </div>
                   </div>
