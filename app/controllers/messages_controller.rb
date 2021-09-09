@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
 
     if @message.save
       ChildChannel.broadcast_to(@child, render_to_string(partial: "message", locals: { message: @message }))
-      redirect_to child_path(@child, anchor: "message-#{@message.id}")
+      redirect_to child_path(@child, anchor: "messages")
     else
       render "children/show"
     end

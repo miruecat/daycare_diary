@@ -58,7 +58,7 @@
                           <%= f.hidden_field :category, value: "sleep" %>
                           <%= f.input :date %>
                           <%= f.input :time %>
-                          <%# <%= f.input :sub_category_sleep as: :boolean, input_html: { class: "toggle" } %> 
+                          <%# <%= f.input :sub_category_sleep as: :boolean, input_html: { class: "toggle" } %>
                           <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: "tag-selector"}, collection: Activity::SLEEPCATEGORIES %>
                           <%= f.input :comment %>
                           <%= f.submit "SUBMIT", class: "blue-btn" %>
@@ -302,7 +302,7 @@
                         <%= f.input :birthdate %>
                         <%= f.input :personal_information %>
                         <%= f.input :profile_picture, as: :file %>
-                        <%= f.button :submit, 'ADD', id: "main-btn" %>
+                        <%= f.button :submit, 'ADD', class: "blue-btn" %>
                     </div>
                   </div>
                 </div>

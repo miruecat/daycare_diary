@@ -21,7 +21,7 @@
 .blue-btn{
   background-color: $button-color;
   border: solid 2px $button-color;
-  padding: 6px 18px;
+  padding: 4px 18px;
   margin: 12px 0;
   border-radius: 4px;
   color: white;
@@ -30,7 +30,7 @@
 .blue-btn:hover{
   background-color: transparent;
   border: solid 2px $button-color;
-  padding: 6px 18px;
+  padding: 4px 18px;
   margin: 12px 0;
   border-radius: 4px;
   color: $button-color;
@@ -50,3 +50,15 @@
   color:$button-color;
 }
 
+// input > #file-upload-button{
+//   background-color: $button-color;
+//   border: solid 2px $button-color;
+//   padding: 4px 18px;
+//   margin: 12px 0;
+//   border-radius: 4px;
+//   color: white;
+// }
+
+#picture-btn{
+  background-color: $brand-color;
+}
