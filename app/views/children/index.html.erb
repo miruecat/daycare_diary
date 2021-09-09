@@ -38,7 +38,7 @@
                                     <div class="child-card-left">
                                         <%= cl_image_tag child.profile_picture.key, class:"avatar-small" %>
                                     </div>
-                                    <div class="child-card-right d-flex align-items-center ml-2">
+                                    <div class="child-card-right d-flex align-items-center ml-2", id="child-avatar-hover">
                                       <%= child.first_name.capitalize %>
                                     </div>
                                 <% else %>
@@ -56,10 +56,9 @@
                           </div>
                         </div>
                           <%= f.hidden_field :category, value: "sleep" %>
+                          <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: "tag-selector"}, collection: Activity::SLEEPCATEGORIES %>
                           <%= f.input :date %>
                           <%= f.input :time %>
-                          <%# <%= f.input :sub_category_sleep as: :boolean, input_html: { class: "toggle" } %> 
-                          <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: "tag-selector"}, collection: Activity::SLEEPCATEGORIES %>
                           <%= f.input :comment %>
                           <%= f.submit "SUBMIT", class: "blue-btn" %>
                       </div>
@@ -94,7 +93,7 @@
                               <label class="child-card d-flex my-3" id=<%=child.id%> for="child_id_food_<%=child.id%>">
                                 <% if child.profile_picture.attached? %>
                                     <div class="child-card-left">
-                                        <%= cl_image_tag child.profile_picture.key, class:"avatar-small" %>
+                                        <%= cl_image_tag child.profile_picture.key %>
                                     </div>
                                     <div class="child-card-right d-flex align-items-center ml-2">
                                       <%= child.first_name.capitalize %>
@@ -173,8 +172,7 @@
                           </div>
                         </div>
                         <%= f.hidden_field :category, value: "health" %>
-                        <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: Activity::HEALTHCATEGORIES %>
-                          <%#= f.input :sub_category, label: false, as: :radio_buttons,  collection: [SubCategoryHealth::GOOD, SubCategoryHealth::SOSO, SubCategoryHealth::SICK] %>
+                        <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: "tag-selector"}, collection: Activity::HEALTHCATEGORIES %>
                         <%= f.input :date %>
                         <%= f.input :time %>
                         <%= f.input :comment %>
@@ -184,11 +182,6 @@
                   </div>
                 </div>
               <%end%>
-
-
-
-
-
 
               <button type="button" data-toggle="modal" data-target="#play" id="playbutton">
                 <i class="fas fa-shapes"></i>
@@ -238,7 +231,7 @@
                             </div>
                           </div>
                           <%= f.hidden_field :category, value: "play" %>
-                          <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: Activity::PLAYCATEGORIES %>
+                          <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: "tag-selector"}, collection: Activity::PLAYCATEGORIES %>
                           <%= f.input :date %>
                           <%= f.input :time %>
                           <%= f.input :comment %>
@@ -288,7 +281,7 @@
           <% if current_user.admin == true %>
               <%= simple_form_for Child.new, :url => url_for(:action => 'create', :controller => 'children'), :method => 'post' do |f| %>
               <div class="modal fade" id="addnew" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterPlay" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalCenterPlay">Add a new child</h5>

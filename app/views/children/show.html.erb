@@ -21,14 +21,13 @@
         </div>
       </div>
     <% end %>
-
     <div class="d-flex justify-content-center">
       <div class="child_name_show d-flex justify-content-center mt-3">
         <h1><%= @child.first_name %> <%= @child.last_name %></h1>
         <% if current_user.role == "employee" %>
           <i class="fas fa-info-circle" data-toggle="modal" data-target="#personalInformation"></i>
           <div class="modal fade" id="personalInformation" tabindex="-1" role="dialog" aria-labelledby="personalInformationLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="personalInformationLabel">Personal information of <%= @child.first_name %></h5>
@@ -43,7 +42,6 @@
                         <th>Birthday</th>
                         <td><%= @child.birthdate.strftime("%d-%m-%Y") %></td>
                       </tr>
-
                       <% if @child.parenthoods.count == 0 %>
                         <tr>
                           <th>Parent</th>
@@ -64,12 +62,10 @@
                           <td><%= cl_image_tag @child.parenthoods[1].user.user_picture.key, class: 'avatar-small', crop: :fill %> <%= @child.parenthoods[1].user.first_name %> <%= @child.parenthoods[1].user.last_name %> <em>(<%= @child.parenthoods[1].user.phone_number %>)</em></td>
                         </tr>
                       <% end %>
-
                       <tr>
                         <th>Personal information</th>
                         <td><em><%= @child.personal_information %></em></td>
                       </tr>
-
                     </tbody>
                   </table>
                 </div>
@@ -103,7 +99,7 @@
 
             <!-- Modal -->
             <div class="modal fade" id="sleep" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenterTitle">Sleep</h5>
@@ -116,7 +112,7 @@
                     <%= simple_form_for @activity do |f| %>
                       <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] } %>
                       <%= f.hidden_field :category, value: "sleep" %>
-                      <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: Activity::SLEEPCATEGORIES %>
+                      <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: "tag-selector"}, collection: Activity::SLEEPCATEGORIES %>
                       <%= f.input :date %>
                       <%= f.input :time %>
                       <%= f.input :comment %>
@@ -170,7 +166,7 @@
             </button>
             <!-- Modal -->
             <div class="modal fade" id="health" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenterTitle">Health</h5>
@@ -183,7 +179,7 @@
                     <%= simple_form_for @activity do |f| %>
                       <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
                       <%= f.hidden_field :category, value: "health" %>
-                      <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: Activity::HEALTHCATEGORIES %>
+                      <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: "tag-selector"}, collection: Activity::HEALTHCATEGORIES %>
                       <%= f.input :date %>
                       <%= f.input :time %>
                       <%= f.input :comment %>
@@ -204,7 +200,7 @@
 
             <!-- Modal -->
             <div class="modal fade" id="play" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenterTitle">Play</h5>
@@ -217,7 +213,7 @@
                     <%= simple_form_for @activity do |f| %>
                       <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
                       <%= f.hidden_field :category, value: "play" %>
-                      <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, collection: Activity::PLAYCATEGORIES %>
+                      <%= f.input :sub_category, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: "tag-selector"}, collection: Activity::PLAYCATEGORIES %>
                       <%= f.input :date %>
                       <%= f.input :time %>
                       <%= f.input :comment %>
@@ -241,7 +237,7 @@
 
               <!-- Modal -->
               <div class="modal fade" id="addparent" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalCenterTitle">Connect a parent</h5>

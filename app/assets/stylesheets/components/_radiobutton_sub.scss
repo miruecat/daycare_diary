@@ -1,36 +1,36 @@
 .category-wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-.category-item {
-  flex: 0 0 30%;
-}
+// .category-item {
+//   flex: 0 0 30%;
+// }
 
-.category-selector {
-  position: absolute;
-  transform: scale(0);
-}
+// .category-selector {
+//   position: absolute;
+//   transform: scale(0);
+// }
 
-.category-selector + label {
-  display: block;
-  cursor: pointer;
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 12px;
-  text-align: left;
-  padding: 10px 10px 30px 10px;
-  border-radius: 8px;
-  color: white;
-  background-color: $button-color;
-  border: solid 2px $button-color;
+// .category-selector + label {
+  
+//   cursor: pointer;
+//   color: $button-color;
+//   background-color: transparent;
+//   border: solid 2px $button-color;
+//   border-radius: 50rem;
+//   padding: 0.1rem 0.5rem;
+//   padding: 6px 18px;
+//   margin-right: 0.6rem;
+//   margin-bottom: 0.4rem;
+// }
 
-}
-
-.category-selector:checked + label {
-  color: $button-color;
-  border: solid 2px $button-color;
-  background-color: transparent;
-}
-
+// .category-selector:checked + label {
+//   cursor: pointer;
+  
+//   border: solid 2px $button-color;
+//   border-radius: 50rem;
+//   color: white;
+//   background-color: $button-color;
+// }
