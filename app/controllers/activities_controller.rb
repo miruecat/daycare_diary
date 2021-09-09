@@ -13,8 +13,8 @@ class ActivitiesController < ApplicationController
     if child_id = params.dig(:activity, :children_id)
       @activity = Activity.new(activity_params)
       authorize @activity
-      if params.dig(:activity, :sub_category).kind_of?(Array)
-        @activity.sub_category = params.dig(:activity, :sub_category).join(" ")
+      if params.dig(:activity, :sub_categories).kind_of?(Array)
+        @activity.sub_category = params.dig(:activity, :sub_categories).join(" ")
       else
         @activity.sub_category = params.dig(:activity, :sub_category)
       end
@@ -74,4 +74,5 @@ class ActivitiesController < ApplicationController
   def set_activity
     @child = Child.find(params[:child_id])
   end
+
 end

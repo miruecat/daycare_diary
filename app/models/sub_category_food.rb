@@ -1,10 +1,10 @@
 class SubCategoryFood < ActiveRecord::Base
-    BABY = " bread" #url(https://res.cloudinary.com/dvrahrooa/image/upload/v1631111141/jar-jam-svgrepo-com_zw7tho.svg)
-    BREAD = "Bread"
-    FRUIT = "Fruit"
-    VEG = "Vegetable"
-    MILK = "Milk" 
-    NOEAT = "Did not eat"
+    # BABY = "Babyfood"
+    # BREAD = "Bread"
+    # FRUIT = "Fruit"
+    # VEG = "Vegetable"
+    # MILK = "Milk" 
+    # NOEAT = "Did not eat"
 end
 
 

@@ -1,0 +1,36 @@
+.tag-item {
+    display: inline-block;
+  }
+  
+  .tag-selector {
+    position: absolute;
+    transform: scale(0);
+  }
+  
+  .tag-selector + label {
+    cursor: pointer;
+    display: inline-block;
+    background-color: $button-color;
+    border: solid 2px $button-color;
+    border-radius: 50rem;
+    padding: 0.1rem 0.5rem;
+    padding: 6px 18px;
+    color: white;
+    margin-right: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .tag-selector:checked + label {
+    cursor: pointer;
+    display: inline-block;
+    background-color: transparent;
+    border: solid 2px $button-color;
+    padding: 6px 18px;
+    margin: 12px 0;
+    border-radius: 50rem;
+    padding: 0.1rem 0.5rem;
+    padding: 6px 18px;
+    color: $button-color;
+    margin-right: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
