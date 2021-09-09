@@ -348,11 +348,7 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-
-=======
     </div>
->>>>>>> master
 
   <% elsif current_user.role == "parent" %>
     <div class="container child-activity-container">
@@ -406,13 +402,25 @@
       <div class="container-show">
         <div id="messages" data-chatroom-id="<%= @child.id %>">
           <% @child.messages.each do |message| %>
-            <div class="message-container" id="message-<%= message.id %>">
-              <i class="author">
-                <span><%= message.user.fullname %></span>
-                <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-              </i>
-              <p><%= message.content %></p>
-            </div>
+
+            <% if current_user.role == "employee" || "admin"%>
+              <div class="message-container" id="message-<%= message.id %>">
+                <i class="author">
+                  <span><%= message.user.fullname %></span>
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+              </div>
+            <% elsif current_user.role == "parents "%>
+              <div class="message-container text-right" id="message-<%= message.id %>">
+                <i class="author">
+                  <span><%= message.user.fullname %></span>
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+              </div>
+            <% end %>
+
           <% end %>
         </div>
       </div>
