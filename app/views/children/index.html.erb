@@ -93,7 +93,7 @@
                               <label class="child-card d-flex my-3" id=<%=child.id%> for="child_id_food_<%=child.id%>">
                                 <% if child.profile_picture.attached? %>
                                     <div class="child-card-left">
-                                        <%= cl_image_tag child.profile_picture.key %>
+                                        <%= cl_image_tag child.profile_picture.key, class:"avatar-small" %>
                                     </div>
                                     <div class="child-card-right d-flex align-items-center ml-2">
                                       <%= child.first_name.capitalize %>
