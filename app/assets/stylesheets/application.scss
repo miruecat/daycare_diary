@@ -50,3 +50,10 @@ body {
 .timeline .event:after{
   box-shadow: 0 0 0 3px $button-color;
 }
+
+.timeline .event:before{
+  font-family: $body-font;
+  font-weight: bold;
+  color: $element-color;
+  font-size: medium;
+}

@@ -23,7 +23,7 @@
     <% end %>
     <div class="d-flex justify-content-center">
       <div class="child_name_show d-flex justify-content-center mt-3">
-        <h1><%= @child.first_name %> <%= @child.last_name %></h1>
+        <h2><%= @child.first_name %> <%= @child.last_name %></h2>
         <% if current_user.role == "employee" %>
           <i class="fas fa-info-circle" data-toggle="modal" data-target="#personalInformation"></i>
           <div class="modal fade" id="personalInformation" tabindex="-1" role="dialog" aria-labelledby="personalInformationLabel" aria-hidden="true">
@@ -82,7 +82,7 @@
       <div class="container child-activity-container">
         <div class="container-normal d-flex justify-content-between">
           <div>
-            <h4>Add an activity for <%= @child.first_name %></h4>
+            <h5>Add an Activity for <%= @child.first_name %></h5>
           </div>
         </div>
 
@@ -248,7 +248,7 @@
 
                     <div class="modal-body">
                       <%= simple_form_for [@child, @parenthood] do |f| %>
-                        <%= f.association :user, :label => "Choose a parent", collection: User.parents, label_method: :fullname, value_method: :id, input_html: {class: "select2", style: "width: 400px"} %>
+                        <%= f.association :user, :label => "Choose a parent", collection: User.parents, label_method: :fullname, value_method: :id, input_html: {class: "select2", style: "width: 100%"} %>
                         <%= f.button :submit, "SUBMIT", class: "blue-btn" %>
                       <% end %>
                     </div>
@@ -270,7 +270,7 @@
               <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Special moment</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Special Moment</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -280,12 +280,12 @@
                     <%= simple_form_for @activity do |f| %>
                       <%= f.input :children_id, as: :hidden, input_html: { value: [@child.id] }   %>
                       <%= f.hidden_field :category, value: "moment" %>
-                      <%= f.input :pictures, as: :file, input_html: { multiple: true }%>
+                      <%= f.input :pictures, as: :file, input_html: { multiple: true, class: 'd-none' }, label_html: { class: 'blue-btn' }, label: 'Upload Photos'%>
                       <%= f.input :sub_category, label: false, as: :hidden, input_html: { value: "moment" } %>
                       <%= f.input :date %>
                       <%= f.input :time %>
                       <%= f.input :comment, label: "message" %>
-                      <%= f.button :submit, "SUBMIT", class: "blue-btn" %>
+                      <%= f.button :submit, "SUBMIT", class: "blue-btn"  %>
                     <% end %>
                   </div>
                 </div>
@@ -300,7 +300,7 @@
   <% if current_user.role == "employee" %>
     <div class="container child-activity-container">
       <div class="container-large-top">
-        <h4>Activity log of <%= @child.first_name %></h4>
+        <h5>Activity Log of <%= @child.first_name %></h5>
         <div class="container-show">
           <label for="start">Selected date:</label>
           <input type="date" id="date-activities" name="trip-start" value="<%= Date.today %>" min="2020-01-01" max="<%= Date.today %>">
@@ -402,7 +402,7 @@
 
   <div class="container child-activity-container">
     <div class="container-large-top">
-      <h4><%= @child.first_name %>'s Message Board</h4>
+      <h5><%= @child.first_name %>'s Message Board</h5>
       <div class="container-message">
         <div id="messages" data-child-id="<%= @child.id %>">
           <% @child.messages.each do |message| %>
