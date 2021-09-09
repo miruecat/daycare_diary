@@ -301,7 +301,7 @@
                         <%= f.input :last_name %>
                         <%= f.input :birthdate %>
                         <%= f.input :personal_information %>
-                        <%= f.input :profile_picture, as: :file %>
+                        <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'blue-btn' }, label: 'Upload a photo' %>
                         <%= f.button :submit, 'ADD', class: "blue-btn" %>
                     </div>
                   </div>
