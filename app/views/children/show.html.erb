@@ -406,23 +406,35 @@
 
   <div class="container child-activity-container">
     <div class="container-large-top">
-      <h4><%= @child.first_name %>'s Message Board : Leave a message below</h4>
-      <div class="container-show">
-        <div id="messages" data-chatroom-id="<%= @child.id %>">
+      <h4><%= @child.first_name %>'s Message Board</h4>
+      <div class="container-message">
+        <div id="messages" data-child-id="<%= @child.id %>">
           <% @child.messages.each do |message| %>
-            <div class="message-container" id="message-<%= message.id %>">
-              <i class="author">
-                <span><%= message.user.fullname %></span>
-                <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-              </i>
-              <p><%= message.content %></p>
-            </div>
+
+            <% if message.user == current_user %>
+              <div class="message-container text-right" id="message-<%= message.id %>">
+                <i class="author">
+                  <span><%= message.user.fullname %></span>
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+              </div>
+              <% else %>
+              <div class="message-container" id="message-<%= message.id %>">
+                <i class="author">
+                  <span><%= message.user.fullname %></span>
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+              </div>
+            <% end %>
+
           <% end %>
         </div>
       </div>
     </div>
 
-    <div class="container-show">
+    <div class="container-message">
       <%= simple_form_for [@child, @message], remote: true do |f| %>
         <% if current_user.role == "employee" %>
           <%= f.input :content, label: false, placeholder: "Message to #{@child.first_name}'s parents" %>

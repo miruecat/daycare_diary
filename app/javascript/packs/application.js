@@ -24,11 +24,13 @@ import "bootstrap";
 // Internal imports, e.g:
 import { initSelect2 } from '../components/init_select2';
 import { revealRow } from '../components/reveal_row';
+import { initChildCable} from '../channels/child_channel';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initSelect2();
   revealRow();
+  initChildCable();
 });
 
 $('.avatar-large').hover(function () {
