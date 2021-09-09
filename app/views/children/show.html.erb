@@ -252,7 +252,7 @@
 
                     <div class="modal-body">
                       <%= simple_form_for [@child, @parenthood] do |f| %>
-                        <%= f.association :user, :label => "Choose a parent", collection: User.parents, label_method: :fullname, value_method: :id, input_html: {class: "select2"} %>
+                        <%= f.association :user, :label => "Choose a parent", collection: User.parents, label_method: :fullname, value_method: :id, input_html: {class: "select2", style: "width: 400px"} %>
                         <%= f.button :submit, "SUBMIT", class: "blue-btn" %>
                       <% end %>
                     </div>
@@ -314,33 +314,37 @@
           <div class="col-md-12">
             <div id="content">
               <ul class="timeline">
-                <% @child.activities.each do |activity| %>
-                  <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
-                    <li class="event" scope="row" data-date="<%= activity.category %>">
-                      <div class="d-flex justify-content-between">
-                        <p>
-                          <% case activity.category %>
-                          <% when "Play" %>
-                            <i class="fas fa-shapes"></i>
-                          <% when "Health" %>
-                            <i class="fas fa-heartbeat"></i>
-                          <% when "Food" %>
-                            <i class="fas fa-utensils"></i>
-                          <% when "Sleep" %>
-                            <i class="fas fa-bed"></i>
-                          <% when "Moment" %>
-                            <i class="fas fa-camera"></i>
-                          <% end %> <%= activity.sub_category %>
-                        </p>
-                        <em><%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %></em>
-                      </div>
-                      <p><i class="fas fa-clock"></i> <%= activity.time.strftime("%H:%M") %>h</p>
-                      <% if activity.comment != nil %>
-                        <p><i class="fas fa-comment"></i> <em><%= activity.comment %></em></p>
-                      <% end %>
-                      <br>
-                    </li>
-                  </div>
+                <% if @child.activities.count == 0%>
+                  <em>There are no activities for <%= @child.first_name %> today.</em>
+                <% else %>
+                  <% @child.activities.each do |activity| %>
+                    <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
+                      <li class="event" scope="row" data-date="<%= activity.category %>">
+                        <div class="d-flex justify-content-between">
+                          <p>
+                            <% case activity.category %>
+                            <% when "Play" %>
+                              <i class="fas fa-shapes"></i>
+                            <% when "Health" %>
+                              <i class="fas fa-heartbeat"></i>
+                            <% when "Food" %>
+                              <i class="fas fa-utensils"></i>
+                            <% when "Sleep" %>
+                              <i class="fas fa-bed"></i>
+                            <% when "Moment" %>
+                              <i class="fas fa-camera"></i>
+                            <% end %> <%= activity.sub_category %>
+                          </p>
+                          <em><%= link_to "Delete", activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } %></em>
+                        </div>
+                        <p><i class="fas fa-clock"></i> <%= activity.time.strftime("%H:%M") %>h</p>
+                        <% if activity.comment != nil %>
+                          <p><i class="fas fa-comment"></i> <em><%= activity.comment %></em></p>
+                        <% end %>
+                        <br>
+                      </li>
+                    </div>
+                  <% end %>
                 <% end %>
                 </div>
               </ul>
@@ -363,30 +367,34 @@
           <div class="col-md-12">
             <div id="content">
               <ul class="timeline">
-                <% @child.activities.each do |activity| %>
-                  <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
-                    <li class="event" scope="row" data-date="<%= activity.category %>">
-                      <p>
-                        <% case activity.category %>
-                        <% when "Play" %>
-                          <i class="fas fa-shapes"></i>
-                        <% when "Health" %>
-                          <i class="fas fa-heartbeat"></i>
-                        <% when "Food" %>
-                          <i class="fas fa-utensils"></i>
-                        <% when "Sleep" %>
-                          <i class="fas fa-bed"></i>
-                        <% when "Moment" %>
-                          <i class="fas fa-camera"></i>
-                        <% end %> <%= activity.sub_category %>
-                      </p>
-                      <p><i class="fas fa-clock"></i> <%= activity.time.strftime("%H:%M") %>h</p>
-                      <% if activity.comment != nil %>
-                        <p><i class="fas fa-comment"></i> <em><%= activity.comment %></em></p>
-                      <% end %>
-                      <br>
-                    </li>
-                  </div>
+                <% if @child.activities.count == 0%>
+                  <em>There are no activities for <%= @child.first_name %> today.</em>
+                <% else %>
+                  <% @child.activities.each do |activity| %>
+                    <div class="activity-row <%= 'd-none' unless activity.date == Date.today %>" data-date="<%= activity.date.strftime("%Y-%m-%d") %>">
+                      <li class="event" scope="row" data-date="<%= activity.category %>">
+                        <p>
+                          <% case activity.category %>
+                          <% when "Play" %>
+                            <i class="fas fa-shapes"></i>
+                          <% when "Health" %>
+                            <i class="fas fa-heartbeat"></i>
+                          <% when "Food" %>
+                            <i class="fas fa-utensils"></i>
+                          <% when "Sleep" %>
+                            <i class="fas fa-bed"></i>
+                          <% when "Moment" %>
+                            <i class="fas fa-camera"></i>
+                          <% end %> <%= activity.sub_category %>
+                        </p>
+                        <p><i class="fas fa-clock"></i> <%= activity.time.strftime("%H:%M") %>h</p>
+                        <% if activity.comment != nil %>
+                          <p><i class="fas fa-comment"></i> <em><%= activity.comment %></em></p>
+                        <% end %>
+                        <br>
+                      </li>
+                    </div>
+                  <% end %>
                 <% end %>
               </ul>
             </div>
@@ -443,35 +451,37 @@
     </div>
   </div>
 
-  <div class="container child-activity-container">
-    <div class="carousel-top-container container-show mb-5">
-      <div class="carouselContainer">
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-          <div class="carousel-inner">
-            <% @child.activity_pictures.each do |activity_picture| %>
-              <% if activity_picture == @child.activity_pictures.first %>
-                <div class="carousel-item active d-flex justify-content-center">
-                  <%= cl_image_tag activity_picture.key, class: "d-block image-carousel" %>
-                </div>
-              <% else %>
-                <div class="carousel-item d-flex justify-content-center">
-                  <%= cl_image_tag activity_picture.key, class: "d-block image-carousel" %>
-                </div>
+  <% if @child.activity_pictures.count > 0 %>
+    <div class="container child-activity-container">
+      <div class="carousel-top-container container-show mb-5">
+        <div class="carouselContainer">
+          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+              <% @child.activity_pictures.each do |activity_picture| %>
+                <% if activity_picture == @child.activity_pictures.first %>
+                  <div class="carousel-item active d-flex justify-content-center" data-interval="2000">
+                    <%= cl_image_tag activity_picture.key, class: "d-block image-carousel" %>
+                  </div>
+                <% else %>
+                  <div class="carousel-item d-flex justify-content-center" data-interval="2000">
+                    <%= cl_image_tag activity_picture.key, class: "d-block image-carousel" %>
+                  </div>
+                <% end %>
               <% end %>
+            </div>
+            <% if @child.activity_pictures.count > 1%>
+              <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             <% end %>
           </div>
-          <% if @child.activity_pictures.count > 1%>
-            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          <% end %>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
