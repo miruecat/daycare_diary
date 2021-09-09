@@ -8,7 +8,8 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
-      redirect_to child_path(@child)
+      ChildChannel.broadcast_to(@child, render_to_string(partial: "message", locals: { message: @message }))
+      redirect_to child_path(@child, anchor: "message-#{@message.id}")
     else
       render "children/show"
     end
@@ -17,6 +18,6 @@ class MessagesController < ApplicationController
   private
 
   def params_message
-    params.require(:message).permit(:content, :child_id, :user_id)
+    params.require(:message).permit(:content)
   end
 end
