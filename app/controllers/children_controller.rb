@@ -11,6 +11,7 @@ class ChildrenController < ApplicationController
     authorize @child
     @activity = Activity.new
     @parenthood = Parenthood.new
+    @message = Message.new
   end
 
   def new
@@ -19,7 +20,7 @@ class ChildrenController < ApplicationController
   end
 
   def create
-    @message = Message.new
+    # @message = Message.new
     @parenthood = Parenthood.new
     @child = Child.new(child_params)
     @child.daycare_id = current_user.daycare_id

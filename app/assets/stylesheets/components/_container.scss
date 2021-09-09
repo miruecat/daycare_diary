@@ -116,3 +116,15 @@
 .container-large-top h4, .container-normal h4 {
   font-family: $body-font;
 }
+
+.message-container{
+  background-color: $form-color;
+  border-radius: 4px;
+  padding-left: 10px;
+}
+
+#message-right{
+  background-color: $light-gray;
+  border-radius: 4px;
+  padding-right: 10px;
+}
