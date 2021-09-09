@@ -16,7 +16,7 @@ puts "Removing all daycares..."
 Daycare.destroy_all
 
 puts "Adding daycares..."
-d1 = Daycare.create(name: "Panda")
+d1 = Daycare.create(name: "Giant Panda")
 d2 = Daycare.create(name: "Lion")
 puts "Daycares added!"
 
@@ -100,7 +100,18 @@ file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/jktiFO.jpg')
 p11 = User.new(email: "parent11@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345600", first_name: "Carry", last_name: "Garcia")
 p11.user_picture.attach(io: file, filename: 'p11.jpg', content_type: 'image/jpg')
 p11.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/qTmxR3.jpg')
+p12 = User.new(email: "parent12@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345601", first_name: "Andrew", last_name: "Robinson")
+p12.user_picture.attach(io: file, filename: 'p12.jpg', content_type: 'image/jpg')
+p12.save
+
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/924/zPAAga.jpg')
+p13 = User.new(email: "parent13@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345602", first_name: "Lisa", last_name: "Robinson")
+p13.user_picture.attach(io: file, filename: 'p13.jpg', content_type: 'image/jpg')
+p13.save
 puts "Users added!"
+
 
 puts "Adding children..."
 file = URI.open("https://imagizer.imageshack.com/v2/800x600q90/922/2KmJjz.jpg")
@@ -183,26 +194,24 @@ puts "Adding activities..."
 a1 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,11,30), child_id: c1.id, user_id: e1.id)
 a2 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,10,0), child_id: c1.id, user_id: e2.id)
 a3 = Activity.create(category: "Food", sub_category: "Fruit", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,9,0), child_id: c1.id, user_id: e1.id)
-a4 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,1,15,0), child_id: c1.id, user_id: e1.id)
-a5 = Activity.create(category: "Food", sub_category: "Bread", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,14,0), child_id: c1.id, user_id: e1.id)
-a6 = Activity.create(category: "Play", sub_category: "Play outside", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,13,0), child_id: c1.id, user_id: e1.id)
-a7 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,12,0), child_id: c1.id, user_id: e1.id)
-a8 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,3), time: Time.new(2021,9,3,10,0), child_id: c1.id, user_id: e1.id)
+a4 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,9), time: Time.new(2021,9,1,15,0), child_id: c1.id, user_id: e1.id)
+a5 = Activity.create(category: "Food", sub_category: "Bread", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,14,0), child_id: c1.id, user_id: e1.id)
+a6 = Activity.create(category: "Play", sub_category: "Play outside", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,13,0), child_id: c1.id, user_id: e1.id)
+a7 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,12,0), child_id: c1.id, user_id: e1.id)
+a8 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,10,0), child_id: c1.id, user_id: e1.id)
 
 file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/i713TX.jpg')
 a9 = Activity.new(category: "Food", sub_category: "Bread", comment: "He ate some pieces of bread", date: DateTime.now.in_time_zone, time: Time.new(2021,9,3,14,0), child_id: c1.id, user_id: e1.id)
 a9.pictures.attach(io: file, filename: 'gijs_food', content_type: 'image/jpg')
 a9.save
 
-file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/3vwnvx.jpg')
-a10 = Activity.new(category: "Play", sub_category: "Play inside", comment: "He played inside, trying to grab the animals on the baby gym", date: DateTime.now.in_time_zone, time: Time.new(2021,9,3,13,0), child_id: c1.id, user_id: e1.id)
-a10.pictures.attach(io: file, filename: 'gijs_play', content_type: 'image/jpg')
-a10.save
-
+a10 = Activity.create(category: "Play", sub_category: "Play inside", comment: "He played inside, trying to grab the animals on the baby gym", date: DateTime.now.in_time_zone, time: Time.new(2021,9,3,13,0), child_id: c1.id, user_id: e1.id)
 a11 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.now.in_time_zone, time: Time.new(2021,9,3,12,0), child_id: c1.id, user_id: e1.id)
 
 file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/9r8Oqd.jpg')
-a12 = Activity.new(category: "Sleep", sub_category: "Go to bed", date: DateTime.now.in_time_zone, time: Time.new(2021,9,3,10,0), child_id: c1.id, user_id: e1.id)
+a12 = Activity.new(category: "Sleep", sub_category: "Go to bed", comment: "Sleeping is his favorite activity", date: DateTime.now.in_time_zone, time: Time.new(2021,9,3,10,0), child_id: c1.id, user_id: e1.id)
 a12.pictures.attach(io: file, filename: 'gijs_sleep', content_type: 'image/jpg')
 a12.save
+
+
 puts "Activities added!"
