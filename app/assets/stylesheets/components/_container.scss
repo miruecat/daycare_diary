@@ -117,14 +117,14 @@
   font-family: $body-font;
 }
 
-.message-container{
+.message-container.text-right{
   background-color: $form-color;
   border-radius: 4px;
-  padding-left: 10px;
+  padding-right: 10px;
 }
 
-#message-right{
+.message-container{
   background-color: $light-gray;
   border-radius: 4px;
-  padding-right: 10px;
+  padding-left: 10px;
 }

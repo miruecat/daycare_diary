@@ -400,19 +400,19 @@
     <div class="container-large-top">
       <h4><%= @child.first_name %>'s Message Board : Leave a message below</h4>
       <div class="container-show">
-        <div id="messages" data-chatroom-id="<%= @child.id %>">
+        <div id="messages" data-child-id="<%= @child.id %>">
           <% @child.messages.each do |message| %>
 
-            <% if current_user.role == "employee" || "admin"%>
-              <div class="message-container" id="message-<%= message.id %>">
+            <% if message.user == current_user %>
+              <div class="message-container text-right" id="message-<%= message.id %>">
                 <i class="author">
                   <span><%= message.user.fullname %></span>
                   <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
                 </i>
                 <p><%= message.content %></p>
               </div>
-            <% elsif current_user.role == "parents "%>
-              <div class="message-container text-right" id="message-<%= message.id %>">
+              <% else %>
+              <div class="message-container" id="message-<%= message.id %>">
                 <i class="author">
                   <span><%= message.user.fullname %></span>
                   <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
