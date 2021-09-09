@@ -74,4 +74,5 @@ class ActivitiesController < ApplicationController
   def set_activity
     @child = Child.find(params[:child_id])
   end
+
 end

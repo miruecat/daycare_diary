@@ -38,6 +38,26 @@
   background-color:$brand-color;
 }
 
+.avatar-empty-activity{
+  background-color: $form-color;
+  color: white;
+  border: solid 1px $form-color;
+  border-radius: 50%;
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 700;
+  text-decoration: none!important;
+  width: 30px;
+  height: 30px;
+}
+
+.avatar-empty-activity:hover{
+  color: $element-color;
+  background-color:$brand-color;
+}
+
+
 .avatar-large-link {
   object-fit: cover;
   width: 56px;

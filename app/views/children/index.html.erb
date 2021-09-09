@@ -43,7 +43,9 @@
                                     </div>                                
                                 <% else %>                                
                                     <div class="child-card-left">
+                                      <div class="avatar-empty-activity">
                                         <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                                      </div>
                                     </div>
                                     <div class="child-card-right d-flex align-items-center ml-2">
                                       <%= child.first_name.capitalize %> 
@@ -56,7 +58,7 @@
                           <%= f.hidden_field :category, value: "sleep" %>
                           <%= f.input :date %>
                           <%= f.input :time %>
-                          <%= f.input :sub_category, label: false, as: :radio_buttons, collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>
+                          <%= f.input :sub_category, label: false, as: :radio_buttons, collection: [SubCategorySleep::INBED, SubCategorySleep::OUTBED] %>                          
                           <%= f.input :comment %>
                           <%= f.submit "SUBMIT", class: "blue-btn" %>
                       </div>
@@ -98,7 +100,9 @@
                                     </div>
                                 <% else %>
                                     <div class="child-card-left">
+                                      <div class="avatar-empty-activity">
                                         <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                                      </div>
                                     </div>
                                     <div class="child-card-right d-flex align-items-center ml-2">
                                       <%= child.first_name.capitalize %>
@@ -157,7 +161,9 @@
                                   <% else %>
                                     
                                       <div class="child-card-left">
+                                        <div class="avatar-empty-activity">
                                           <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                                        </div>
                                       </div>
                                       <div class="child-card-right d-flex align-items-center ml-2">
                                         <%= child.first_name.capitalize %> 
@@ -219,7 +225,9 @@
                                         <% else %>
                                         <div class="child-card-left">
                                         <%#= link_to child_path(child) do %>
-                                          <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                                          <div class="avatar-empty-activity">
+                                            <%= "#{child.first_name.first.capitalize}.#{child.last_name.first.capitalize}." %>
+                                          </div>
                                         <%# end %>
                                         </div>
                                         <div class="child-card-right d-flex align-items-center ml-2">
