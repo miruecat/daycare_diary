@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :activities
   has_many :parenthoods
   has_many :children, through: :parenthoods
+  has_many :messages
   belongs_to :daycare
   scope :employees, -> (daycare_id) { where(daycare_id: daycare_id, role: "employee") }
   scope :parents, -> { where.not(role: "employee") }
