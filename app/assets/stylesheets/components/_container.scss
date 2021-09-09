@@ -31,6 +31,15 @@
   padding: 0;
 }
 
+.container-message {
+  margin: 15px 0;
+  padding: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .container-grey{
   background-color: $light-gray;
   padding: 20px;
@@ -117,14 +126,14 @@
   font-family: $body-font;
 }
 
-.message-container{
-  background-color: $form-color;
-  border-radius: 4px;
-  padding-left: 10px;
-}
-
-#message-right{
-  background-color: $light-gray;
+.message-container.text-right{
+  background-color: $brand-color;
   border-radius: 4px;
   padding-right: 10px;
+}
+
+.message-container{
+  background-color: $light-gray;
+  border-radius: 4px;
+  padding-left: 10px;
 }
