@@ -48,6 +48,7 @@ e4.save
 
 file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/OeOfAL.jpg')
 p1 = User.new(email: "parent1@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345691", first_name: "Thomas", last_name: "Smith")
+p1.chatname = p1.first_name
 p1.user_picture.attach(io: file, filename: 'p1.jpg', content_type: 'image/jpg')
 p1.save
 
