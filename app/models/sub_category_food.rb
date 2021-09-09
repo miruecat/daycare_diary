@@ -1,10 +1,10 @@
 class SubCategoryFood < ActiveRecord::Base
-    BABY = "Babyfood"
-    BREAD = "Bread"
-    FRUIT = "Fruit"
-    VEG = "Vegetable"
-    MILK = "Milk" 
-    NOEAT = "Did not eat"
+    # BABY = "Babyfood"
+    # BREAD = "Bread"
+    # FRUIT = "Fruit"
+    # VEG = "Vegetable"
+    # MILK = "Milk" 
+    # NOEAT = "Did not eat"
 end
 
 
