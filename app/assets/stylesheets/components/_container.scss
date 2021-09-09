@@ -31,6 +31,15 @@
   padding: 0;
 }
 
+.container-message {
+  margin: 15px 0;
+  padding: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .container-grey{
   background-color: $light-gray;
   padding: 20px;
@@ -118,7 +127,7 @@
 }
 
 .message-container.text-right{
-  background-color: $form-color;
+  background-color: $brand-color;
   border-radius: 4px;
   padding-right: 10px;
 }
