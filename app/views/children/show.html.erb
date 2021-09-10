@@ -14,7 +14,7 @@
     <% elsif current_user.role == "employee" %>
       <div class="align-items-center">
         <div class="d-flex justify-content-start back-button">
-          <a href="/children" role="button"><i class="fas fa-angle-double-left"></i> Back to children overview</a>
+          <a href="/children" role="button"><i class="fas fa-angle-double-left"></i> Back to all children</a>
         </div>
         <div class="d-flex justify-content-center">
           <%= cl_image_tag @child.profile_picture.key, class: 'avatar-large', crop: :fill %>

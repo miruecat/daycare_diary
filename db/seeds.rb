@@ -204,7 +204,7 @@ a6 = Activity.create(category: "Play", sub_category: "Play outside", date: DateT
 a7 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,12,0), child_id: c1.id, user_id: e1.id)
 a8 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,10,0), child_id: c1.id, user_id: e1.id)
 
-file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/924/kDkweA.jpg')
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/pb7OrQ.jpg')
 a9 = Activity.new(category: "Food", sub_category: "Bread", comment: "He ate some pieces of bread", date: DateTime.new(2021,9,10), time: Time.new(2021,9,3,9,0), child_id: c1.id, user_id: e1.id)
 a9.pictures.attach(io: file, filename: 'food', content_type: 'image/jpg')
 a9.save
