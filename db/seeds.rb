@@ -94,12 +94,12 @@ p9.user_picture.attach(io: file, filename: 'p9.jpg', content_type: 'image/jpg')
 p9.save
 
 file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/LuUEyZ.jpg')
-p10 = User.new(email: "parent10@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345690", first_name: "Patrick", last_name: "Jones")
+p10 = User.new(email: "parent10@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345690", first_name: "Patrick", last_name: "Jones")
 p10.user_picture.attach(io: file, filename: 'p10.jpg', content_type: 'image/jpg')
 p10.save
 
 file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/jktiFO.jpg')
-p11 = User.new(email: "parent11@gmail.com", password: "123456", role: "parent", daycare_id: d2.id, phone_number: "0612345600", first_name: "Carry", last_name: "Garcia")
+p11 = User.new(email: "parent11@gmail.com", password: "123456", role: "parent", daycare_id: d1.id, phone_number: "0612345600", first_name: "Carry", last_name: "Garcia")
 p11.user_picture.attach(io: file, filename: 'p11.jpg', content_type: 'image/jpg')
 p11.save
 
@@ -157,16 +157,18 @@ c8.profile_picture.attach(io: file, filename: 'isabella.jpg', content_type: 'ima
 c8.save
 
 file = URI.open('https://images.squarespace-cdn.com/content/v1/5c912436e66669395b41af4c/1553193358988-FNFQLPADBREFWN9TLWXA/teething-baby-square-300x300.jpg')
-c9 = Child.new(first_name: "Mary", last_name: "Jones", birthdate: DateTime.new(2020,8,8), daycare_id: d2.id)
+c9 = Child.new(first_name: "Mary", last_name: "Jones", birthdate: DateTime.new(2020,8,8), daycare_id: d1.id)
 c9.profile_picture.attach(io: file, filename: 'mary.jpg', content_type: 'image/jpg')
 c9.save
 
 file = URI.open('https://squarebaby.com/wp-content/themes/squarebaby/assets/img/sibylle.png')
-c10 = Child.new(first_name: "Grace", last_name: "Jones", birthdate: DateTime.new(2020,8,8), daycare_id: d2.id)
+c10 = Child.new(first_name: "Grace", last_name: "Jones", birthdate: DateTime.new(2020,8,8), daycare_id: d1.id)
 c10.profile_picture.attach(io: file, filename: 'grace.png', content_type: 'image/png')
 c10.save
 
 c11 = Child.create(first_name: "Jonathan", last_name: "Lee", birthdate: DateTime.new(2018,9,22), daycare_id: d1.id)
+
+
 puts "Children added!"
 
 puts "Adding parenthoods..."
@@ -197,22 +199,22 @@ a1 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: Da
 a2 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,10,0), child_id: c1.id, user_id: e2.id)
 a3 = Activity.create(category: "Food", sub_category: "Fruit", date: DateTime.new(2021,8,31), time: Time.new(2021,8,31,9,0), child_id: c1.id, user_id: e1.id)
 a4 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,9), time: Time.new(2021,9,1,15,0), child_id: c1.id, user_id: e1.id)
-a5 = Activity.create(category: "Food", sub_category: "Bread", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,14,0), child_id: c1.id, user_id: e1.id)
+a5 = Activity.create(category: "Food", sub_category: "Fruit", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,14,0), child_id: c1.id, user_id: e1.id)
 a6 = Activity.create(category: "Play", sub_category: "Play outside", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,13,0), child_id: c1.id, user_id: e1.id)
 a7 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,12,0), child_id: c1.id, user_id: e1.id)
 a8 = Activity.create(category: "Sleep", sub_category: "Go to bed", date: DateTime.new(2021,9,9), time: Time.new(2021,9,3,10,0), child_id: c1.id, user_id: e1.id)
 
-file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/i713TX.jpg')
-a9 = Activity.new(category: "Food", sub_category: "Bread", comment: "He ate some pieces of bread", date: DateTime.new(2021,9,10), time: Time.new(2021,9,3,14,0), child_id: c1.id, user_id: e1.id)
-a9.pictures.attach(io: file, filename: 'gijs_food', content_type: 'image/jpg')
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/923/pb7OrQ.jpg')
+a9 = Activity.new(category: "Food", sub_category: "Bread", comment: "He ate some pieces of bread", date: DateTime.new(2021,9,10), time: Time.new(2021,9,3,9,0), child_id: c1.id, user_id: e1.id)
+a9.pictures.attach(io: file, filename: 'food', content_type: 'image/jpg')
 a9.save
 
-a10 = Activity.create(category: "Play", sub_category: "Play inside", comment: "He played inside, trying to grab the animals on the baby gym", date: DateTime.new(2021,9,10), time: Time.new(2021,9,3,13,0), child_id: c1.id, user_id: e1.id)
+a10 = Activity.create(category: "Play", sub_category: "Play inside", comment: "He played inside, trying to grab the animals on the baby gym", date: DateTime.new(2021,9,1), time: Time.new(2021,9,3,13,0), child_id: c1.id, user_id: e1.id)
 a11 = Activity.create(category: "Sleep", sub_category: "Get out of bed", date: DateTime.new(2021,9,10), time: Time.new(2021,9,3,12,0), child_id: c1.id, user_id: e1.id)
 
-file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/922/9r8Oqd.jpg')
+file = URI.open('https://imagizer.imageshack.com/v2/800x600q90/924/oZJsuX.jpg')
 a12 = Activity.new(category: "Sleep", sub_category: "Go to bed", comment: "Sleeping is his favorite activity", date: DateTime.new(2021,9,10), time: Time.new(2021,9,3,10,0), child_id: c1.id, user_id: e1.id)
-a12.pictures.attach(io: file, filename: 'gijs_sleep', content_type: 'image/jpg')
+a12.pictures.attach(io: file, filename: 'sleep', content_type: 'image/jpg')
 a12.save
 
 
