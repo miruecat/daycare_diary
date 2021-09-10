@@ -21,16 +21,17 @@
 .blue-btn{
   background-color: $button-color;
   border: solid 2px $button-color;
-  padding: 6px 18px;
+  padding: 4px 18px;
   margin: 12px 0;
   border-radius: 4px;
   color: white;
+
 }
 
 .blue-btn:hover{
   background-color: transparent;
   border: solid 2px $button-color;
-  padding: 6px 18px;
+  padding: 4px 18px;
   margin: 12px 0;
   border-radius: 4px;
   color: $button-color;
@@ -49,4 +50,3 @@
   border:none;
   color:$button-color;
 }
-
