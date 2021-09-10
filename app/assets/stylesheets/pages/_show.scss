@@ -3,3 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.activity-row > a{
+  color: $element-color;
+}

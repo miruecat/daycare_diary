@@ -4,7 +4,7 @@
     font-family: $body-font;
     margin: 5px;
   }
-  
+
   .child-checkbox + label {
     cursor: pointer;
     //display: inline-block;
@@ -19,7 +19,9 @@
   }
 
   .child-checkbox:checked + label {
-    color: white;
+    .child-card-small {
+      color: white !important;
+    }
     background-color: $button-color;
     border: solid 1px $button-color;
     border-radius: 50px;

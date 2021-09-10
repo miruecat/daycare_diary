@@ -19,7 +19,10 @@
   margin: 15px 0;
   display: flex;
   justify-content: space-between;
-  padding: 0;
+  // margin-left: 12px;
+  // margin-right: 12px;
+  // padding-bottom: 20px;
+  // border-bottom: solid 1px $form-color;
 }
 
 .container-large-top {
@@ -122,8 +125,9 @@
   padding: 0;
 }
 
-.container-large-top h4, .container-normal h4 {
+.container-large-top h5, .container-normal h5 {
   font-family: $body-font;
+
 }
 
 .message-container.text-right{
