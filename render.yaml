@@ -12,7 +12,7 @@ services:
       - 'www.daycarediary.net'
     envVars:
       - key: CLOUDINARY_URL # Imported from Heroku app
-
+        value: cloudinary://365183733449398:L-RAp8g9Aelzz7pKCJEDYBULn5w@dvrahrooa
       - key: LANG # Imported from Heroku app
         value: en_US.UTF-8
       - key: RACK_ENV # Imported from Heroku app
@@ -24,3 +24,4 @@ services:
       - key: RAILS_SERVE_STATIC_FILES # Imported from Heroku app
         value: enabled
       - key: REDISCLOUD_URL # Imported from Heroku app
+        value: redis://default:cym0tKC2Q0kSxaaM8THR0EbocbrvIvt8@redis-13203.c268.eu-west-1-2.ec2.cloud.redislabs.com:13203
